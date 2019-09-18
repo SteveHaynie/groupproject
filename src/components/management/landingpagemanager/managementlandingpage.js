@@ -1,9 +1,12 @@
-import React from react
+import React from 'react';
 import './managementlandingpage.css'
 
-class managementlandingpage extends React.Component{
+class ManagementLandingPage extends React.Component{
 
     render(){
+        console.log(
+        "this is management page"
+        )
         return (
             <div className='managementHomePage'>
                 Management Landing Page
@@ -12,4 +15,4 @@ class managementlandingpage extends React.Component{
     }
 }
 
-export default managementlandingpage;
+export default ManagementLandingPage;
