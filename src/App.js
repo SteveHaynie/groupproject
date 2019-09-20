@@ -13,7 +13,6 @@ class App extends React.Component {
   constructor() {
     super();
 
-
     this.state = {
       currentUser: {}
     };
@@ -40,7 +39,6 @@ class App extends React.Component {
               exact
               path="/"
               render={props => {
-
                 return (
                   <div className="App">
                     <h1 className="appheader">This is app</h1>
@@ -48,7 +46,7 @@ class App extends React.Component {
                 );
               }}
             />
-             {/* <Route
+            {/* <Route
               path="/login"
               render={props => {
                 return (
@@ -59,14 +57,11 @@ class App extends React.Component {
               }}
               /> */}
 
-{/* 
-             <Route
+            {/* <Route
               path="/managementlanding"
               render={props => {
                 return (
                   <div className="App">
-
-
                     <ManagementLanding {...props} />
                   </div>
                 );
@@ -186,7 +181,6 @@ class App extends React.Component {
                 );
               }}
             /> */}
-
           </Switch>
         </Router>
       </div>
