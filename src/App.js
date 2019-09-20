@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -16,6 +17,7 @@ class App extends React.Component {
     this.updateUser = this.updateUser.bind(this);
   }
 
+
   componentDidMount() {
     axios.get("/currentuser").then(response => {
       this.setState({
@@ -26,6 +28,9 @@ class App extends React.Component {
   updateUser(user) {
     this.setState({ currentUser: user });
   }
+
+  }
+ }
 
 
   render() {
@@ -51,6 +56,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
+
             {/* <Route
               path="/managementlanding"
               render={props => {
@@ -177,6 +183,26 @@ class App extends React.Component {
       </div>
     );
   }
+
+      <Route
+            
+              path="/managementlanding"
+              render={ props => {
+                return (
+                  <div className="App">
+                    <ManagementLandingPage  {...props} />
+                    </div>
+                );
+              }}
+            /> 
+
+
+      </Switch>
+     </Router>
+    </div>
+  );
+}
+
 }
 
 export default App;
