@@ -48,7 +48,7 @@ class App extends React.Component {
                 );
               }}
             />
-             <Route
+             {/* <Route
               path="/login"
               render={props => {
                 return (
@@ -57,6 +57,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
+              /> */}
 
 {/* 
              <Route
@@ -94,7 +95,7 @@ class App extends React.Component {
                 );
               }}
 
-            /> } */}
+            /> } 
              {/* <Route
               path="/useraddnotes"
               render={props => {
@@ -104,7 +105,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
             {/* <Route
               path="/useraddtenant"
               render={props => {
@@ -114,7 +115,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
             {/* <Route
               path="/userdocumentupload"
               render={props => {
@@ -124,7 +125,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            // /> */}
+            // /> }
               {/* <Route
             //   path="/workorderview"
             //   render={props => {
@@ -144,7 +145,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
             {/* <Route
               path="/tenantworkorderview"
               render={props => {
@@ -154,7 +155,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
             {/* <Route
               path="/tenantpayment"
               render={props => {
@@ -164,7 +165,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
             {/* <Route
               path="/tenantcreateworkorder"
               render={props => {
@@ -174,7 +175,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
             {/* <Route
               path="/tenantformsubmission"
               render={props => {
