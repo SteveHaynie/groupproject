@@ -11,7 +11,6 @@ class ManagementLandingPage extends React.Component{
         )
         return (
             <div className='managementHomePage'>
-                Welcome
                 <div className='navbar'>
                 <Link to='/unitcreation'>Create new unit</Link>
                 <Link to='/users'>View users</Link>

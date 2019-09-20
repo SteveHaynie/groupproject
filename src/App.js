@@ -66,7 +66,7 @@ class App extends React.Component {
                 );
               }}
             /> }
-{/*            
+{            
               <Route
               path="/unitcreation"
               render={props => {
@@ -76,8 +76,8 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-             {/* <Route
+            /> }
+             { <Route
               path="/users"
               render={props => {
                 return (
@@ -86,7 +86,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
              {/* <Route
               path="/useraddnotes"
               render={props => {
@@ -117,7 +117,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+             { <Route
               path="/workorderview"
               render={props => {
                 return (
@@ -126,7 +126,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
                {/* <Route
               path="/tenantlanding"
               render={props => {
