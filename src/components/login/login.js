@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
-import "../../reset.css";
+// import "../../reset.css";
 import "./login.css";
 
 class Login extends Component {
@@ -9,12 +9,13 @@ class Login extends Component {
     super();
 
     this.state = {
-      username: "",
-      password: ""
+      email: "",
+      password: "",
+      currentUser: {}
     };
+
     this.handleLogin = this.handleLogin.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   componentDidMount() {
@@ -26,16 +27,26 @@ class Login extends Component {
     document.removeEventListener("keydown", this.handleKeyPress);
   }
 
+  updateUser(user) {
+    this.setState({ currentUser: user })
+  }
+
   async handleLogin() {
     try {
       const body = {
-        user_name: this.state.username,
-        password: this.state.password
+        email: this.state.email,
+        password: this.state.password,
       };
-      if (body.user_name && body.password) {
-        await axios.post("/login", body);
+      if (body.email && body.password) {
+        await axios.post("/login", body).then(response =>
+          this.updateUser(response.data.user));
+            if (response.data.administrator === true) {
+              this.props.history.push('/managementlanding')
+            } else {
+              this.props.history.push('/tennantlanding')
+            }
+          
         // server end points need to be made******************
-        // this.props.history.push('/name of landing page')
       } else {
         alert("Please Enter a Valid User name and Password");
       }
@@ -47,25 +58,6 @@ class Login extends Component {
   handleKeyPress(event) {
     if (event.keyCode === 13) {
       this.handleLogin();
-    }
-  }
-
-  async handleSignUp() {
-    try {
-      const body = {
-        user_name: this.state.username,
-        password: this.state.password
-      };
-      if (body.user_name && body.password) {
-        await axios.post("/sign_up", body);
-        // server end points need to be made*****************
-        alert("Successfully Signed Up!");
-        // this.props.history.push('/name of the landing page')
-      } else {
-        alert("Please Enter a User Name and Password");
-      }
-    } catch (error) {
-      console.error("error", error);
     }
   }
 
@@ -81,7 +73,7 @@ class Login extends Component {
             <input
               placeholder="Email"
               onChange={event =>
-                this.setState({ username: event.target.value })
+                this.setState({ email: event.target.value })
               }
             />
           </div>
@@ -96,9 +88,6 @@ class Login extends Component {
           </div>
           <div className="LoginButton" onClick={this.handleLogin}>
             Login
-          </div>
-          <div className="SignUpInput" onClick={this.handleSignUp}>
-            Sign Up
           </div>
           <Link className="ResetCredential" to="/reset_credentials">
             Trouble signing in?
