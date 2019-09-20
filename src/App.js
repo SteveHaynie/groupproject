@@ -1,22 +1,22 @@
-
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import axios from "axios";
-// import Login from "./components/login/login.js";
+ import Login from "./components/login/login.js";
 // import ManagementLanding from "./components/management/managementlanding/managementlanding.js";
+
 
 class App extends React.Component {
   constructor() {
     super();
 
+
     this.state = {
-      currentUser: {},
-      
+      currentUser: {}
     };
     this.updateUser = this.updateUser.bind(this);
   }
-
 
   componentDidMount() {
     axios.get("/currentuser").then(response => {
@@ -29,24 +29,25 @@ class App extends React.Component {
     this.setState({ currentUser: user });
   }
 
-  }
- }
-
 
   render() {
     return (
       <div className="App">
-      
         <Router>
           <Switch>
             <Route
               exact
               path="/"
               render={props => {
-                return <div className="App"><h1 className ="appheader">This is app</h1></div>;
+
+                return (
+                  <div className="App">
+                    <h1 className="appheader">This is app</h1>
+                  </div>
+                );
               }}
             />
-            {/* <Route
+             <Route
               path="/login"
               render={props => {
                 return (
@@ -55,19 +56,22 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> 
 
             {/* <Route
+
               path="/managementlanding"
               render={props => {
                 return (
                   <div className="App">
+
+
                     <ManagementLanding {...props} />
                   </div>
                 );
               }}
             /> */}
-{/*            
+            {/*            
               <Route
               path="/unitcreation"
               render={props => {
@@ -78,7 +82,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/users"
               render={props => {
                 return (
@@ -88,7 +92,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/useraddnotes"
               render={props => {
                 return (
@@ -98,7 +102,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/useraddtenant"
               render={props => {
                 return (
@@ -108,7 +112,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/userdocumentupload"
               render={props => {
                 return (
@@ -118,7 +122,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/workorderview"
               render={props => {
                 return (
@@ -128,7 +132,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-               {/* <Route
+            {/* <Route
               path="/tenantlanding"
               render={props => {
                 return (
@@ -138,7 +142,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/tenantworkorderview"
               render={props => {
                 return (
@@ -148,7 +152,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-               {/* <Route
+            {/* <Route
               path="/tenantpayment"
               render={props => {
                 return (
@@ -158,7 +162,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-               {/* <Route
+            {/* <Route
               path="/tenantcreateworkorder"
               render={props => {
                 return (
@@ -168,7 +172,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-               {/* <Route
+            {/* <Route
               path="/tenantformsubmission"
               render={props => {
                 return (
@@ -178,31 +182,12 @@ class App extends React.Component {
                 );
               }}
             /> */}
+
           </Switch>
         </Router>
       </div>
     );
   }
-
-      <Route
-            
-              path="/managementlanding"
-              render={ props => {
-                return (
-                  <div className="App">
-                    <ManagementLandingPage  {...props} />
-                    </div>
-                );
-              }}
-            /> 
-
-
-      </Switch>
-     </Router>
-    </div>
-  );
-}
-
 }
 
 export default App;

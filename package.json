@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-=======
+
      "axios": "^0.19.0",
+
+ 
+    "bcrypt": "^3.0.6",
+
     "dotenv": "^8.1.0",
->>>>>>> master
+
     "browser-router": "^0.2.0",
     "cors": "^2.8.5",
-    "dotenv": "^8.1.0",
     "express-session": "^1.16.2",
     "massive": "^6.1.0",
     "react": "^16.9.0",
