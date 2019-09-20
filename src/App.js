@@ -1,9 +1,13 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import axios from "axios";
-import Login from "./components/login/login.js";
-// import ManagementLanding from "./components/management/managementlanding/managementlanding.js";
+
+// import Login from "./components/login/login.js";
+import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
+// import UnitCreation from './components/management/unitcreation/unitcreation'
+// import Users from './components/management/users/users'
 
 class App extends React.Component {
   constructor() {
@@ -26,7 +30,7 @@ class App extends React.Component {
     this.setState({ currentUser: user });
   }
 
-  render() {
+  render(){
     return (
       <div className="App">
         <Router>
@@ -42,7 +46,7 @@ class App extends React.Component {
                 );
               }}
             />
-            <Route
+            {/* <Route
               path="/login"
               render={props => {
                 return (
@@ -51,7 +55,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            />
+            /> */}
 
             {/* <Route
               path="/managementlanding"
@@ -62,8 +66,9 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/*            
+
+            /> }
+{            
               <Route
               path="/unitcreation"
               render={props => {
@@ -73,8 +78,9 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+
+            /> }
+             { <Route
               path="/users"
               render={props => {
                 return (
@@ -83,8 +89,9 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+
+            /> } */}
+             {/* <Route
               path="/useraddnotes"
               render={props => {
                 return (
@@ -113,18 +120,18 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
-              path="/workorderview"
-              render={props => {
-                return (
-                  <div className="App">
-                    <WorkOrderView {...props} />
-                  </div>
-                );
-              }}
-            /> */}
-            {/* <Route
+            // /> */}
+              {/* <Route
+            //   path="/workorderview"
+            //   render={props => {
+            //     return (
+            //       <div className="App">
+            //         <WorkOrderView {...props} />
+            //       </div>
+            //     );
+            //   }}
+            // /> }
+               {/* <Route
               path="/tenantlanding"
               render={props => {
                 return (
@@ -180,5 +187,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
