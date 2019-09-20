@@ -4,7 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 // import Login from "./components/login/login.js";
-// import ManagementLanding from "./components/management/managementlanding/managementlanding.js";
+import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
 
 class App extends React.Component {
   constructor() {
@@ -29,11 +29,10 @@ class App extends React.Component {
     this.setState({ currentUser: user });
   }
 
-  }
- }
+  
 
 
-  render() {
+  render(){
     return (
       <div className="App">
       
@@ -57,7 +56,7 @@ class App extends React.Component {
               }}
             /> */}
 
-            {/* <Route
+            { <Route
               path="/managementlanding"
               render={props => {
                 return (
@@ -66,7 +65,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }
 {/*            
               <Route
               path="/unitcreation"
@@ -183,26 +182,7 @@ class App extends React.Component {
       </div>
     );
   }
-
-      <Route
-            
-              path="/managementlanding"
-              render={ props => {
-                return (
-                  <div className="App">
-                    <ManagementLandingPage  {...props} />
-                    </div>
-                );
-              }}
-            /> 
-
-
-      </Switch>
-     </Router>
-    </div>
-  );
 }
 
-}
 
 export default App;
