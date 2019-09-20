@@ -1,25 +1,24 @@
-
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import axios from "axios";
+
 // import Login from "./components/login/login.js";
 import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
 // import UnitCreation from './components/management/unitcreation/unitcreation'
 // import Users from './components/management/users/users'
 
-
 class App extends React.Component {
   constructor() {
     super();
 
+
     this.state = {
-      currentUser: {},
-      
+      currentUser: {}
     };
     this.updateUser = this.updateUser.bind(this);
   }
-
 
   componentDidMount() {
     axios.get("/currentuser").then(response => {
@@ -32,23 +31,24 @@ class App extends React.Component {
     this.setState({ currentUser: user });
   }
 
-  
-
-
   render(){
     return (
       <div className="App">
-      
         <Router>
           <Switch>
             <Route
               exact
               path="/"
               render={props => {
-                return <div className="App"><h1 className ="appheader">This is app</h1></div>;
+
+                return (
+                  <div className="App">
+                    <h1 className="appheader">This is app</h1>
+                  </div>
+                );
               }}
             />
-            {/* <Route
+             <Route
               path="/login"
               render={props => {
                 return (
@@ -57,17 +57,20 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+
 {/* 
-            { <Route
+             <Route
               path="/managementlanding"
               render={props => {
                 return (
                   <div className="App">
+
+
                     <ManagementLanding {...props} />
                   </div>
                 );
               }}
+
             /> }
 {            
               <Route
@@ -79,6 +82,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
+
             /> }
              { <Route
               path="/users"
@@ -89,6 +93,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
+
             /> } */}
              {/* <Route
               path="/useraddnotes"
@@ -100,7 +105,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/useraddtenant"
               render={props => {
                 return (
@@ -110,7 +115,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/userdocumentupload"
               render={props => {
                 return (
@@ -140,7 +145,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-             {/* <Route
+            {/* <Route
               path="/tenantworkorderview"
               render={props => {
                 return (
@@ -150,7 +155,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-               {/* <Route
+            {/* <Route
               path="/tenantpayment"
               render={props => {
                 return (
@@ -160,7 +165,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-               {/* <Route
+            {/* <Route
               path="/tenantcreateworkorder"
               render={props => {
                 return (
@@ -170,7 +175,7 @@ class App extends React.Component {
                 );
               }}
             /> */}
-               {/* <Route
+            {/* <Route
               path="/tenantformsubmission"
               render={props => {
                 return (
@@ -180,12 +185,11 @@ class App extends React.Component {
                 );
               }}
             /> */}
+
           </Switch>
         </Router>
       </div>
     );
   }
 }
-
-
 export default App;
