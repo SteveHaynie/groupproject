@@ -38,13 +38,13 @@ class Login extends Component {
         password: this.state.password,
       };
       if (body.email && body.password) {
-        await axios.post("/login", body).then(response =>
-          this.updateUser(response.data.user));
+        await axios.post("/login", body).then(response => {
+          this.updateUser(response.data.user)
             if (response.data.administrator === true) {
               this.props.history.push('/managementlanding')
             } else {
               this.props.history.push('/tennantlanding')
-            }
+      }});
           
         // server end points need to be made******************
       } else {
