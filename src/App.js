@@ -1,54 +1,35 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import { connect } from 'react-redux';
 import axios from "axios";
-
+import { updateUser } from './redux/actions.js';
 import Login from "./components/login/login.js";
 import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
 // import UnitCreation from './components/management/unitcreation/unitcreation'
 // import Users from './components/management/users/users'
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: {}
-    };
-    this.updateUser = this.updateUser.bind(this);
-  }
+ 
 
   componentDidMount() {
     axios.get("/currentuser").then(response => {
-      this.setState({
-        currentUser: response.data
-      });
+      this.props.updateUser(response.data)
     });
   }
-  updateUser(user) {
-    this.setState({ currentUser: user });
-  }
+ 
 
   render(){
+
     return (
       <div className="App">
         <Router>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={props => {
-                return (
-                  <div className="App">
-                    <h1 className="appheader">This is app</h1>
-                  </div>
-                );
-              }}
-            />
+          
             <Route
               path="/login"
               render={props => {
+                // if (Object.keys(this.props.user).length === 0)
                 return (
                   <div className="App">
                     <Login />
@@ -57,19 +38,25 @@ class App extends React.Component {
               }}
             />
 
-            {/* <Route
+             <Route
               path="/managementlanding"
               render={props => {
+                if (Object.keys(this.props.user).length !== 0 && this.props.user.administrator === true)
                 return (
                   <div className="App">
                     <ManagementLanding {...props} />
                   </div>
                 );
+                else {
+                  return (
+                  <div className="App">
+                  please login
+                </div>)
+                }
               }}
 
-            /> }
-{            
-              <Route
+            />
+              {/* <Route
               path="/unitcreation"
               render={props => {
                 return (
@@ -79,8 +66,8 @@ class App extends React.Component {
                 );
               }}
 
-            /> }
-             { <Route
+            />
+              <Route
               path="/users"
               render={props => {
                 return (
@@ -90,7 +77,7 @@ class App extends React.Component {
                 );
               }}
 
-            /> } */}
+            />  */}
              {/* <Route
               path="/useraddnotes"
               render={props => {
@@ -187,4 +174,11 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+
+const mapStateToProps = (state) => {
+  return {
+    user : state.user
+  }
+}
+
+export default connect(mapStateToProps, {updateUser}) (App );

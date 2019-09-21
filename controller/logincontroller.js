@@ -9,7 +9,7 @@ const login = async (req, res, next) => {
         
         const results = await bcrypt.compare(req.body.password, user.password)
         if (!results)
-            return res.status(403).send("Your email and password verify.  Please enter a valid email and password")
+            return res.status(403).send("Please enter a valid email and password")
         
         delete user.password;
         req.session.user = user;
