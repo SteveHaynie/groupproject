@@ -6,8 +6,9 @@ import axios from "axios";
 import { updateUser } from './redux/actions.js';
 import Login from "./components/login/login.js";
 import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
-// import UnitCreation from './components/management/unitcreation/unitcreation'
-// import Users from './components/management/users/users'
+import UnitCreation from './components/management/unitcreation/unitcreation'
+import Users from './components/management/users/users'
+import WorkOrderView from './components/management/workorderview/workorderview'
 
 class App extends React.Component {
  
@@ -36,49 +37,45 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            />
+              /> 
 
-             <Route
-              path="/managementlanding"
-              render={props => {
-                if (Object.keys(this.props.user).length !== 0 && this.props.user.administrator === true)
-                return (
-                  <div className="App">
-                    <ManagementLanding {...props} />
-                  </div>
-                );
-                else {
-                  return (
-                  <div className="App">
-                  please login
-                </div>)
-                }
-              }}
-
-            />
-              {/* <Route
-              path="/unitcreation"
-              render={props => {
-                return (
-                  <div className="App">
-                    <UnitCreation {...props} />
-                  </div>
-                );
-              }}
-
-            />
+            {
               <Route
-              path="/users"
-              render={props => {
-                return (
-                  <div className="App">
-                    <Users {...props} />
-                  </div>
-                );
-              }}
-
-            />  */}
-             {/* <Route
+                path="/managementlanding"
+                render={props => {
+                  return (
+                    <div className="App">
+                      <ManagementLanding {...props} />
+                    </div>
+                  );
+                }}
+              />
+            }
+            {
+              <Route
+                path="/unitcreation"
+                render={props => {
+                  return (
+                    <div className="App">
+                      <UnitCreation {...props} />
+                    </div>
+                  );
+                }}
+              />
+            }
+            {
+              <Route
+                path="/users"
+                render={props => {
+                  return (
+                    <div className="App">
+                      <Users {...props} />
+                    </div>
+                  );
+                }}
+              />
+            }
+            {/* { { <Route
               path="/useraddnotes"
               render={props => {
                 return (
@@ -87,8 +84,8 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            /> } } */}
+            {/* {{ <Route
               path="/useraddtenant"
               render={props => {
                 return (
@@ -97,8 +94,8 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            /> } } */}
+            {/* { { <Route
               path="/userdocumentupload"
               render={props => {
                 return (
@@ -107,18 +104,18 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            // /> */}
-              {/* <Route
-            //   path="/workorderview"
-            //   render={props => {
-            //     return (
-            //       <div className="App">
-            //         <WorkOrderView {...props} />
-            //       </div>
-            //     );
-            //   }}
-            // /> }
-               {/* <Route
+             /> } } */}
+              { <Route
+               path="/workorderview"
+               render={props => {
+                 return (
+                   <div className="App">
+                     <WorkOrderView {...props} />
+                   </div>
+                 );
+               }}
+             /> }
+               {/* {  <Route
               path="/tenantlanding"
               render={props => {
                 return (
@@ -127,8 +124,8 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            /> }  */}
+            {/* {  <Route
               path="/tenantworkorderview"
               render={props => {
                 return (
@@ -137,8 +134,8 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            /> }  */}
+            {/* { <Route
               path="/tenantpayment"
               render={props => {
                 return (
@@ -147,8 +144,8 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            /> }  */}
+            {/* { <Route
               path="/tenantcreateworkorder"
               render={props => {
                 return (
@@ -157,8 +154,8 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            /> }  */}
+            {/* {  <Route
               path="/tenantformsubmission"
               render={props => {
                 return (
@@ -167,7 +164,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            /> }  */}
           </Switch>
         </Router>
       </div>
