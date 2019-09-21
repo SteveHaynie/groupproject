@@ -11,7 +11,7 @@ administrator boolean,
 unit_id INTEGER
 );
 
-CREATE TABLE messages
+CREATE TABLE messages 
 (
 id SERIAL primary key,
 user_id INTEGER REFERENCES users (id),
@@ -60,9 +60,5 @@ completed_at TIMESTAMP,
 photo text
 );
 
-insert into users (
-    first_name, last_name, password, email, administrator
-)
-values (
-    boss, boss, boss, boss@.bosscom, true
-);
+insert into users (first_name, last_name, password, email, administrator)
+values ('boss', 'boss', '$2b$10$UiLrazqptQubkcIQwECXk.doJ8fRlMoHejFbYrkgsxvfUFkWnUa6m', 'boss@boss.com', true);
