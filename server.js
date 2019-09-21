@@ -8,6 +8,7 @@ const path = require("path");
 require("dotenv").config()
 
 const logincontroller = require('./controller/logincontroller')
+const managercontroller = require('./controller/managercontroller')
 
 app.use(cors());
 
@@ -32,6 +33,20 @@ app.use(bodyParser.json());
 
 // login
 app.post('/api/login', logincontroller.login)
+
+//tenants
+// work orders for a tenant
+app.get('/api/tenant/workorders/:tenantId')
+// unit for a tenant
+app.get('/api/tenant/unit/:tenantId')
+
+//management
+// list of tenants
+app.get('/api/manager/tenants/:managerId', managercontroller.getTenants)
+// list of units for a manager
+app.get('/api/manager/units/:managerId', managercontroller.getUnits)
+
+// 
 
 app.listen(process.env.PORT || 8080, () => {
   console.log("listening");
