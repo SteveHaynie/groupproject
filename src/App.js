@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import axios from "axios";
 
-// import Login from "./components/login/login.js";
+import Login from "./components/login/login.js";
 import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
 // import UnitCreation from './components/management/unitcreation/unitcreation'
 // import Users from './components/management/users/users'
@@ -46,7 +46,7 @@ class App extends React.Component {
                 );
               }}
             />
-            {/* <Route
+            <Route
               path="/login"
               render={props => {
                 return (
@@ -55,7 +55,7 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
+            />
 
             {/* <Route
               path="/managementlanding"
