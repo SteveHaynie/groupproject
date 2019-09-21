@@ -36,8 +36,8 @@ class Login extends Component {
         password: this.state.password,
       };
       if (body.email && body.password) {
-        await axios.post("/login", body).then(response => {
-          this.props.updateUser(response.data.user);
+        await axios.post("/api/login", body).then(response => {
+          this.props.updateUser(response.data);
             if (response.data.administrator === true) {
               this.props.history.push('/managementlanding')
               

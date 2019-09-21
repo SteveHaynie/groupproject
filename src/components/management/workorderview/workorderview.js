@@ -87,4 +87,7 @@ render () {
 }
 
 export default WorkOrderView;
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master

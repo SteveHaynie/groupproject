@@ -6,17 +6,13 @@ import axios from "axios";
 import { updateUser } from './redux/actions.js';
 import Login from "./components/login/login.js";
 import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
-// import UnitCreation from './components/management/unitcreation/unitcreation'
-// import Users from './components/management/users/users'
+import UnitCreation from './components/management/unitcreation/unitcreation'
+import Users from './components/management/users/users'
 
 class App extends React.Component {
  
 
-  componentDidMount() {
-    axios.get("/currentuser").then(response => {
-      this.props.updateUser(response.data)
-    });
-  }
+ 
  
 
   render(){
@@ -29,10 +25,10 @@ class App extends React.Component {
             <Route
               path="/login"
               render={props => {
-                // if (Object.keys(this.props.user).length === 0)
+                if (Object.keys(this.props.user).length === 0)
                 return (
                   <div className="App">
-                    <Login />
+                    <Login {...props} />
                   </div>
                 );
               }}
@@ -50,7 +46,7 @@ class App extends React.Component {
                 else {
                   return (
                   <div className="App">
-                  please login
+                  Please Login As Administrator
                 </div>)
                 }
               }}
