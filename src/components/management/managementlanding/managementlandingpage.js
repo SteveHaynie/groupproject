@@ -17,7 +17,6 @@ class ManagementLandingPage extends React.Component{
                 <Link to='/users'>View users</Link>
                 <Link to='/workorderview'>View work orders</Link>
                 <Link to ='/login'>Sign out</Link>
-
                 </div>
              </div>
         )

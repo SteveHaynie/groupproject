@@ -12,7 +12,6 @@ class Users extends React.Component{
                 <Link to='/workorderview'>View work orders</Link>
                 <Link to ='/login'>Sign out</Link>
                 </div>
-
             </div>
         )
     }
