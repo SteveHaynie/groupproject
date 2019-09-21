@@ -1,6 +1,8 @@
 const initialState = {
     user: {},
-    
+    workOrders: [],
+    tenants: [],
+    units: []
 
 }
 
