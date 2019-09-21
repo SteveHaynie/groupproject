@@ -62,3 +62,5 @@ render () {
 }
 
 }
+
+export default WorkOrderView;

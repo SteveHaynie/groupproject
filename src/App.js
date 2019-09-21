@@ -29,7 +29,7 @@ class App extends React.Component {
             <Route
               path="/login"
               render={props => {
-                if (Object.keys(this.props.user).length === 0)
+                // if (Object.keys(this.props.user).length === 0)
                 return (
                   <div className="App">
                     <Login />

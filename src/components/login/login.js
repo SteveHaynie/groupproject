@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
+import { updateUser } from '../../redux/actions.js';
+import { connect } from 'react-redux';
 // import "../../reset.css";
 import "./login.css";
 
@@ -11,7 +13,6 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      currentUser: {}
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -27,9 +28,6 @@ class Login extends Component {
     document.removeEventListener("keydown", this.handleKeyPress);
   }
 
-  updateUser(user) {
-    this.setState({ currentUser: user })
-  }
 
   async handleLogin() {
     try {
@@ -39,9 +37,10 @@ class Login extends Component {
       };
       if (body.email && body.password) {
         await axios.post("/login", body).then(response => {
-          this.updateUser(response.data.user)
+          this.props.updateUser(response.data.user);
             if (response.data.administrator === true) {
               this.props.history.push('/managementlanding')
+              
             } else {
               this.props.history.push('/tennantlanding')
       }});
@@ -62,6 +61,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.props.user, "this the props.user")
     return (
       <div className="LoginPage">
         <div className="LoginBox">
@@ -99,5 +99,11 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
-// Honestly not completely solid on what withRouter does.  Copying that part form personal project.  -Tim J.
+const mapStateToProps = (state) => {
+  return {
+    user : state.user
+  }
+}
+
+export default connect(mapStateToProps, {updateUser}) (withRouter(Login));
+
