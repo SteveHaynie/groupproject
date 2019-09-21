@@ -3,4 +3,9 @@ background: rgb(255, 255, 255);
 width: 100vw;
 height: 100vh;
 }
-
+.manage-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}

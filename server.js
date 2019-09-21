@@ -12,7 +12,7 @@ app.use(cors());
 massive(process.env.DATABASE_URL).then(db => {
     console.log("connected to db");
     app.set("db", db);
-    return db.seedfile();
+    // return db.seedfile();
   })
   .catch(error => console.error(error));
 
