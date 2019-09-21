@@ -13,11 +13,7 @@ import WorkOrderView from './components/management/workorderview/workorderview'
 class App extends React.Component {
  
 
-  componentDidMount() {
-    axios.get("/currentuser").then(response => {
-      this.props.updateUser(response.data)
-    });
-  }
+ 
  
 
   render(){
@@ -33,7 +29,7 @@ class App extends React.Component {
                 if (Object.keys(this.props.user).length === 0)
                 return (
                   <div className="App">
-                    <Login />
+                    <Login {...props} />
                   </div>
                 );
               }}
@@ -41,13 +37,22 @@ class App extends React.Component {
 
             {
               <Route
+              
                 path="/managementlanding"
                 render={props => {
+                  if (Object.keys(this.props.user).length !== 0 && this.props.user.administrator === true)
                   return (
                     <div className="App">
                       <ManagementLanding {...props} />
                     </div>
-                  );
+                  )
+                  else {
+                    return (
+                      <div className="App">
+                      Please Login as Administrator
+                    </div>
+                    )
+                  }
                 }}
               />
             }
