@@ -9,7 +9,7 @@ class WorkOrderView extends React.Component {
 
 
   componentDidMount() {
-    axios.get("/api/getworkorders").then(response => {
+    axios.get(`/api/manager/workorders/${this.props.user.id}`).then(response => {
      this.props.workOrderView(response.data)
     });
   }
@@ -76,7 +76,8 @@ render () {
 
 const mapStateToProps = (state) => {
   return {
-    workOrders : state.workOrders
+    workOrders : state.workOrders,
+    user : state.user
   }
 }
 
