@@ -8,7 +8,8 @@ const path = require("path");
 require("dotenv").config()
 
 const logincontroller = require('./controller/logincontroller')
-// const managercontroller = require('./controller/managercontroller')
+const managercontroller = require('./controller/managercontroller')
+const tenantcontroller = require('./controller/tenantcontroller')
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
@@ -36,15 +37,19 @@ app.post('/api/login', logincontroller.login)
 
 //tenants
 // work orders for a tenant
-// app.get('/api/tenant/workorders/:tenantId')
+app.get('/api/tenant/workorders/:tenantId')
 // unit for a tenant
-// app.get('/api/tenant/unit/:tenantId')
+app.get('/api/tenant/unitinfo/:tenantId', tenantcontroller.getUnitAndWorkOrders)
+
+//work order
+// list of work orders management
+app.get('/api/manager/workorders/:managerId', managercontroller.getWorkOrdersManager)
 
 //management
 // list of tenants
-// app.get('/api/manager/tenants/:managerId', managercontroller.getTenants)
+app.get('/api/manager/tenants/:managerId', managercontroller.getTenants)
 // list of units for a manager
-// app.get('/api/manager/units/:managerId', managercontroller.getUnits)
+app.get('/api/manager/units/:managerId', managercontroller.getUnits)
 
 // 
 
