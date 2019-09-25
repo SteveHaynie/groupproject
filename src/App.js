@@ -111,7 +111,8 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
-                    <WorkOrderView {...props} />
+                                    
+                      <WorkOrderView {...props} />
                   </div>
                 );
               }}
