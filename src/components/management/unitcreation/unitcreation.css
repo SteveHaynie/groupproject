@@ -1,3 +1,51 @@
 .ManagementHomePage {
+    text-align: center;
     background: white;
+    display: flex;
+}
+
+.UnitCreationPage {
+    background: blue;
+    width: 100vw
+}
+
+.UnitAddress {
+    border: 1px solid black;
+}
+
+.Amenities {
+    background: lightblue;
+    /* border: 1px solid black; */
+}
+
+.Type {
+    border: 1px solid black;
+}
+
+.Bedrooms {
+    border: 1px solid black;
+}
+
+.Baths {
+    border: 1px solid black;
+}
+
+.SqFoot {
+    border: 1px solid black;
+}
+
+.AnimalAllowance {
+    border: 1px solid black;
+}
+
+.UnitDescription {
+    border: 1px solid black;
+}
+
+.MonthlyRent {
+    border: 1px solid black;
+}
+
+.AdditionalCharges {
+    border: 1px solid black;
 }
