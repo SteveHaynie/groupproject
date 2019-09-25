@@ -24,12 +24,23 @@ export default WorkOrderView
 import React from 'react';
 import "./workorderview.css";
 import moment from 'moment';
+import { workOrderView } from '../../../redux/actions.js'
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 class WorkOrderView extends React.Component {
 
 
+  componentDidMount() {
+    axios.get(`/api/manager/workorders/${this.props.user.id}`).then(response => {
+     this.props.workOrderView(response.data)
+    });
+  }
 
 render () {
+
+  
+  
     return (
         <div className="managementworkordercontainer">
         {this.props.workOrders.map((workOrder, index) => (
@@ -46,7 +57,7 @@ render () {
                   className="managementwonavbarbutton"
                   onClick={() => {
                     this.props.history.push(
-                      `/managementportal/modify_work_order/${workOrder.id}`
+                      `/managementworkordermodify/${workOrder.id}`
                     );
                   }}
                 >
@@ -57,7 +68,7 @@ render () {
                   className="managementwonavbarbutton"
                   onClick={() => {
                     this.props.history.push(
-                      `/managementportal/complete_work_order/${workOrder.id}`
+                      `/managementworkordercompletion/${workOrder.id}`
                     );
                   }}
                 >
@@ -67,7 +78,7 @@ render () {
                 <button
                   className="managementwonavbarbutton"
                   onClick={() => {
-                    this.props.delete(workOrder.id);
+                    
                   }}
                 >
                   Delete
@@ -86,8 +97,19 @@ render () {
 
 }
 
+<<<<<<< HEAD
 export default WorkOrderView;
 <<<<<<< HEAD
 >>>>>>> master
 =======
+>>>>>>> master
+=======
+const mapStateToProps = (state) => {
+  return {
+    workOrders : state.workOrders,
+    user : state.user
+  }
+}
+
+export default connect(mapStateToProps, {workOrderView}) (WorkOrderView );
 >>>>>>> master

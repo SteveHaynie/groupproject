@@ -1,6 +1,6 @@
-export const addOne = () => {
+export const workOrderView = () => {
     return {
-        type: 'ADD_ONE'
+        type: 'GET_WORK_ORDER'
     }
 
 }
