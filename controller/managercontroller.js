@@ -28,9 +28,17 @@ async function getWorkOrdersManager (req,res){
         res.send(workOrdersManager, 200)
     } catch (error) {
         console.error(error)
-    }
+    } 
+}
+
+async function updateWorkOrder (req,res){
+   const { description, unitId, id } = req.body
+
+    const db = req.app.get('db');
+    const updateWorkOrder = await db.updateWorkOrder([description , unitId , id])
+    res.status(200)
 }
 
 module.exports ={
-    getTenants, getUnits, getWorkOrdersManager,
+    getTenants, getUnits, getWorkOrdersManager, updateWorkOrder
 }
