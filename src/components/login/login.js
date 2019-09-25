@@ -45,7 +45,6 @@ class Login extends Component {
               this.props.history.push('/tennantlanding')
       }});
           
-        // server end points need to be made******************
       } else {
         alert("Please Enter a Valid User name and Password");
       }
