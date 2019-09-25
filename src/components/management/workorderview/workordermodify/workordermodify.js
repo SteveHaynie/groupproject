@@ -34,20 +34,14 @@ class WorkOrderModify extends React.Component {
      
         const body = {
           
-         
+         unit_id: this.state.unit_id,
           description: this.state.description,
           id: parseInt(this.props.match.params.id)
         };
-        axios.put("/updateworkorder", body).then(response => {
-          this.setState({
-        
-            unitNumber: "",
-            tenantName: "",
-            issue: "",
-            
-          });
-          this.props.updateWorkOrders(response.data);
-          this.props.history.push("/managementportal/work_orders");
+        axios.put(`/api/manager/modify/workorder/:${parseInt(this.props.match.params.id)}`, body).then( () => {
+          
+         
+          this.props.history.push("/workorderview");
           
         });
       }
