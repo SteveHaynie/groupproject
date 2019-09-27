@@ -21,6 +21,23 @@ const login = async (req, res, next) => {
     }    
 }
 
+async function createNewTenant (req,res){
+try {
+    const db = req.app.get("db");
+    const password =  bcrypt.hash(req.body.password, 10)
+    const newTenant = await db.createNewTenant([])
+
+    
+} catch (error) {
+    console.error(error)
+}    
+    
+}
+
+function sendSessionUser (req,res) {
+    res.send(req.session.user)
+}
+
 module.exports = {
-    login
+    login, sendSessionUser
 };

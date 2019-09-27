@@ -1,22 +1,18 @@
-import React from 'react'
+import React from "react";
 import { Link } from 'react-router-dom'
 
-class Users extends React.Component{
-
-    
-    render(){
-        return (
-            <div className='managementHomePage'>
-            <div className='manage-header'>Users Page</div>
-            <div className='navbar'>
-                 <Link to='/unitcreation'>Create new unit</Link>
-                <Link to='/users'>View users</Link>
-                <Link to='/workorderview'>View work orders</Link>
-                <Link to ='/login'>Sign out</Link>
-                </div>
-            </div>
-        )
-    }
+class Users extends React.Component {
+  render() {
+    return (
+        <div>
+      <div className="managementHomePage">
+        <div className='management-body'>
+        <Link to='/useraddtenant'>Create New Tenant</Link>
+        </div>
+      </div>
+      </div>
+    );
+  }
 }
 
-export default Users
+export default Users;

@@ -1,11 +1,9 @@
 import React from 'react';
 import './managementlandingpage.css'
 // import { Link } from 'react-router-dom'
-import MenuContainer from '../../menu/menucontainer';
 
 class ManagementLandingPage extends React.Component{
 
-// Will work on hidden/sliding navbar onClick
     render(){
         console.log(
         "this is management page"

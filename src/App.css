@@ -1,16 +1,14 @@
-/* .App {
+ /* .App {
   background: rgb(0, 0, 0);
   width: 100vw;
   height: 100vh;
   color: white;
-}
+} */
 
-
-.appheader {
-width: 100px;
-height: 100px;
-color: white;
-text-align: center;
+.management-body{
+display: flex;
+flex-direction: row;
+justify-content: center;
 }
 
 .navbar{
@@ -25,7 +23,7 @@ text-align: center;
 }
  */
 
- .
+ 
 
 
 
