@@ -25,10 +25,10 @@ render () {
            <div className ="managementwodate">Date Submitted: {moment(workOrder.created_at).format("lll")}</div>
             <div className="managementinformationcontainer">
               <div className="managementunitandname">
-                <p className="managementunitNumber"> {workOrder.unit_number}</p>
-                <p className="managementtenantName"> {workOrder.tenant_name}</p>
+                <p className="managementunitNumber"> {workOrder.unit_id}</p>
+                
               </div>
-              <p className="managementissue"> {workOrder.issue}</p>
+              <p className="managementissue"> {workOrder.description}</p>
               <div className="managementwonavbar">
                 <button
                   className="managementwonavbarbutton"

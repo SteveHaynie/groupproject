@@ -1,6 +1,6 @@
 const initialState = {
     user: {},
-    workOrders: [{unit_id: "101-n", id: 7, created_at: "timestamp", description: 'toilet broken', photo: 'text'},{id: 8,created_at: "timestamp", unit_number: '101-N'},{id: 98,created_at: "timestamp", unit_number: '101-N'}],
+    workOrders: [{unit_id: "101-n", id: 7, created_at: "timestamp", description: 'toilet broken', photo: 'text'},{id: 8,created_at: "timestamp", unit_id: '101-N'},{id: 98,created_at: "timestamp", unit_id: '101-N'}],
     tenants: [],
     units: []
 
