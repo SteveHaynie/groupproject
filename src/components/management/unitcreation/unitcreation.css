@@ -1,12 +1,18 @@
 .ManagementHomePage {
-    text-align: center;
-    background: white;
+    /* text-align: center; */
+    background: gray;
     display: flex;
+    
 }
 
 .UnitCreationPage {
-    background: blue;
-    width: 100vw
+    background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
+    width: 100vw;
+}
+
+.UnitCreationTitle {
+    border: 1px solid black;
+    text-decoration: underline;
 }
 
 .UnitAddress {
@@ -14,8 +20,9 @@
 }
 
 .Amenities {
-    background: lightblue;
+    background: lightsteelblue;
     /* border: 1px solid black; */
+    padding: 5px;
 }
 
 .Type {
@@ -26,7 +33,7 @@
     border: 1px solid black;
 }
 
-.Baths {
+.Bathrooms {
     border: 1px solid black;
 }
 
@@ -40,6 +47,17 @@
 
 .UnitDescription {
     border: 1px solid black;
+    width: 400px;
+    height: 75px;
+}
+
+.UnitDescription textarea {
+    width: 100%;
+    height: 100%
+}
+
+.UnitDescription ::placeholder {
+    text-align: center;
 }
 
 .MonthlyRent {
