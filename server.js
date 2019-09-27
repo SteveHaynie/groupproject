@@ -23,7 +23,7 @@ massive(process.env.DATABASE_URL).then(db => {
 app.use(
   session({
     secret: "super simple",
-    maxAge: 50000000000,
+    maxAge: 500000,
     resave: true,
     saveUninitialized: true
   })
@@ -36,12 +36,12 @@ app.use(bodyParser.json());
 app.post('/api/login', logincontroller.login)
 
 //tenants
-// work orders for a tenant
-app.get('/api/tenant/workorders/:tenantId')
-// unit for a tenant
+
+// unit for a tenant work orders for a tenant
 app.get('/api/tenant/unitinfo/:tenantId', tenantcontroller.getUnitAndWorkOrders)
 
 //work order
+
 // list of work orders management
 app.get('/api/manager/workorders/:managerId', managercontroller.getWorkOrdersManager)
 // modify work order
@@ -53,8 +53,8 @@ app.put('/api/manager/modify/workorder/:workOrderId', managercontroller.updateWo
 app.get('/api/manager/tenants/:managerId', managercontroller.getTenants)
 // list of units for a manager
 app.get('/api/manager/units/:managerId', managercontroller.getUnits)
+// create a new user(tenant)
 
-// 
 
 app.listen(process.env.PORT || 8080, () => {
   console.log("listening");

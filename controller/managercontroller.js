@@ -44,6 +44,10 @@ async function updateWorkOrder (req,res){
     }
 }
 
+//create a new user specifically for tenant
+
+//
+
 module.exports ={
     getTenants, getUnits, getWorkOrdersManager, updateWorkOrder
 }
