@@ -28,9 +28,26 @@ async function getWorkOrdersManager (req,res){
         res.send(workOrdersManager, 200)
     } catch (error) {
         console.error(error)
+    } 
+}
+// update work order accepts description and unit id through req.body 
+async function updateWorkOrder (req,res){
+    try {
+        
+            const db = req.app.get('db');
+            const updateWorkOrder = await db.updateWorkOrder([req.body.description , req.body.unit_id , req.params.workOrderId])
+            res.status(200)
+            res.send('successful update')
+        
+    } catch (error) {
+        console.error(error)
     }
 }
 
+//create a new user specifically for tenant
+
+//
+
 module.exports ={
-    getTenants, getUnits, getWorkOrdersManager,
+    getTenants, getUnits, getWorkOrdersManager, updateWorkOrder
 }
