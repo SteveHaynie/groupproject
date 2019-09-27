@@ -12,3 +12,11 @@ export const updateUser = (user) => {
     }
 
 }
+
+export const updateUnits = () => {
+    return {
+        type: 'UPDATE_UNITS'
+        
+    }
+
+}

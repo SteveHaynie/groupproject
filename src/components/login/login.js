@@ -38,6 +38,7 @@ class Login extends Component {
       if (body.email && body.password) {
         await axios.post("/api/login", body).then(response => {
           this.props.updateUser(response.data);
+          console.log("user",response.data)
             if (response.data.administrator === true) {
               this.props.history.push('/managementlanding')
               
@@ -60,7 +61,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props.user, "this the props.user")
+    
     return (
       <div className="LoginPage">
         <div className="LoginBox">
