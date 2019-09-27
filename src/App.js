@@ -16,7 +16,7 @@ import WorkOrderCreation from "./components/management/workorderview/workordercr
 class App extends React.Component {
  
 componentDidMount () {
-  axios.get('/api/getcurrentuser').then(response => {
+  axios.get('/api/user').then(response => {
     this.props.updateUser(response.data)
   })
 
