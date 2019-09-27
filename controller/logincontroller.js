@@ -34,6 +34,10 @@ try {
     
 }
 
+function sendSessionUser (req,res) {
+    res.send(req.session.user)
+}
+
 module.exports = {
-    login
+    login, sendSessionUser
 };

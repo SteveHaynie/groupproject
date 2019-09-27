@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 
 // login
 app.post('/api/login', logincontroller.login)
+app.get('/api/user', logincontroller.sendSessionUser)
 
 //tenants
 
@@ -54,6 +55,8 @@ app.get('/api/manager/tenants/:managerId', managercontroller.getTenants)
 // list of units for a manager
 app.get('/api/manager/units/:managerId', managercontroller.getUnits)
 // create a new user(tenant)
+
+
 
 
 app.listen(process.env.PORT || 8080, () => {

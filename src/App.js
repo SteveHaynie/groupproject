@@ -41,7 +41,6 @@ class App extends React.Component {
              <Route
               path="/managementlanding"
               render={props => {
-                console.log("user",this.props.user)
                 if (Object.keys(this.props.user).length !== 0 && this.props.user.administrator === true)
                 return (
                   <div className="App">
