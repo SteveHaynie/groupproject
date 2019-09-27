@@ -13,7 +13,7 @@ class ManagementLandingPage extends React.Component{
         return (
             <div className='managementHomePage'>
                 <div className='body'>Management Landing Page</div>
-              <MenuContainer />
+                <MenuContainer />
              </div>
         )
     }

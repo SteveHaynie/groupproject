@@ -1,14 +1,34 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import MenuButton from './menubutton'
+import Menu from './menu'
+
 
 class MenuContainer extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            visible: false
+        }
+
+        this.toggleMenu = this.toggleMenu.bind(this)
+        this.handleClickMenu = this.handleClickMenu.bind(this)
+
+    }
+    toggleMenu(){
+        this.setState({visible: !this.state.visible})
+    }
+
+    handleClickMenu(event){
+        this.toggleMenu()
+        event.stopPropagation()
+    }
+
     render(){
         return (
-            <div className='navbar'>
-            <Link to='/unitcreation'>Create new unit</Link>
-           <Link to='/users'>View users</Link>
-           <Link to='/workorderview'>View work orders</Link>
-           <Link to ='/login'>Sign out</Link>
+            <div>
+                <MenuButton handleClickMenu={this.handleClickMenu} />
+                <Menu handleClickMenu={this.handleClickMenu}
+                menuVisibility={this.state.visible}/>
            </div>
         )
     }
