@@ -25,7 +25,7 @@ class MenuContainer extends Component {
 
     render(){
         return (
-            <div>
+            <div className = "menucontainer">
                 <MenuButton handleClickMenu={this.handleClickMenu} />
                 <Menu handleClickMenu={this.handleClickMenu}
                 menuVisibility={this.state.visible}/>

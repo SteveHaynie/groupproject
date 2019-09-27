@@ -10,6 +10,7 @@ import UnitCreation from './components/management/unitcreation/unitcreation';
 import Users from './components/management/users/users';
 import WorkOrderView from './components/management/workorderview/workorderview.js';
 import WorkOrderModify from "./components/management/workorderview/workordermodify/workordermodify";
+import MenuContainer from "./components/menu/menucontainer";
 
 class App extends React.Component {
  
@@ -30,6 +31,7 @@ class App extends React.Component {
                 if (Object.keys(this.props.user).length === 0)
                 return (
                   <div className="App">
+                    <MenuContainer />
                     <Login {...props} />
                   </div>
                 );
@@ -42,6 +44,7 @@ class App extends React.Component {
                 if (Object.keys(this.props.user).length !== 0 && this.props.user.administrator === true)
                 return (
                   <div className="App">
+                     <MenuContainer />
                     <ManagementLanding {...props} />
                   </div>
                 );
@@ -59,6 +62,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <UnitCreation {...props} />
                   </div>
                 );
@@ -70,6 +74,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <Users {...props} />
                   </div>
                 );
@@ -81,6 +86,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <AddNotes {...props} />
                   </div>
                 );
@@ -91,6 +97,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <AddTenant {...props} />
                   </div>
                 );
@@ -101,6 +108,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <DocumentUpload {...props} />
                   </div>
                 );
@@ -111,7 +119,8 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
-                    <WorkOrderView {...props} />
+                                <MenuContainer />    
+                      <WorkOrderView {...props} />
                   </div>
                 );
               }}
@@ -121,6 +130,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                     <MenuContainer />
                     <WorkOrderModify {...props} />
                   </div>
                 );
@@ -131,6 +141,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <WorkOrderView {...props} />
                   </div>
                 );
@@ -141,6 +152,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <WorkOrderView {...props} />
                   </div>
                 );
@@ -151,6 +163,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <TenantLanding />
                   </div>
                 );
@@ -161,6 +174,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <TenantWorkOrderView {...props} />
                   </div>
                 );
@@ -171,6 +185,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <TenantPayment {...props} />
                   </div>
                 );
@@ -181,6 +196,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <TenantPayment {...props} />
                   </div>
                 );
@@ -191,6 +207,7 @@ class App extends React.Component {
               render={props => {
                 return (
                   <div className="App">
+                   <MenuContainer />
                     <TenantFormSubmission {...props} />
                   </div>
                 );
