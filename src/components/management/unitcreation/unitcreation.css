@@ -2,7 +2,7 @@
     /* text-align: center; */
     background: gray;
     display: flex;
-    
+    margin-left: 49px;
 }
 
 .UnitCreationPage {
@@ -62,8 +62,17 @@
 
 .MonthlyRent {
     border: 1px solid black;
+    
 }
 
 .AdditionalCharges {
     border: 1px solid black;
+    
+}
+
+.SaveUnitButton {
+    color: black;
+}
+.SaveUnitButton:hover {
+    color: blue;
 }

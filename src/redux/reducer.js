@@ -21,8 +21,6 @@ export default function reducer(state = initialState, action) {
       return { ...state, user: action.payload };
     case "GET_WORK_ORDER":
       return { ...state };
-    case "ADD_Unit":
-      return { ...state, unit: action.payload };
     default:
       return state;
   }

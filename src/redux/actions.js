@@ -11,9 +11,3 @@ export const updateUser = user => {
   };
 };
 
-export const addUnit = unit => {
-  return {
-    type: "ADD_UNIT",
-    payload: unit
-  };
-};
