@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import axios from "axios";
 import { updateUser } from './redux/actions.js';
@@ -11,10 +11,16 @@ import Users from './components/management/users/users';
 import WorkOrderView from './components/management/workorderview/workorderview.js';
 import WorkOrderModify from "./components/management/workorderview/workordermodify/workordermodify";
 import MenuContainer from "./components/menu/menucontainer";
+import WorkOrderCreation from "./components/management/workorderview/workordercreation/workordercreation.js";
 
 class App extends React.Component {
  
+componentDidMount () {
+  axios.get('/api/user').then(response => {
+    this.props.updateUser(response.data)
+  })
 
+}
  
  
 
@@ -24,6 +30,10 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
+            
+          <Redirect from="/" exact to="/login" />
+         
+
           
             <Route
               path="/login"
@@ -147,17 +157,17 @@ class App extends React.Component {
                 );
               }}
             />  */}
-               {/* <Route
-              path="/managementworkordercreation"
+               <Route
+              path="/managementworkordercreation/:id"
               render={props => {
                 return (
                   <div className="App">
                    <MenuContainer />
-                    <WorkOrderView {...props} />
+                    <WorkOrderCreation {...props} />
                   </div>
                 );
               }}
-            />  */}
+            /> 
                {/* <Route
               path="/tenantlanding"
               render={props => {
