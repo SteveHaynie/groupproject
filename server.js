@@ -56,6 +56,9 @@ app.get('/api/manager/tenants/:managerId', managercontroller.getTenants)
 app.get('/api/manager/units/:managerId', managercontroller.getUnits)
 // create a new user(tenant)
 
+//create new unit
+app.post('/api/manager/units/new/:managerId', managercontroller.createNewUnit)
+
 
 
 
