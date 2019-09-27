@@ -11,10 +11,16 @@ import Users from './components/management/users/users';
 import WorkOrderView from './components/management/workorderview/workorderview.js';
 import WorkOrderModify from "./components/management/workorderview/workordermodify/workordermodify";
 import MenuContainer from "./components/menu/menucontainer";
+import WorkOrderCreation from "./components/management/workorderview/workordercreation/workordercreation.js";
 
 class App extends React.Component {
  
+componentDidMount () {
+  axios.get('/api/getcurrentuser').then(response => {
+    this.props.updateUser(response.data)
+  })
 
+}
  
  
 
@@ -147,17 +153,17 @@ class App extends React.Component {
                 );
               }}
             />  */}
-               {/* <Route
-              path="/managementworkordercreation"
+               <Route
+              path="/managementworkordercreation/:id"
               render={props => {
                 return (
                   <div className="App">
                    <MenuContainer />
-                    <WorkOrderView {...props} />
+                    <WorkOrderCreation {...props} />
                   </div>
                 );
               }}
-            />  */}
+            /> 
                {/* <Route
               path="/tenantlanding"
               render={props => {

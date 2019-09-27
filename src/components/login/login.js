@@ -60,7 +60,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props.user, "this the props.user")
+    
     return (
       <div className="LoginPage">
         <div className="LoginBox">
