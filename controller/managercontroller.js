@@ -30,13 +30,18 @@ async function getWorkOrdersManager (req,res){
         console.error(error)
     } 
 }
-
+// update work order accepts description and unit id through req.body 
 async function updateWorkOrder (req,res){
-   const { description, unitId, id } = req.body
-
-    const db = req.app.get('db');
-    const updateWorkOrder = await db.updateWorkOrder([description , unitId , id])
-    res.status(200)
+    try {
+        
+            const db = req.app.get('db');
+            const updateWorkOrder = await db.updateWorkOrder([req.body.description , req.body.unit_id , req.params.workOrderId])
+            res.status(200)
+            res.send('successful update')
+        
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 module.exports ={
