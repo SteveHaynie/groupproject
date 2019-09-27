@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./workordercreation.css";
 import axios from 'axios';
+import { updateUnits } from '../../../../redux/actions.js';
+import { connect } from 'react-redux';
 
 class CreateNewWorkOrder extends React.Component {
 
@@ -11,8 +13,11 @@ class CreateNewWorkOrder extends React.Component {
         });
       }
 
+     
+
       
   render() {
+console.log(this.props.units, "this is user")
 
 
     return (
@@ -22,6 +27,11 @@ class CreateNewWorkOrder extends React.Component {
           <select  className = "createnewselect" value = {this.props.unitNumber} onChange = {this.props.handleChange} name = "unitNumber">
 
             <option value="">Select Unit Number</option>
+            {this.props.units.map((unit, index) => 
+<option value={unit.address}>{unit.address}</option>
+
+  )}
+
 </select>
           <input
            autoComplete="off"
@@ -66,4 +76,11 @@ class CreateNewWorkOrder extends React.Component {
   }
 }
 
-export default CreateNewWorkOrder;
+const mapStateToProps = (state) => {
+    return {
+      user : state.user,
+      units : state.units
+    }
+  }
+  
+  export default connect(mapStateToProps, {updateUnits}) (CreateNewWorkOrder );
