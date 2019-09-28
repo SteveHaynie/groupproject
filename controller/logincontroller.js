@@ -24,9 +24,9 @@ const login = async (req, res, next) => {
 async function createNewTenant (req,res){
 try {
     const db = req.app.get("db");
-    const password =  bcrypt.hash(req.body.password, 10)
-    const newTenant = await db.createNewTenant([])
-
+    const hash = await bcrypt.hashSync(req.body.password, 10)
+    const newTenant = await db.createNewTenant([req.body.first_name, req.body.last_name, hash, req.body.email, req.body.unit_id])
+    res.send('successful new tenant created', 200)
     
 } catch (error) {
     console.error(error)
@@ -39,5 +39,5 @@ function sendSessionUser (req,res) {
 }
 
 module.exports = {
-    login, sendSessionUser
+    login, sendSessionUser, createNewTenant
 };
