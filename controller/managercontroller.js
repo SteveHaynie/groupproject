@@ -73,6 +73,8 @@ async function createNewUnit(req, res) {
   }
 }
 
+
+
 module.exports = {
   getTenants,
   getUnits,
