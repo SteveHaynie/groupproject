@@ -1,6 +1,7 @@
 import React from 'react'
 import './menu.css'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 
 
 class Menu extends React.Component{
@@ -16,7 +17,7 @@ class Menu extends React.Component{
         return (
             <div id="popout-menu" handleClickMenu={this.props.handleClickMenu} className={visibility}>
             <Link to='/unitcreation'>Create new unit</Link>
-           <Link to='/users'>View users</Link>
+           <Link to={`/users/${this.props.user.id}`}>View users</Link>
            <Link to='/workorderview'>View work orders</Link>
            <Link to ='/login'>Sign out</Link>
             </div>
@@ -24,4 +25,8 @@ class Menu extends React.Component{
     }
 }
 
-export default Menu
+const mapStateToProps = (state) => {
+    return {user: state.user}
+}
+
+export default connect(mapStateToProps, {}) (Menu)

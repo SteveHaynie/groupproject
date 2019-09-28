@@ -88,7 +88,7 @@ componentDidMount () {
             />
 
               <Route
-              path="/users"
+              path="/users/:id"
               render={props => {
                 return (
                   <div className="App">
