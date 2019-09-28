@@ -8,6 +8,7 @@
 .UnitCreationPage {
     background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
     width: 100vw;
+    height: 100vh;
 }
 
 .UnitCreationTitle {
@@ -52,8 +53,8 @@
 }
 
 .UnitDescription textarea {
-    width: 100%;
-    height: 100%
+    width: 95%;
+    height: 95%
 }
 
 .UnitDescription ::placeholder {

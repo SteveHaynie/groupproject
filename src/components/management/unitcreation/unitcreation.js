@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { addUnit } from "../../../redux/actions.js";
+// import { Link } from "react-router-dom";
+// import { addUnit } from "../../../redux/actions.js";
 import axios from "axios";
 import "./unitcreation.css";
-import { connect } from "http2";
+import { connect } from "react-redux";
 
 class UnitCreation extends React.Component {
   constructor() {
@@ -46,7 +46,7 @@ class UnitCreation extends React.Component {
         unit_description: this.state.unitDescription,
         unit_rent: this.state.unitRent
       };
-      if (body.unit_address && body.unit_rent) {
+      if (body.address && body.unit_rent) {
         await axios.post(`/api/manager/units/new/${this.props.user.id}`, body);
         this.setState({
           unitAddress: "",
@@ -58,6 +58,7 @@ class UnitCreation extends React.Component {
           AnimalAllowance: false,
           unitDescription: ""
         });
+        console.log(body);
       } else {
         alert(
           "Unit's Address or Rental Charge is missing.  Please fill in a value."
@@ -69,6 +70,7 @@ class UnitCreation extends React.Component {
   }
 
   render() {
+    // console.log(currentUser)
     return (
       <div className="ManagementHomePage">
         {/* <div className='manage-header'>Unit Creation Page</div> */}
@@ -82,10 +84,22 @@ class UnitCreation extends React.Component {
           <div className="UnitCreationTitle">Add a New Unit:</div>
           <div className="UnitAddress">
             Unit Address:
-            <input /> *
+            <input
+              value={this.state.unitAddress}
+              onChange={event =>
+                this.setState({ unitAddress: event.target.value })
+              }
+            />{" "}
+            *
           </div>
           <div className="UnitNumber">
-            Unit #: <input />{" "}
+            Unit #:{" "}
+            <input
+              value={this.state.unitNumber}
+              onChange={event =>
+                this.setState({ unitNumber: event.target.value })
+              }
+            />{" "}
           </div>
           <div className="Amenities">
             Unit Description:
@@ -188,11 +202,7 @@ class UnitCreation extends React.Component {
               />{" "}
               *
             </div>
-            <div className="AdditionalCharges">
-              Additional Charges:
-              <input />
-            </div>
-            <button className="SaveUnitButton" onclick={this.inputUnit}>
+            <button className="SaveUnitButton" onClick={this.inputUnit}>
               Save Unit to Management Portal
             </button>
           </div>
@@ -202,10 +212,10 @@ class UnitCreation extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
+    user: state.user
+  };
+};
 
-  }
-}
-
-export default connect(mapStateToProps) (UnitCreation);
+export default connect(mapStateToProps)(UnitCreation);

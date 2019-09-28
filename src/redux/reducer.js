@@ -26,14 +26,3 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-
-export default function reducer (state = initialState, action) {
-    switch(action.type) {
-        case "UPDATE_USER": return {...state, user: action.payload}
-        case "GET_WORK_ORDER": return {...state}
-        case "UPDATE_UNITS": return {...state}
-        default: return state
-    }
-
-}
-
