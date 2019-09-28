@@ -14,11 +14,11 @@ justify-content: center;
 
 .one-tenant {
 	display: flex;
-	flex-direction: column;
-	height: 50px;
-	width: 300px;
-	overflow: auto;
-	border: 1px solid black;
+	flex-direction: row;
+    justify-content: space-evenly;
+    height: 20px;
+    width: 300px;
+    border: 1px solid black;
 }
 
 

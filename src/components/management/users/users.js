@@ -19,20 +19,24 @@ class Users extends React.Component {
       console.log(this.props)
       const tenants = this.props.tenants.map((tenant, index)=>{
         return(
-            <div className='one-tenant' key = {index}>
-                {tenant.first_name},
-                {tenant.last_name},
-                {tenant.email},
-                {tenant.unit_number}
+            <div key = {index}>
+                <div className='one-tenant'>
+                {tenant.first_name}</div>
+                <div className='one-tenant'>
+                {tenant.last_name}</div>
+                <div className='one-tenant'>
+                {tenant.email}</div>
+                <div className='one-tenant'>
+                {tenant.unit_id}</div>
             </div>
         )
       })
     return (
         <div>
-            {tenants}
       <div className="managementHomePage">
         <div className='management-body'>
         <Link to='/useraddtenant'>Create New Tenant</Link>
+            {tenants}
         </div>
       </div>
       </div>
