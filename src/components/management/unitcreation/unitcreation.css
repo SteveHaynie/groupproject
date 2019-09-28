@@ -1,0 +1,79 @@
+.ManagementHomePage {
+    /* text-align: center; */
+    background: gray;
+    display: flex;
+    margin-left: 49px;
+}
+
+.UnitCreationPage {
+    background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
+    width: 100vw;
+    height: 100vh;
+}
+
+.UnitCreationTitle {
+    border: 1px solid black;
+    text-decoration: underline;
+}
+
+.UnitAddress {
+    border: 1px solid black;
+}
+
+.Amenities {
+    background: lightsteelblue;
+    /* border: 1px solid black; */
+    padding: 5px;
+}
+
+.Type {
+    border: 1px solid black;
+}
+
+.Bedrooms {
+    border: 1px solid black;
+}
+
+.Bathrooms {
+    border: 1px solid black;
+}
+
+.SqFoot {
+    border: 1px solid black;
+}
+
+.AnimalAllowance {
+    border: 1px solid black;
+}
+
+.UnitDescription {
+    border: 1px solid black;
+    width: 400px;
+    height: 75px;
+}
+
+.UnitDescription textarea {
+    width: 95%;
+    height: 95%
+}
+
+.UnitDescription ::placeholder {
+    text-align: center;
+}
+
+.MonthlyRent {
+    border: 1px solid black;
+    
+}
+
+.AdditionalCharges {
+    border: 1px solid black;
+    
+}
+
+.SaveUnitButton {
+    color: black;
+}
+.SaveUnitButton:hover {
+    color: blue;
+}
