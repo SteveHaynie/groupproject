@@ -7,7 +7,7 @@ class ManagementLandingPage extends React.Component{
     render(){
         return (
             <div className='managementHomePage'>
-                <div className='body'></div>
+                <div className='body'>Management Landing Page</div>
              </div>
         )
     }
