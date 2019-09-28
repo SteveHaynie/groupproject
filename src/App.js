@@ -32,6 +32,7 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <div className="App">
         <Router>
@@ -50,7 +51,8 @@ class App extends React.Component {
                   );
               }}
             />
-
+            {this.props.user.id?
+            <div>
             <Route
               path="/managementlanding"
               render={props => {
@@ -238,7 +240,10 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            />
+            /> 
+            </div>:
+            null
+            }
           </Switch>
         </Router>
       </div>
