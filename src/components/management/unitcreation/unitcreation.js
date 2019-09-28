@@ -12,9 +12,9 @@ class UnitCreation extends React.Component {
     this.state = {
       unitAddress: "",
       unitNumber: "",
-      unitType: "",
-      unitBedrooms: "",
-      unitBathrooms: "",
+      unitType: "Null",
+      unitBedrooms: 1,
+      unitBathrooms: 1,
       unitSqFootage: "",
       AnimalAllowance: false,
       unitDescription: "",
@@ -26,12 +26,7 @@ class UnitCreation extends React.Component {
   componentDidMount() {
     document.title = "Unit Creation";
   }
-
-  handleChange(event) {
-    this.setState({ unitType: event.target.value });
-  }
-  // needs to be a way to handle all the changes without making a ton of
-  // these functions.  Also... redux maybe...?
+ 
 
   async inputUnit() {
     try {
@@ -46,22 +41,23 @@ class UnitCreation extends React.Component {
         unit_description: this.state.unitDescription,
         unit_rent: this.state.unitRent
       };
-      if (body.address && body.unit_rent) {
+      if (body.address && body.unit_rent && body.unit_type !== "Null") {
         await axios.post(`/api/manager/units/new/${this.props.user.id}`, body);
         this.setState({
           unitAddress: "",
           unitNumber: "",
-          unitType: "",
-          unitBedrooms: "",
-          unitBathrooms: "",
+          unitType: "Null",
+          unitBedrooms: 1,
+          unitBathrooms: 1,
           unitSqFootage: "",
           AnimalAllowance: false,
-          unitDescription: ""
+          unitDescription: "",
+          unitRent: ""
         });
         console.log(body);
       } else {
         alert(
-          "Unit's Address or Rental Charge is missing.  Please fill in a value."
+          "One or more required fields is missing."
         );
       }
     } catch (error) {
@@ -73,13 +69,6 @@ class UnitCreation extends React.Component {
     // console.log(currentUser)
     return (
       <div className="ManagementHomePage">
-        {/* <div className='manage-header'>Unit Creation Page</div> */}
-        {/* <div className="navbar">
-          <Link to="/unitcreation">Create new unit</Link>
-          <Link to="/users">View users</Link>
-          <Link to="/workorderview">View work orders</Link>
-          <Link to="/login">Sign out</Link>
-        </div> */}
         <div className="UnitCreationPage">
           <div className="UnitCreationTitle">Add a New Unit:</div>
           <div className="UnitAddress">
@@ -117,6 +106,7 @@ class UnitCreation extends React.Component {
                   this.setState({ unitType: event.target.value })
                 }
               >
+                <option value="Null">Please Select an Option</option>
                 <option value="Basement">Basement</option>
                 <option value="Attic">Attic</option>
                 <option value="Duplex">Duplex</option>
@@ -126,7 +116,7 @@ class UnitCreation extends React.Component {
                 <option value="Shed">Shed</option>
                 <option value="N.F. Shelter">Nuclear Fall Out Shelter</option>
                 <option value="Other">Other</option>
-              </select>
+              </select> *
             </div>
             <div className="Bedrooms">
               {" "}
