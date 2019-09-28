@@ -1,7 +1,7 @@
 .menucontainer {
   background: rgba(255, 5, 5, 0);
-  height: 100vh;
-  width: 100vw;
+  height: 100px;
+  width: 100px;
  
     position:absolute;
     z-index: 2;
@@ -10,13 +10,15 @@
 
 #popout-menu{
     height: 100vh;
-    width: 25%;
+    width: 250px;
     background: rgb(81, 172, 137);
     top: 0;
     left: 0;
     transition: transform .3s
     cubic-bezier(0, .52, 0, 1);
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
    
 }
 #popout-menu.hide {

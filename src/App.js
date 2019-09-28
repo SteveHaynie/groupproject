@@ -1,87 +1,102 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { connect } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import { connect } from "react-redux";
 import axios from "axios";
-import { updateUser } from './redux/actions.js';
+import { updateUser } from "./redux/actions.js";
 import Login from "./components/login/login.js";
 import ManagementLanding from "./components/management/managementlanding/managementlandingpage.js";
-import UnitCreation from './components/management/unitcreation/unitcreation';
-import Users from './components/management/users/users';
-import WorkOrderView from './components/management/workorderview/workorderview.js';
+import UnitCreation from "./components/management/unitcreation/unitcreation";
+import Users from "./components/management/users/users";
+import AddTenant from "./components/management/users/addtenant/addtenant";
+import WorkOrderView from "./components/management/workorderview/workorderview.js";
 import WorkOrderModify from "./components/management/workorderview/workordermodify/workordermodify";
 import MenuContainer from "./components/menu/menucontainer";
+import TenantMenuContainer from "./components/tenant/tenantmenu/tenantmenucontainer";
+import TenantLanding from "./components/tenant/tenantlanding";
+import TenantWorkOrderView from "./components/tenant/tenantworkorderview/tenantworkorderview";
+import TenantPayment from "./components/tenant/payment/tenantpayment";
+import TenantFormSubmission from "./components/tenant/tenantformsubmission/tenantformsubmission";
+import WorkOrderCreation from "./components/management/workorderview/workordercreation/workordercreation.js";
 
 class App extends React.Component {
- 
+  componentDidMount() {
+    axios.get("/api/user").then(response => {
+      this.props.updateUser(response.data);
+    });
+  }
 
- 
- 
-
-  render(){
-
+  render() {
     return (
       <div className="App">
         <Router>
           <Switch>
-          
+            <Redirect from="/" exact to="/login" />
+
             <Route
               path="/login"
               render={props => {
                 if (Object.keys(this.props.user).length === 0)
-                return (
-                  <div className="App">
-                    <MenuContainer />
-                    <Login {...props} />
-                  </div>
-                );
+                  return (
+                    <div className="App">
+                      <MenuContainer />
+                      <Login {...props} />
+                    </div>
+                  );
               }}
             />
 
-             <Route
+            <Route
               path="/managementlanding"
               render={props => {
-                if (Object.keys(this.props.user).length !== 0 && this.props.user.administrator === true)
-                return (
-                  <div className="App">
-                     <MenuContainer />
-                    <ManagementLanding {...props} />
-                  </div>
-                );
+                if (
+                  Object.keys(this.props.user).length !== 0 &&
+                  this.props.user.administrator === true
+                )
+                  return (
+                    <div className="App">
+                      <MenuContainer />
+                      <ManagementLanding {...props} />
+                    </div>
+                  );
                 else {
                   return (
-                  <div className="App">
-                  Please Login As Administrator
-                </div>)
+                    <div className="App">Please Login As Administrator</div>
+                  );
                 }
               }}
-
             />
-              {/* <Route
+
+            <Route
               path="/unitcreation"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <MenuContainer />
                     <UnitCreation {...props} />
                   </div>
                 );
               }}
-
             />
-              <Route
-              path="/users"
+
+            <Route
+              path="/users/:id"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <MenuContainer />
                     <Users {...props} />
                   </div>
                 );
               }}
+            />
 
-            />  */}
-             {/* <Route
+            {/* <Route
               path="/useraddnotes"
               render={props => {
                 return (
@@ -91,18 +106,20 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            />  */}
+
+            <Route
               path="/useraddtenant"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <MenuContainer />
                     <AddTenant {...props} />
                   </div>
                 );
               }}
-            /> */}
+            />
+
             {/* <Route
               path="/userdocumentupload"
               render={props => {
@@ -113,106 +130,115 @@ class App extends React.Component {
                   </div>
                 );
               }}
-            // /> */}
-              <Route
+             />  */}
+
+            <Route
               path="/workorderview"
               render={props => {
                 return (
                   <div className="App">
-                                <MenuContainer />    
-                      <WorkOrderView {...props} />
+                    <MenuContainer />
+                    <WorkOrderView {...props} />
                   </div>
                 );
               }}
-            /> 
-             <Route
+            />
+
+            <Route
               path="/managementworkordermodify/:id"
               render={props => {
                 return (
                   <div className="App">
-                     <MenuContainer />
+                    <MenuContainer />
                     <WorkOrderModify {...props} />
                   </div>
                 );
               }}
-            /> 
-               {/* <Route
+            />
+
+            <Route
               path="/managementworkordercompletion"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <MenuContainer />
                     <WorkOrderView {...props} />
                   </div>
                 );
               }}
-            />  */}
-               {/* <Route
-              path="/managementworkordercreation"
+            />
+
+            <Route
+              path="/managementworkordercreation/:id"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
-                    <WorkOrderView {...props} />
+                    <MenuContainer />
+                    <WorkOrderCreation {...props} />
                   </div>
                 );
               }}
-            />  */}
-               {/* <Route
+            />
+
+            <Route
               path="/tenantlanding"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <TenantMenuContainer />
                     <TenantLanding />
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            />
+
+            <Route
               path="/tenantworkorderview"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <TenantMenuContainer />
                     <TenantWorkOrderView {...props} />
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            />
+
+            <Route
               path="/tenantpayment"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <TenantMenuContainer />
                     <TenantPayment {...props} />
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            />
+
+            <Route
               path="/tenantcreateworkorder"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <MenuContainer />
                     <TenantPayment {...props} />
                   </div>
                 );
               }}
-            /> */}
-            {/* <Route
+            />
+
+            <Route
               path="/tenantformsubmission"
               render={props => {
                 return (
                   <div className="App">
-                   <MenuContainer />
+                    <TenantMenuContainer />
                     <TenantFormSubmission {...props} />
                   </div>
                 );
               }}
-            /> */}
+            />
           </Switch>
         </Router>
       </div>
@@ -220,10 +246,13 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user : state.user
-  }
-}
+    user: state.user
+  };
+};
 
-export default connect(mapStateToProps, {updateUser}) (App );
+export default connect(
+  mapStateToProps,
+  { updateUser }
+)(App);
