@@ -12,3 +12,12 @@ export const updateUser = (user) => {
     }
 
 }
+
+export const updateUnits = (units) => {
+    return {
+        type: 'UPDATE_UNITS',
+        payload: units
+        
+    }
+
+}

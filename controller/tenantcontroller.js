@@ -1,9 +1,6 @@
 // get list of work orders
-
 // get unit they are living in
-
 //on tenant page load
-
 async function getUnitAndWorkOrders (req,res){
     try {
         const db = req.app.get('db');
