@@ -32,6 +32,16 @@ async function getWorkOrdersManager(req, res) {
     console.error(error);
   }
 }
+
+async function createWorkOrder (req,res){
+    try {
+    const db = req.app.get("db");
+    const newWorkOrder = await db
+    res.send()        
+    } catch (error) {
+        console.error(error)
+    }
+}
 // update work order accepts description and unit id through req.body
 async function updateWorkOrder(req, res) {
   try {

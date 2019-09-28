@@ -45,6 +45,8 @@ app.get('/api/tenant/unitinfo/:tenantId', tenantcontroller.getUnitAndWorkOrders)
 
 // list of work orders management
 app.get('/api/manager/workorders/:managerId', managercontroller.getWorkOrdersManager)
+//create new work order
+app.post('/api/manager/workorder/new', )
 // modify work order
 app.put('/api/manager/modify/workorder/:workOrderId', managercontroller.updateWorkOrder)
 
