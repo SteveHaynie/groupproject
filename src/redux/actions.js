@@ -13,9 +13,10 @@ export const updateUser = (user) => {
 
 }
 
-export const updateUnits = () => {
+export const updateUnits = (units) => {
     return {
-        type: 'UPDATE_UNITS'
+        type: 'UPDATE_UNITS',
+        payload: units
         
     }
 
