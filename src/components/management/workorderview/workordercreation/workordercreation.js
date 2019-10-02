@@ -72,7 +72,7 @@ console.log(this.props.match.params.id)
 
 </select>
           
-          <input
+          <textarea
            autoComplete="off"
             className="createnewinput"
             placeholder="Description of problem needing repair"
@@ -83,12 +83,12 @@ console.log(this.props.match.params.id)
           />
           <div className="createnewbuttoncontainer">
             <Link to="/workorderview">
-              <button className="createnewbutton" onClick={this.handleSubmit}>
+              <button className="createsubmitbutton" onClick={this.handleSubmit}>
                 Submit
               </button>
             </Link>
             <Link to="/workorderview">
-              <button className="createnewbutton">
+              <button className="createcancelbutton">
                 Cancel
               </button>
             </Link>
