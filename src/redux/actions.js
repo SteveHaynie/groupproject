@@ -1,15 +1,10 @@
-export const workOrderView = () => {
-  return {
-    type: "GET_WORK_ORDER"
-  };
-};
+export const workOrderView = (workOrders) => {
+    return {
+        type: 'GET_WORK_ORDER',
+        payload: workOrders
+    }
 
-// export const updateUser = user => {
-//   return {
-//     type: "UPDATE_USER",
-//     payload: user
-//   };
-// };
+}
 
 export const updateUser = (user) => {
     return {

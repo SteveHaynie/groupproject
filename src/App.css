@@ -1,9 +1,7 @@
- /* .App {
-  background: rgb(0, 0, 0);
-  width: 100vw;
-  height: 100vh;
-  color: white;
-} */
+ .App {
+	background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36));
+	padding-left: 25px;
+}
 
 .management-body{
 display: flex;
