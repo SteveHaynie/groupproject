@@ -27,7 +27,6 @@ export const updateUnits = (units) => {
     }
 
 }
-<<<<<<< HEAD
 
 export const updateTenants = (tenants) => {
     return {
@@ -35,5 +34,3 @@ export const updateTenants = (tenants) => {
         payload: tenants
     }
 }
-=======
->>>>>>> master

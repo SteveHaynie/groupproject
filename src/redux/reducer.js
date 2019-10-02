@@ -11,12 +11,8 @@ export default function reducer (state = initialState, action) {
     switch(action.type) {
         case "UPDATE_USER": return {...state, user: action.payload}
         case "GET_WORK_ORDER": return {...state}
-<<<<<<< HEAD
         case "UPDATE_UNITS": return {...state}
         case "UPDATE_TENANTS": return {...state, tenants: action.payload}
-=======
-        case "UPDATE_UNITS": return {...state, units: action.payload}
->>>>>>> master
         default: return state
     }
 

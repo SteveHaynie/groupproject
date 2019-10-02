@@ -7,7 +7,7 @@
 
 .management-body{
 display: flex;
-flex-direction: row;
+flex-direction: column;
 justify-content: center;
 }
 
@@ -21,19 +21,15 @@ justify-content: center;
   justify-content: flex-start;
   align-items: center;
 }
- */
 
+.tenant-creation-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
  
 
-
-.one-tenant {
-	display: flex;
-	flex-direction: row;
-    justify-content: space-evenly;
-    height: 20px;
-    width: 300px;
-    border: 1px solid black;
-}
 
 
 

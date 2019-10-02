@@ -84,11 +84,7 @@ class App extends React.Component {
               }}
             />
 
-<<<<<<< HEAD
-              <Route
-=======
             <Route
->>>>>>> master
               path="/users/:id"
               render={props => {
                 return (
