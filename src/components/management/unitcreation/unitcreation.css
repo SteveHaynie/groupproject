@@ -1,12 +1,10 @@
 .ManagementHomePage {
-    /* text-align: center; */
-    background: gray;
     display: flex;
-    margin-left: 49px;
+
 }
 
 .UnitCreationPage {
-    background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
+    /* background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36)); */
     width: 100vw;
     height: 100vh;
 }
@@ -18,10 +16,11 @@
 
 .UnitAddress {
     border: 1px solid black;
+    background: #F1E3E4;
 }
 
 .Amenities {
-    background: lightsteelblue;
+    background: linear-gradient(to bottom, #F1E3E4, rgba(143, 184, 218, 0.747)) ;
     /* border: 1px solid black; */
     padding: 5px;
 }
