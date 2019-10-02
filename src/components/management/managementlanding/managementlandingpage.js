@@ -1,13 +1,18 @@
 import React from 'react';
 import './managementlandingpage.css'
-// import { Link } from 'react-router-dom'
+import { workOrderView } from '../../../redux/actions.js';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 class ManagementLandingPage extends React.Component{
-
+    componentDidMount() {
+        axios.get(`/api/manager/workorders/${this.props.user.id}`).then(response => {
+          
+         this.props.workOrderView(response.data)
+        });
+      }
     render(){
-        console.log(
-        "this is management page"
-        )
+       
         return (
             <div className='managementHomePage'>
                 <div className='body'>Management Landing Page</div>
@@ -16,4 +21,11 @@ class ManagementLandingPage extends React.Component{
     }
 }
 
-export default ManagementLandingPage;
+const mapStateToProps = (state) => {
+    return {
+      workOrders : state.workOrders,
+      user: state.user
+    }
+  }
+  
+  export default connect(mapStateToProps, {workOrderView}) (ManagementLandingPage );

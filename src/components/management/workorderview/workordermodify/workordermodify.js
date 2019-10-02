@@ -11,8 +11,9 @@ class WorkOrderModify extends React.Component {
           
 
         this.state = {
-          description: workOrder.description,
-          unit_id: workOrder.unit_id
+          description: "",
+          unit_id: '',
+          unit_number: ""
         
          
         };
@@ -22,8 +23,16 @@ class WorkOrderModify extends React.Component {
        
        
       }
-      
 
+      componentDidMount() {
+        const workOrder = this.props.workOrders.find(e => e.id === parseInt(this.props.match.params.id))
+        this.setState({
+          description: workOrder.description,
+          unit_id: workOrder.unit_id,
+          unit_number: workOrder.unit_number
+        })
+      }
+      
 
 
       handleChange(e) {
@@ -38,6 +47,7 @@ class WorkOrderModify extends React.Component {
           description: this.state.description,
           id: parseInt(this.props.match.params.id)
         };
+        console.log(body, "this is body for handlesubmit")
         axios.put(`/api/manager/modify/workorder/${parseInt(this.props.match.params.id)}`, body).then( () => {
           
          
@@ -47,7 +57,7 @@ class WorkOrderModify extends React.Component {
       }
       
   render() {
-     console.log(this.state, "modify state")
+     console.log(this.props, "modify state")
     return (
         
         <div className="modifycontainer">
@@ -59,7 +69,7 @@ class WorkOrderModify extends React.Component {
             
             name="tenantName"
             type="text"
-            value={this.state.unit_id}
+            value={this.state.unit_number}
             onChange={this.handleChange}
           />
           <textarea
@@ -85,7 +95,8 @@ class WorkOrderModify extends React.Component {
 
     const mapStateToProps = (state) => {
         return {
-          workOrders : state.workOrders
+          workOrders : state.workOrders,
+          user: state.user
         }
       }
       
