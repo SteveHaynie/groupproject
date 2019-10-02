@@ -36,8 +36,11 @@ async function getWorkOrdersManager(req, res) {
 async function createWorkOrder (req,res){
     try {
     const db = req.app.get("db");
-    const newWorkOrder = await db
-    res.send()        
+    const newWorkOrder = await db.createWorkOrder([req.body.unit_id,req.body.description])
+    // const workOrdersManager = await db.getWorkOrdersManager([
+    //     req.params.managerId
+    //   ]);
+    res.send(newWorkOrder, 200)        
     } catch (error) {
         console.error(error)
     }
@@ -51,6 +54,7 @@ async function updateWorkOrder(req, res) {
       req.body.unit_id,
       req.params.workOrderId
     ]);
+    
     res.status(200);
     res.send("successful update");
   } catch (error) {
@@ -58,7 +62,18 @@ async function updateWorkOrder(req, res) {
   }
 }
 
-//create a new user specifically for tenant
+//move the work order to the archive
+async function completeWorkOrder (req,res){
+    try {
+    const db = req.app.get("db");
+    const workOrderId = parseInt(req.params.workOrderId)
+    const completedWorkOrder = db.getWorkOrder([workOrderId]);
+    res.send(completedWorkOrder)
+    } catch (error) {
+        console.error(error)
+        res.status(400)
+    }
+}
 
 //create new unit
 
@@ -90,5 +105,7 @@ module.exports = {
   getUnits,
   getWorkOrdersManager,
   updateWorkOrder,
-  createNewUnit
+  createNewUnit,
+  createWorkOrder,
+  completeWorkOrder
 };

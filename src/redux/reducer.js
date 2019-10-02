@@ -1,16 +1,9 @@
 const initialState = {
-<<<<<<< HEAD
-    user: {},
-    workOrders: [],
-    tenants: [],
-    units: []
-=======
   user: {},
   workOrders: [],
   tenants: [],
   units: []
 };
->>>>>>> master
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
