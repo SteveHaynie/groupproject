@@ -7,7 +7,7 @@ import axios from 'axios';
 class WorkOrderModify extends React.Component {
     constructor(props) {
         super(props);
-         const workOrder = this.props.workOrders.find(e => e.id === parseInt(this.props.match.params.id))
+         
           
 
         this.state = {
@@ -25,15 +25,30 @@ class WorkOrderModify extends React.Component {
       }
 
       componentDidMount() {
-        const workOrder = this.props.workOrders.find(e => e.id === parseInt(this.props.match.params.id))
+        
+        if(this.props.workOrders.length) {
+        this.getWorkOrder(this.props.workOrders)
+        
+        }
+        else {
+          axios.get(`/api/manager/workorders/${this.props.user.id}`).then(response => {
+      
+            this.props.workOrderView(response.data)
+            this.getWorkOrder(response.data)
+           });
+        }
+      }
+
+      
+      getWorkOrder(workOrders) {
+        const workOrder = workOrders.find(e => e.id === parseInt(this.props.match.params.id))
         this.setState({
           description: workOrder.description,
           unit_id: workOrder.unit_id,
           unit_number: workOrder.unit_number
         })
       }
-      
-
+ 
 
       handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
