@@ -38,7 +38,7 @@ class WorkOrderModify extends React.Component {
           description: this.state.description,
           id: parseInt(this.props.match.params.id)
         };
-        axios.put(`/api/manager/modify/workorder/:${parseInt(this.props.match.params.id)}`, body).then( () => {
+        axios.put(`/api/manager/modify/workorder/${parseInt(this.props.match.params.id)}`, body).then( () => {
           
          
           this.props.history.push("/workorderview");
@@ -65,7 +65,7 @@ class WorkOrderModify extends React.Component {
           <textarea
             className="modifytextarea"
            
-            name="issue"
+            name="description"
             type="text"
             value={this.state.description}
             onChange={this.handleChange}
