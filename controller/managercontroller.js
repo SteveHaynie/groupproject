@@ -33,17 +33,20 @@ async function getWorkOrdersManager(req, res) {
   }
 }
 
-async function createWorkOrder (req,res){
-    try {
+async function createWorkOrder(req, res) {
+  try {
     const db = req.app.get("db");
-    const newWorkOrder = await db.createWorkOrder([req.body.unit_id,req.body.description])
+    const newWorkOrder = await db.createWorkOrder([
+      req.body.unit_id,
+      req.body.description
+    ]);
     // const workOrdersManager = await db.getWorkOrdersManager([
     //     req.params.managerId
     //   ]);
-    res.send(newWorkOrder, 200)        
-    } catch (error) {
-        console.error(error)
-    }
+    res.send(newWorkOrder, 200);
+  } catch (error) {
+    console.error(error);
+  }
 }
 // update work order accepts description and unit id through req.body
 async function updateWorkOrder(req, res) {
@@ -54,7 +57,7 @@ async function updateWorkOrder(req, res) {
       req.body.unit_id,
       req.params.workOrderId
     ]);
-    
+
     res.status(200);
     res.send("successful update");
   } catch (error) {
@@ -63,16 +66,23 @@ async function updateWorkOrder(req, res) {
 }
 
 //move the work order to the archive
-async function completeWorkOrder (req,res){
-    try {
+async function completeWorkOrder(req, res) {
+  try {
     const db = req.app.get("db");
-    const workOrderId = parseInt(req.params.workOrderId)
-    const completedWorkOrder = db.getWorkOrder([workOrderId]);
-    res.send(completedWorkOrder)
-    } catch (error) {
-        console.error(error)
-        res.status(400)
-    }
+    const workOrderId = parseInt(req.params.workOrderId);
+    const completedWorkOrder = await db.getWorkOrder([workOrderId]);
+    const toBeArchived = await db.archiveWorkOrder([
+      completedWorkOrder[0].id,
+      completedWorkOrder[0].unit_id,
+      completedWorkOrder[0].created_at,
+      req.body.description,
+      req.body.notes
+    ]);
+    res.send('successfully archived')
+  } catch (error) {
+    console.error(error);
+    res.status(400);
+  }
 }
 
 //create new unit
@@ -92,13 +102,11 @@ async function createNewUnit(req, res) {
       req.body.unit_rent,
       req.params.managerId
     ]);
-    res.send('made new unit', 200);
+    res.send("made new unit", 200);
   } catch (error) {
     console.error(error);
   }
 }
-
-
 
 module.exports = {
   getTenants,
