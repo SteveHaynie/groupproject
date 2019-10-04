@@ -111,7 +111,7 @@ class App extends React.Component {
             />  */}
 
             <Route
-              path="/useraddtenant"
+              path="/useraddtenant/:id"
               render={props => {
                 return (
                   <div className="App">

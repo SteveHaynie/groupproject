@@ -31,20 +31,22 @@ class AddTenant extends React.Component {
   handleSubmitTenantCreation = async () => {
     try {
       const body = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        unit_id: ""
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+        unit_id: this.state.unit_id
       };
       if (
-        body.firstName &&
-        body.lastName &&
-        body.email &&
-        body.password &&
-        body.unit_id
+         !body.first_name &&
+        !body.last_name &&
+        !body.email &&
+        !body.password &&
+        !body.unit_id
       ) {
-        axios.post(`/api/manager/tenants/new/${this.props.user.id}`, body);
+          alert('fields cannot be blank')
+      } else {
+        await axios.post(`/api/manager/tenants/new`, body);
         alert(`successfully added tenant to unit # ${this.props.unit_id}`);
         this.setState({
           firstName: "",
@@ -53,8 +55,6 @@ class AddTenant extends React.Component {
           password: "",
           unit_id: ""
         });
-      } else {
-        alert("fields cannot be empty");
       }
     } catch (error) {
       console.error("error", error);
@@ -62,6 +62,7 @@ class AddTenant extends React.Component {
   };
 
   render() {
+      console.log(this.state)
     return (
       <div className="tenant-creation-body">
         <input
