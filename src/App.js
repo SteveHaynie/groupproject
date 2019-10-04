@@ -23,7 +23,7 @@ import TenantWorkOrderView from "./components/tenant/tenantworkorderview/tenantw
 import TenantPayment from "./components/tenant/payment/tenantpayment";
 import TenantFormSubmission from "./components/tenant/tenantformsubmission/tenantformsubmission";
 import WorkOrderCreation from "./components/management/workorderview/workordercreation/workordercreation.js";
-import WorkOrderCompletion from "./components/management/workorderview/completeworkorder/completeworkorder.js";
+import WorkOrderComplete from "./components/management/workorderview/completeworkorder/completeworkorder.js";
 import DocumentUpload from "./components/management/users/documentupload/documentupload.js";
 import AddNotes from "./components/management/users/addnotes/addnotes.js";
 
@@ -201,7 +201,7 @@ class App extends React.Component {
                       return (
                         <div className="App">
                           <MenuContainer />
-                          <WorkOrderCompletion {...props} />
+                          <WorkOrderComplete {...props} />
                         </div>
                       );
                     else {
