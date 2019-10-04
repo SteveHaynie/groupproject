@@ -20,6 +20,7 @@ import MenuContainer from "./components/menu/menucontainer";
 import TenantMenuContainer from "./components/tenant/tenantmenu/tenantmenucontainer";
 import TenantLanding from "./components/tenant/tenantlanding";
 import TenantWorkOrderView from "./components/tenant/tenantworkorderview/tenantworkorderview";
+import TenantCreateWorkOrder from "./components/tenant/tenantcreateworkorder/tenantcreateworkorder.js";
 import TenantPayment from "./components/tenant/payment/tenantpayment";
 import TenantFormSubmission from "./components/tenant/tenantformsubmission/tenantformsubmission";
 import WorkOrderCreation from "./components/management/workorderview/workordercreation/workordercreation.js";
@@ -233,60 +234,78 @@ class App extends React.Component {
                 <Route
                   path="/tenantlanding"
                   render={props => {
-                    return (
-                      <div className="App">
-                        <TenantMenuContainer />
-                        <TenantLanding />
-                      </div>
-                    );
+                    if (this.props.user.administrator === false)
+                      return (
+                        <div className="App">
+                          <TenantMenuContainer />
+                          <TenantLanding {...props} />
+                        </div>
+                      );
+                    else {
+                      return <div className="App">Please Login As Tenant</div>;
+                    }
                   }}
                 />
-
                 <Route
                   path="/tenantworkorderview"
                   render={props => {
-                    return (
-                      <div className="App">
-                        <TenantMenuContainer />
-                        <TenantWorkOrderView {...props} />
-                      </div>
-                    );
+                    if (this.props.user.administrator === false)
+                      return (
+                        <div className="App">
+                          <TenantMenuContainer />
+                          <TenantWorkOrderView {...props} />
+                        </div>
+                      );
+                    else {
+                      return <div className="App">Please Login As Tenant</div>;
+                    }
                   }}
                 />
-
                 <Route
                   path="/tenantpayment"
                   render={props => {
-                    return (
-                      <div className="App">
-                        <TenantMenuContainer />
-                        <TenantPayment {...props} />
-                      </div>
-                    );
+                    if (this.props.user.administrator === false)
+                      return (
+                        <div className="App">
+                          <TenantMenuContainer />
+                          <TenantPayment {...props} />
+                        </div>
+                      );
+                    else {
+                      return <div className="App">Please Login As Tenant</div>;
+                    }
                   }}
                 />
 
                 <Route
                   path="/tenantcreateworkorder"
                   render={props => {
-                    return (
-                      <div className="App">
-                        <MenuContainer />
-                        <TenantPayment {...props} />
-                      </div>
-                    );
+                    if (this.props.user.administrator === false)
+                      return (
+                        <div className="App">
+                          <TenantMenuContainer />
+                          <TenantCreateWorkOrder {...props} />
+                        </div>
+                      );
+                    else {
+                      return <div className="App">Please Login As Tenant</div>;
+                    }
                   }}
                 />
 
                 <Route
                   path="/tenantformsubmission"
                   render={props => {
-                    return (
-                      <div className="App">
-                        <TenantMenuContainer />
-                        <TenantFormSubmission {...props} />
-                      </div>
-                    );
+                    if (this.props.user.administrator === false)
+                      return (
+                        <div className="App">
+                          <TenantMenuContainer />
+                          <TenantFormSubmission {...props} />
+                        </div>
+                      );
+                    else {
+                      return <div className="App">Please Login As Tenant</div>;
+                    }
                   }}
                 />
               </div>
