@@ -43,7 +43,7 @@ class Login extends Component {
               this.props.history.push('/managementlanding')
               
             } else {
-              this.props.history.push('/tennantlanding')
+              this.props.history.push('/tenantlanding')
       }});
           
       } else {
