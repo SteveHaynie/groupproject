@@ -7,12 +7,13 @@ import axios from 'axios';
 class WorkOrderModify extends React.Component {
     constructor(props) {
         super(props);
-         const workOrder = this.props.workOrders.find(e => e.id === parseInt(this.props.match.params.id))
+         
           
 
         this.state = {
-          description: workOrder.description,
-          unit_id: workOrder.unit_id
+          description: "",
+          unit_id: '',
+          unit_number: ""
         
          
         };
@@ -22,9 +23,32 @@ class WorkOrderModify extends React.Component {
        
        
       }
+
+      componentDidMount() {
+        
+        if(this.props.workOrders.length) {
+        this.getWorkOrder(this.props.workOrders)
+        
+        }
+        else {
+          axios.get(`/api/manager/workorders/${this.props.user.id}`).then(response => {
       
+            this.props.workOrderView(response.data)
+            this.getWorkOrder(response.data)
+           });
+        }
+      }
 
-
+      
+      getWorkOrder(workOrders) {
+        const workOrder = workOrders.find(e => e.id === parseInt(this.props.match.params.id))
+        this.setState({
+          description: workOrder.description,
+          unit_id: workOrder.unit_id,
+          unit_number: workOrder.unit_number
+        })
+      }
+ 
 
       handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -38,7 +62,8 @@ class WorkOrderModify extends React.Component {
           description: this.state.description,
           id: parseInt(this.props.match.params.id)
         };
-        axios.put(`/api/manager/modify/workorder/:${parseInt(this.props.match.params.id)}`, body).then( () => {
+        console.log(body, "this is body for handlesubmit")
+        axios.put(`/api/manager/modify/workorder/${parseInt(this.props.match.params.id)}`, body).then( () => {
           
          
           this.props.history.push("/workorderview");
@@ -47,7 +72,7 @@ class WorkOrderModify extends React.Component {
       }
       
   render() {
-     console.log(this.state, "modify state")
+     console.log(this.props, "modify state")
     return (
         
         <div className="modifycontainer">
@@ -57,15 +82,15 @@ class WorkOrderModify extends React.Component {
           <textarea
             className="modifytextarea"
             
-            name="tenantName"
+            name="unit_number"
             type="text"
-            value={this.state.unit_id}
+            value={this.state.unit_number}
             onChange={this.handleChange}
           />
           <textarea
             className="modifytextarea"
            
-            name="issue"
+            name="description"
             type="text"
             value={this.state.description}
             onChange={this.handleChange}
@@ -85,7 +110,8 @@ class WorkOrderModify extends React.Component {
 
     const mapStateToProps = (state) => {
         return {
-          workOrders : state.workOrders
+          workOrders : state.workOrders,
+          user: state.user
         }
       }
       
