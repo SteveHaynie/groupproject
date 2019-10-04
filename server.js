@@ -50,7 +50,7 @@ app.post('/api/manager/workorder/new', managercontroller.createWorkOrder)
 // modify work order
 app.put('/api/manager/modify/workorder/:workOrderId', managercontroller.updateWorkOrder)
 // complete work order
-app.get('/api/manager/workorder/:workOrderId', managercontroller.completeWorkOrder)
+app.put('/api/manager/workorder/:workOrderId', managercontroller.completeWorkOrder)
 
 
 //management
