@@ -22,3 +22,10 @@ export const updateUnits = (units) => {
     }
 
 }
+
+export const updateTenants = (tenants) => {
+    return {
+        type: 'UPDATE_TENANTS',
+        payload: tenants
+    }
+}

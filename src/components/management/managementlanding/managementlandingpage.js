@@ -12,7 +12,10 @@ class ManagementLandingPage extends React.Component{
         });
       }
     render(){
+<<<<<<< HEAD
+=======
        
+>>>>>>> master
         return (
             <div className='managementHomePage'>
                 <div className='body'>Management Landing Page</div>
