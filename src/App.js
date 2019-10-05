@@ -26,7 +26,7 @@ import TenantFormSubmission from "./components/tenant/tenantformsubmission/tenan
 import WorkOrderCreation from "./components/management/workorderview/workordercreation/workordercreation.js";
 import WorkOrderComplete from "./components/management/workorderview/completeworkorder/completeworkorder.js";
 import DocumentUpload from "./components/management/users/documentupload/documentupload.js";
-import AddNotes from "./components/management/users/addnotes/addnotes.js";
+import UserManagerView from "./components/management/users/usermanagerview/usermanagerview";
 
 class App extends React.Component {
   componentDidMount() {
@@ -109,13 +109,13 @@ class App extends React.Component {
                   }}
                 />
                 <Route
-                  path="/useraddnotes"
+                  path="/usermanagerview"
                   render={props => {
                     if (this.props.user.administrator === true)
                       return (
                         <div className="App">
                           <MenuContainer />
-                          <AddNotes {...props} />
+                          <UserManagerView {...props} />
                         </div>
                       );
                     else {

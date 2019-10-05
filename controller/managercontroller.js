@@ -120,6 +120,13 @@ async function updateTenant (req,res){
   }
 }
 
+async function createComment (req,res) {
+  try {
+    const db = req.app.get('db')
+    const createComment = db.createComment([req.body.managerComment, req.body.managerId, req.body.userId])
+  }
+}
+
 module.exports = {
   getTenants,
   getUnits,
@@ -128,5 +135,6 @@ module.exports = {
   createNewUnit,
   createWorkOrder,
   completeWorkOrder,
-  updateTenant
+  updateTenant,
+  createComment
 };
