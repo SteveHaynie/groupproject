@@ -15,8 +15,8 @@ async function sendMail(req, res) {
       });
     
       let info = await transporter.sendMail({
-        from: EMAIL_USERNAME,
-        to: req.body.email,
+        to: req.body.managerEmail,
+        cc: req.body.email,
         subject: req.body.subject,
         text: req.body.message,
       });
