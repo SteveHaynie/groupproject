@@ -1,0 +1,87 @@
+.createnewcontainer {
+    width: 100%;
+    height: 100%;
+    background: rgb(4, 2, 36);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: scroll;
+    box-shadow: 7px 7px 13px #000000d2;
+    padding-top: 10px;
+ 
+    position: absolute;
+    z-index: 1;
+}
+.createnewbuttoncontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.createnewselect {
+    justify-content: center;
+    font-size: 1.25em;
+
+    
+}
+
+.createcontainer {
+    height: 300px;
+    width: 80%;
+    background: rgba(143, 184, 218, 0.747);
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 25px;
+    box-shadow: 2px 2px 15px #414141;
+}
+
+.createnewinput {
+    height: 25%;
+    width: 75%;    
+    font-size: 1.5em;
+
+}
+
+.createsubmitbutton {
+    width: auto;
+    height: auto;
+    margin: 5px;
+    border-radius: 25px;
+    font-size: 1.5em;
+    background: white;
+}
+
+.createsubmitbutton:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.createcancelbutton {
+    width: auto;
+    height: auto;
+    margin: 5px;
+    border-radius: 25px;
+    font-size: 1.5em;
+    background: white;
+}
+
+.createcancelbutton:hover {
+    background-color: rgb(203, 39, 20); /* Red */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+@media only screen and (max-width: 425px) {
+    .createcontainer {
+        height: 400px;
+    }
+}

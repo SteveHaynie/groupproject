@@ -13,10 +13,16 @@ class TenantWorkOrderView extends React.Component {
     });
   }
 
+  handleClick () {
+this.props.history.push(`/tenantcreateworkorder/${this.props.user.id}`)
+
+  }
+
   render() {
     
     return (
       <div className="tenantworkordercontainer">
+        <button onClick={() => {this.handleClick()}}>Create New Work Order</button>
         {this.props.workOrders.map((workOrder, index) => (
           <div className="tenantindividualWorkOrder" key={index}>
             <div className="tenantwodate">

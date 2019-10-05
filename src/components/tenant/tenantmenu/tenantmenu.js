@@ -14,7 +14,7 @@ class TenantMenu extends React.Component{
         }
 
         return (
-            <div id="popout-menu" handleClickTenantMenu={this.props.handleClickTenantMenu} className={visibility}>
+            <div id="popout-menu" className={visibility}>
                 <Link to='tenantworkorderview'>Tenant Work Orders</Link>
                 <Link to='tenantpayment'>Payments</Link>
                 <Link to='tenantformsubmission'>Form Submission</Link>
