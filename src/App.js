@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('app.js')
+    console.log(this.props.user, "this is user")
     return (
       <div className="App">
         <Router>
@@ -53,6 +53,7 @@ class App extends React.Component {
                       <Login {...props} />
                     </div>
                   );
+                 
               }}
             />
             {this.props.user.id ? (
