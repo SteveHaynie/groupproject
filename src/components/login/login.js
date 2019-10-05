@@ -61,7 +61,6 @@ class Login extends Component {
   }
 
   render() {
-    
     return (
       <div className="LoginPage">
         <div className="LoginBox">
