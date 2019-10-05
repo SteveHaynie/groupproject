@@ -30,15 +30,17 @@ class Menu extends React.Component{
         }
 
         return (
-            <div id="popout-menu" handleClickMenu={this.props.handleClickMenu} className={visibility}>
+            <div id="popout-menu" className={visibility}>
             <Link to='/unitcreation'>Create new unit</Link>
            <Link to={`/users/${this.props.user.id}`}>View users</Link>
            <Link to='/workorderview'>View work orders</Link>
-           <Link onClick={() => this.handleLogout()}>Sign out</Link>
+           <button onClick={() => this.handleLogout()}>Sign out</button>
             </div>
         )
     }
 }
+
+// handleClickMenu={this.props.handleClickMenu}
 
 const mapStateToProps = (state) => {
     return {user: state.user}

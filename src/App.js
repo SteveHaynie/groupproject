@@ -26,7 +26,7 @@ import TenantFormSubmission from "./components/tenant/tenantformsubmission/tenan
 import WorkOrderCreation from "./components/management/workorderview/workordercreation/workordercreation.js";
 import WorkOrderComplete from "./components/management/workorderview/completeworkorder/completeworkorder.js";
 import DocumentUpload from "./components/management/users/documentupload/documentupload.js";
-import AddNotes from "./components/management/users/addnotes/addnotes.js";
+import UserManagerView from "./components/management/users/usermanagerview/usermanagerview";
 
 class App extends React.Component {
   componentDidMount() {
@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.user, "this is user")
+    
     return (
       <div className="App">
         <Router>
@@ -57,7 +57,7 @@ class App extends React.Component {
               }}
             />
             {this.props.user.id ? (
-              <div>
+              <React.Fragment>
                 <Route
                   path="/managementlanding"
                   render={props => {
@@ -110,13 +110,13 @@ class App extends React.Component {
                   }}
                 />
                 <Route
-                  path="/useraddnotes"
+                  path="/usermanagerview"
                   render={props => {
                     if (this.props.user.administrator === true)
                       return (
                         <div className="App">
                           <MenuContainer />
-                          <AddNotes {...props} />
+                          <UserManagerView {...props} />
                         </div>
                       );
                     else {
@@ -310,7 +310,7 @@ class App extends React.Component {
                     }
                   }}
                 />
-              </div>
+              </React.Fragment>
             ) : null}
           </Switch>
         </Router>
