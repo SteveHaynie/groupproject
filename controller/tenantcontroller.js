@@ -4,7 +4,7 @@
 async function getUnitAndWorkOrders (req,res){
     try {
         const db = req.app.get('db');
-        const unitInfo = await db.unitInfo([req.params.unitId])
+        const unitInfo = await db.unitInfo([req.params.tenantId])
         res.send(unitInfo, 200)
 
     } catch (error) {
