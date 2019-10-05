@@ -54,102 +54,6 @@ class App extends React.Component {
                   );
               }}
             />
-<<<<<<< HEAD
-            {this.props.user.id?
-            <div>
-            <Route
-              path="/managementlanding"
-              render={props => {
-                if (
-                  Object.keys(this.props.user).length !== 0 &&
-                  this.props.user.administrator === true
-                )
-                  return (
-                    <div className="App">
-                      <MenuContainer />
-                      <ManagementLanding {...props} />
-                    </div>
-                  );
-                else {
-                  return (
-                    <div className="App">Please Login As Administrator</div>
-                  );
-                }
-              }}
-            />
-
-            <Route
-              path="/unitcreation"
-              render={props => {
-                return (
-                  <div className="App">
-                    <MenuContainer />
-                    <UnitCreation {...props} />
-                  </div>
-                );
-              }}
-            />
-
-            <Route
-              path="/users/:id"
-              render={props => {
-                return (
-                  <div className="App">
-                    <MenuContainer />
-                    <Users {...props} />
-                  </div>
-                );
-              }}
-            />
-
-            {/* <Route
-              path="/useraddnotes"
-              render={props => {
-                return (
-                  <div className="App">
-                   <MenuContainer />
-                    <AddNotes {...props} />
-                  </div>
-                );
-              }}
-            />  */}
-
-            <Route
-              path="/useraddtenant/:id"
-              render={props => {
-                return (
-                  <div className="App">
-                    <MenuContainer />
-                    <AddTenant {...props} />
-                  </div>
-                );
-              }}
-            />
-
-            {/* <Route
-              path="/userdocumentupload"
-              render={props => {
-                return (
-                  <div className="App">
-                   <MenuContainer />
-                    <DocumentUpload {...props} />
-                  </div>
-                );
-              }}
-             />  */}
-
-            <Route
-              path="/workorderview"
-              render={props => {
-                return (
-                  <div className="App">
-                    <MenuContainer />
-                    <WorkOrderView {...props} />
-                  </div>
-                );
-              }}
-            />
-=======
             {this.props.user.id ? (
               <div>
                 <Route
@@ -220,7 +124,6 @@ class App extends React.Component {
                     }
                   }}
                 />
->>>>>>> 3aa19ddc3bc783c17e3ba51e17bd97092b93f5a5
 
                 <Route
                   path="/useraddtenant/:id"
