@@ -10,6 +10,7 @@ require("dotenv").config()
 const logincontroller = require('./controller/logincontroller')
 const managercontroller = require('./controller/managercontroller')
 const tenantcontroller = require('./controller/tenantcontroller')
+const messagecontroller = require('./controller/messagescontroller')
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
@@ -66,6 +67,9 @@ app.post('/api/manager/tenants/new', logincontroller.createNewTenant)
 app.put('/api/manager/modify/tenant/:tenantId', managercontroller.updateTenant)
 //create new unit
 app.post('/api/manager/units/new/:managerId', managercontroller.createNewUnit)
+
+//email section
+app.post('/api/email/:tenantId', messagecontroller.sendMail)
 
 
 
