@@ -36,6 +36,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('app.js')
     return (
       <div className="App">
         <Router>
