@@ -327,6 +327,3 @@ export default connect(
   mapStateToProps,
   { updateUser }
 )(App);
-
-
-
