@@ -70,7 +70,7 @@ async function completeWorkOrder(req, res) {
   try {
     const db = req.app.get("db");
     const workOrderId = parseInt(req.params.workOrderId);
-    const completedWorkOrder = await db.getWorkOrder([workOrderId]);
+    const completedWorkOrder = await db.getWorkOrder([workOrderId])
     const toBeArchived = await db.archiveWorkOrder([
       completedWorkOrder[0].id,
       completedWorkOrder[0].unit_id,
@@ -78,6 +78,7 @@ async function completeWorkOrder(req, res) {
       req.body.description,
       req.body.notes
     ]);
+    const deleteWorkOrder = await db.deleteWorkOrder([workOrderId]);
     res.send('successfully archived')
   } catch (error) {
     console.error(error);
@@ -108,6 +109,17 @@ async function createNewUnit(req, res) {
   }
 }
 
+async function updateTenant (req,res){
+  try {
+    const db = req.app.get("db");
+  const updatedTenant = db.updateTenant([req.body.first_name,req.body.last_name,req.body.email, req.body.unit_id, req.params.tenantId])
+  res.send('succesfully updated')
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 module.exports = {
   getTenants,
   getUnits,
@@ -115,5 +127,6 @@ module.exports = {
   updateWorkOrder,
   createNewUnit,
   createWorkOrder,
-  completeWorkOrder
+  completeWorkOrder,
+  updateTenant
 };

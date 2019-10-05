@@ -35,6 +35,8 @@ app.use(bodyParser.json());
 // login
 app.post('/api/login', logincontroller.login)
 app.get('/api/user', logincontroller.sendSessionUser)
+// logout
+app.get('/api/logout', logincontroller.logoutUser)
 
 //tenants
 
@@ -60,6 +62,8 @@ app.get('/api/manager/tenants/:managerId', managercontroller.getTenants)
 app.get('/api/manager/units/:managerId', managercontroller.getUnits)
 // create a new user(tenant)
 app.post('/api/manager/tenants/new', logincontroller.createNewTenant)
+// modify tenant
+app.put('/api/manager/modify/tenant/:tenantId', managercontroller.updateTenant)
 //create new unit
 app.post('/api/manager/units/new/:managerId', managercontroller.createNewUnit)
 
