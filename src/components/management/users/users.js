@@ -6,6 +6,18 @@ import { updateTenants } from "../../../redux/actions";
 import axios from "axios";
 
 class Users extends React.Component {
+  constructor(){
+    super()
+  
+  this.state ={
+    addNote: ""
+  }
+
+  this.handleChange = this.handleChange.bind(this)
+  this.expandTenantMenu = this.expandTenantMenu.bind(this)
+}
+
+
   componentDidMount() {
     axios
       .get(`/api/manager/tenants/${parseInt(this.props.match.params.id)}`)
@@ -15,15 +27,35 @@ class Users extends React.Component {
       });
   }
 
+  
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  expandTenantMenu(){
+    return (
+      <div className='note-container'>
+      <input
+      className="form-input"
+      name="addNote"
+      type="text"
+      value={this.state.addNote}
+      onChange={this.handleChange}
+    /></div>
+)
+  }
+
   render() {
     console.log(this.props);
     const tenants = this.props.tenants.map((tenant, index) => {
       return (
         <div className="tenant-container" key={index}>
+          <button onClick={this.expandTenantMenu}>...</button>
           <div className="one-tenant">{tenant.first_name}</div>
           <div className="one-tenant">{tenant.last_name}</div>
           <div className="one-tenant">{tenant.email}</div>
           <div className="one-tenant">{tenant.unit_number}</div>
+          <button>reset password</button>
         </div>
       );
     });

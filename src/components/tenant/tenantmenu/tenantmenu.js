@@ -1,6 +1,6 @@
-import React from 'react'
-import '../../menu/menu.css'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import '../../menu/menu.css';
+import { Link } from 'react-router-dom';
 
 
 class TenantMenu extends React.Component{
