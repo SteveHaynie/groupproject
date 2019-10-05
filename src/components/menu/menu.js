@@ -3,16 +3,23 @@ import './menu.css'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { updateUser } from "../../redux/actions.js";
 
 
 class Menu extends React.Component{
    
 
     async handleLogout(){
-        console.log('clicked')
-        await axios.get('/api/logout')
-        this.props.history.push('/')
-        console.log('logging out')
+       
+        await axios.get('/api/logout').then((response) => {
+           if(response.data === 'successfully logged out') { 
+               this.props.updateUser({})
+            this.props.history.push('/login')}
+
+
+        })
+       
+       
     }
 
     render(){
@@ -23,18 +30,20 @@ class Menu extends React.Component{
         }
 
         return (
-            <div id="popout-menu" handleClickMenu={this.props.handleClickMenu} className={visibility}>
+            <div id="popout-menu" className={visibility}>
             <Link to='/unitcreation'>Create new unit</Link>
            <Link to={`/users/${this.props.user.id}`}>View users</Link>
            <Link to='/workorderview'>View work orders</Link>
-           <Link onClick={() => this.handleLogout()}>Sign out</Link>
+           <button onClick={() => this.handleLogout()}>Sign out</button>
             </div>
         )
     }
 }
 
+// handleClickMenu={this.props.handleClickMenu}
+
 const mapStateToProps = (state) => {
     return {user: state.user}
 }
 
-export default connect(mapStateToProps, {}) (withRouter(Menu))
+export default connect(mapStateToProps, { updateUser }) (withRouter(Menu))
