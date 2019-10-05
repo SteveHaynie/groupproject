@@ -67,10 +67,15 @@ app.post('/api/manager/tenants/new', logincontroller.createNewTenant)
 app.put('/api/manager/modify/tenant/:tenantId', managercontroller.updateTenant)
 //create new unit
 app.post('/api/manager/units/new/:managerId', managercontroller.createNewUnit)
+<<<<<<< HEAD
+// create comment
+app.post('/api/manager/comments/new', managercontroller.createComment)
+=======
 
 //email section
 app.post('/api/email/:tenantId', messagecontroller.sendMail)
 
+>>>>>>> master
 
 
 
