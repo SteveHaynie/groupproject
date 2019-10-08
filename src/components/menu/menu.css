@@ -1,5 +1,5 @@
 .menucontainer {
-  background: rgba(255, 5, 5, 0);
+  background: rgba(223, 212, 212, 0);
   height: 100px;
   width: 100px;
  
@@ -14,7 +14,6 @@
     height: 100vh;
     width: 250px;
     background: #F1E3E4;
-    background: ;
     top: 0;
     left: 0;
     transition: transform .3s
@@ -34,7 +33,7 @@
   }
    
   #popout-menu h2 a {
-    background: rgb(73, 73, 73);
+    background: rgb(161, 158, 158);
     margin-left: 15px;
     text-decoration: none;
   }

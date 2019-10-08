@@ -4,7 +4,8 @@
 }
 
 .UnitCreationPage {
-    /* background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36)); */
+    font-family: arial black, cursive, sans-serif;
+    border-radius: 5px;
     width: 100vw;
     height: 100vh;
 }
@@ -12,22 +13,50 @@
 .UnitCreationTitle {
     border: 1px solid black;
     text-decoration: underline;
+    border-radius: 5px;
+}
+
+.UnitNumber {
+    border: 1px solid black;
+    background: #F1E3E4;
+    border-radius: 5px;
+}
+
+.UnitNumber input {
+    outline: none;
 }
 
 .UnitAddress {
     border: 1px solid black;
     background: #F1E3E4;
+    border-radius: 5px;
+}
+
+.UnitAddress input {
+    outline: none;
 }
 
 .Amenities {
-    background: linear-gradient(to bottom, #F1E3E4, rgba(143, 184, 218, 0.747)) ;
-    /* border: 1px solid black; */
+    background: linear-gradient(to bottom, #F1E3E4) ;
+    border: 1px solid black;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .Type {
     border: 1px solid black;
 }
+
+select{
+    width: 160px;
+    height: 25px;
+    font-weight: bold;
+    color: rgba(81, 203, 238, 1);
+  }
+  select option { color: black; }
+  select option:first-child{
+    color: rgba(81, 203, 238, 1);
+  }
 
 .Bedrooms {
     border: 1px solid black;
@@ -41,19 +70,29 @@
     border: 1px solid black;
 }
 
+.SqFoot input {
+    outline: none;
+}
+
 .AnimalAllowance {
     border: 1px solid black;
 }
 
 .UnitDescription {
     border: 1px solid black;
-    width: 400px;
+    width: 600px;
     height: 75px;
 }
 
 .UnitDescription textarea {
     width: 95%;
-    height: 95%
+    height: 95%;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
 }
 
 .UnitDescription ::placeholder {
@@ -62,17 +101,20 @@
 
 .MonthlyRent {
     border: 1px solid black;
-    
+    outline: none;
+}
+
+.MonthlyRent input {
+    outline: none;
 }
 
 .AdditionalCharges {
     border: 1px solid black;
-    
 }
 
 .SaveUnitButton {
     color: black;
 }
 .SaveUnitButton:hover {
-    color: blue;
+    color: rgba(81, 203, 238, 1);
 }
