@@ -124,6 +124,9 @@ async function createComment (req,res) {
   try {
     const db = req.app.get('db')
     const createComment = db.createComment([req.body.managerComment, req.body.managerId, req.body.userId])
+    res.send('comment sent')
+  } catch (error) {
+    console.error(error)
   }
 }
 

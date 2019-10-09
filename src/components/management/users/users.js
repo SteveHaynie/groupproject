@@ -22,7 +22,7 @@ class Users extends React.Component {
     const tenants = this.props.tenants.map((tenant, index) => {
       return (
         <div className="tenant-container" key={index}>
-        <Link to='/usermanagerview'>...</Link>
+        <Link to={`/usermanagerview/${tenant.id}`}>...</Link>
           <div className="one-tenant">{tenant.first_name}</div>
           <div className="one-tenant">{tenant.last_name}</div>
           <div className="one-tenant">{tenant.email}</div>
@@ -36,7 +36,7 @@ class Users extends React.Component {
         <div className="managementHomePage">
           <div className="management-body">
             {tenants}
-            <Link to={`/useraddtenant/${this.props.user.id}`}>/>Create New Tenant</Link>
+            <Link to={`/useraddtenant/${this.props.user.id}`}>Create New Tenant</Link>
           </div>
         </div>
       </div>
