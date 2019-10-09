@@ -7,7 +7,7 @@ class TenantLanding extends React.Component {
 
   componentDidMount() {
     axios.get(`/api/tenant/unitinfo/${this.props.user.id}`).then(response => {
-      
+      console.log(response.data)
      this.props.workOrderView(response.data)
     });
   }

@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Collapse } from 'react-burgers';
 
 
 class TenantMenuButton extends React.Component {
     render(){
         return (
-            <button className='menu-button' onClick={this.props.handleClickTenantMenu}>Menu</button>
+            <Collapse color='#8fb8da' active={this.props.active}  onClick={this.props.handleClickTenantMenu}>Menu</Collapse>
         )
     }
 }
