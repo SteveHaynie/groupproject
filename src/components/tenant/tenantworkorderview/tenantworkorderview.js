@@ -22,7 +22,7 @@ this.props.history.push(`/tenantcreateworkorder/${this.props.user.id}`)
     
     return (
       <div className="tenantworkordercontainer">
-        <button onClick={() => {this.handleClick()}}>Create New Work Order</button>
+        <button className="tenantcreatenwob" onClick={() => {this.handleClick()}}>Create New Work Order</button>
         {this.props.workOrders.map((workOrder, index) => (
           <div className="tenantindividualWorkOrder" key={index}>
             <div className="tenantwodate">
