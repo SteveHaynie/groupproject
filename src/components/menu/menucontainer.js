@@ -7,7 +7,8 @@ class MenuContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            visible: false
+            visible: false,
+            active: false
         }
 
         this.toggleMenu = this.toggleMenu.bind(this)
@@ -15,18 +16,21 @@ class MenuContainer extends Component {
 
     }
     toggleMenu(){
-        this.setState({visible: !this.state.visible})
+        this.setState({visible: !this.state.visible, active: !this.state.active})
     }
+
+ 
 
     handleClickMenu(event){
         this.toggleMenu()
+       
         event.stopPropagation()
     }
 
     render(){
         return (
             <div className = "menucontainer">
-                <MenuButton handleClickMenu={this.handleClickMenu} />
+                <MenuButton active={this.state.active} handleClickMenu={this.handleClickMenu} />
                 <Menu handleClickMenu={this.handleClickMenu}
                 menuVisibility={this.state.visible}/>
            </div>

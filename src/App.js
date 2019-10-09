@@ -49,7 +49,7 @@ class App extends React.Component {
                 if (Object.keys(this.props.user).length === 0)
                   return (
                     <div className="App">
-                      <MenuContainer />
+                      
                       <Login {...props} />
                     </div>
                   );
