@@ -48,7 +48,7 @@ class App extends React.Component {
               render={props => {
                 if (Object.keys(this.props.user).length === 0)
                   return (
-                    <div className="App">
+                    <div className="login-wrapper">
                       <MenuContainer />
                       <Login {...props} />
                     </div>
