@@ -280,7 +280,7 @@ class App extends React.Component {
                 />
 
                 <Route
-                  path="/tenantcreateworkorder"
+                  path="/tenantcreateworkorder/:id"
                   render={props => {
                     if (this.props.user.administrator === false)
                       return (

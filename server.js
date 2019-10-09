@@ -43,6 +43,8 @@ app.get('/api/logout', logincontroller.logoutUser)
 
 // unit for a tenant work orders for a tenant
 app.get('/api/tenant/unitinfo/:tenantId', tenantcontroller.getUnitAndWorkOrders)
+//create work order
+app.post('/api/tenant/workorder/new', tenantcontroller.createWorkOrder)
 
 //work order
 
