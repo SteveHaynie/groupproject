@@ -23,7 +23,7 @@ class CheckoutForm extends Component {
             let response = await axios.post('/charge', body)
 
             if (response.ok) console.log("Purchase Complete!")
-            if (response.ok) this.setState({ complete})
+            if (response.ok) this.setState({ complete: true})
         } catch (error) {
           console.log('error', error);  
         }
