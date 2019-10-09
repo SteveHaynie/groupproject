@@ -102,7 +102,7 @@ class WorkOrderModify extends React.Component {
           <button className ="modifysubmitbutton" onClick={this.handleSubmit}>Submit</button>
          
           
-          <button className ="modifysubmitbutton" onClick={() => {this.props.history.push("/workorderview")}}>Cancel</button>
+          <button className ="modifycancelbutton" onClick={() => {this.props.history.push("/workorderview")}}>Cancel</button>
           
           </div>
         </div>
