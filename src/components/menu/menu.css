@@ -1,7 +1,8 @@
 .menucontainer {
   background: rgba(255, 5, 5, 0);
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
  
     position:absolute;
     top: 0;
@@ -10,31 +11,46 @@
 
 }
 
+.menubutton {
+width: 90%;
+height: 8%;
+margin: 10px;
+border: 1px solid black;
+border-radius: 10px;
+font-size: 2em;
+background: rgb(255, 255, 255);
+
+}
+
 #popout-menu{
     height: 100vh;
-    width: 250px;
-    background: #F1E3E4;
-  
+    width: 400px;
+    background: rgba(109, 109, 109, 0.851);
+    border-radius: 5px;
+  padding: 0px;
+  margin: 0px;
     top: 0;
     left: 0;
-    transition: transform .3s
-    cubic-bezier(0, .52, 0, 1);
+    transition: transform .3s;
+    
     overflow: scroll;
     display: flex;
     flex-direction: column;
+    align-items: center;
    
 }
+
 #popout-menu.hide {
     transform: translate3d(-100vw, 0, 0);
   }
    
   #popout-menu.show {
-    transform: translate3d(t0vw, 0, 0);
+    transform: translate3d(-.5vw, 0, 0);
     overflow: hidden;
   }
    
   #popout-menu h2 a {
-    background: rgb(73, 73, 73);
+    background: rgb(161, 158, 158);
     margin-left: 15px;
     text-decoration: none;
   }
@@ -42,3 +58,5 @@
   #popout-menu h2 a:hover {
     text-decoration: underline;
   }
+
+  
