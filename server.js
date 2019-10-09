@@ -56,6 +56,8 @@ app.post('/api/manager/workorder/new', managercontroller.createWorkOrder)
 app.put('/api/manager/modify/workorder/:workOrderId', managercontroller.updateWorkOrder)
 // complete work order
 app.put('/api/manager/workorder/:workOrderId', managercontroller.completeWorkOrder)
+//delete work order
+app.delete('/api/manager/delete/workorder/:workOrderId', managercontroller.deleteWorkOrder)
 
 
 //management
@@ -67,8 +69,12 @@ app.get('/api/manager/units/:managerId', managercontroller.getUnits)
 app.post('/api/manager/tenants/new', logincontroller.createNewTenant)
 // modify tenant
 app.put('/api/manager/modify/tenant/:tenantId', managercontroller.updateTenant)
+//delete tenant
+app.delete('/api/manager/delete/tenant/:tenantId', managercontroller.deleteTenant)
 //create new unit
 app.post('/api/manager/units/new/:managerId', managercontroller.createNewUnit)
+//delete unit
+app.delete('/api/manager/delete/unit/:unitId', managercontroller.deleteUnit)
 // create comment
 app.post('/api/manager/comments/new', managercontroller.createComment)
 

@@ -86,6 +86,17 @@ async function completeWorkOrder(req, res) {
   }
 }
 
+async function deleteWorkOrder (req,res){
+  try {
+    const db = req.app.get("db");
+    const deleteWorkOrder = await db.deleteWorkOrder([req.params.workOrderId]);
+    res.send('succesfully delete work order')
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
 //create new unit
 
 async function createNewUnit(req, res) {
@@ -127,6 +138,26 @@ async function createComment (req,res) {
   } catch (error){console.error(error)}
 }
 
+async function deleteTenant (req,res){
+  try {
+    const db = req.app.get('db');
+    const deletedTenant = await db.deleteTenant([req.params.tenantId])
+    res.send('successfully deleted user')
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+async function deleteUnit (req,res) {
+  try {
+    const db = req.app.get('db');
+    const deletedUnit = await db.deleteUnit([req.params.unitId])
+    res.send('succesfully delete unit')
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 module.exports = {
   getTenants,
   getUnits,
@@ -136,5 +167,8 @@ module.exports = {
   createWorkOrder,
   completeWorkOrder,
   updateTenant,
-  createComment
+  createComment,
+  deleteTenant,
+  deleteWorkOrder,
+  deleteUnit
 };
