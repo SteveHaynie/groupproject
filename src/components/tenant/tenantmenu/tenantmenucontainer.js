@@ -24,7 +24,7 @@ class TenantMenuContainer extends Component {
 // menu should disappear after you click to a new link and page loads.
     render(){
         return (
-            <div className = "tenant-menu-container">
+            <div className = "menucontainer">
                 <TenantMenuButton handleClickTenantMenu={this.handleClickTenantMenu} />
                 <TenantMenu handleClickTenantMenu={this.handleClickTenantMenu}
                 menuVisibility={this.state.visible}/>

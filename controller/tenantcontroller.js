@@ -4,7 +4,7 @@
 async function getUnitAndWorkOrders (req,res){
     try {
         const db = req.app.get('db');
-        const unitInfo = await db.unitInfo([req.params.unitId])
+        const unitInfo = await db.unitInfo([req.params.tenantId])
         res.send(unitInfo, 200)
 
     } catch (error) {
@@ -12,6 +12,16 @@ async function getUnitAndWorkOrders (req,res){
     }
 }
 
+async function createWorkOrder (req,res){
+try {
+    const db = req.app.get('db');
+    const newWorkOrder = await db.createWorkOrder([req.body.unitId, req.body.description])
+    res.send('success', 200)
+
+} catch (error) {
+    console.error(error)
+}}
+
 module.exports ={
-    getUnitAndWorkOrders,
+    getUnitAndWorkOrders, createWorkOrder
 }

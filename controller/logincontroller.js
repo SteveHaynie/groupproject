@@ -34,10 +34,18 @@ try {
     
 }
 
+async function logoutUser (req,res){
+    try {
+        return req.session.destroy((err)=> res.send('successfully logged out'))
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 function sendSessionUser (req,res) {
     res.send(req.session.user)
 }
 
 module.exports = {
-    login, sendSessionUser, createNewTenant
+    login, sendSessionUser, createNewTenant, logoutUser
 };
