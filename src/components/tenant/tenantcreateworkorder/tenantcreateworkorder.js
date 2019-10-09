@@ -33,7 +33,7 @@ class TenantCreateWorkOrder extends React.Component {
 
         }
 
-        axios.post(`?`, body).then ( () => {
+        axios.post('/api/manager/workorder/new', body).then ( () => {
 
           this.setState ({
             
