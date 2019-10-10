@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const massive = require("massive");
 const path = require("path");
-const stripe = require("stripe")("sk_test_jDJo3eH5f1qhjyyDYq5hlFa500kTVojYWU");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // add process.env to make the above key secret.
 require("dotenv").config()
 

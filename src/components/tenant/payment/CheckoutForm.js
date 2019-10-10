@@ -17,29 +17,30 @@ class CheckoutForm extends Component {
             let stripeResponse = await this.props.stripe.createToken({ name: "Name"});
             let body = {
                 id: stripeResponse.token.id,
-                payment: this.props.partialPayment
+                payment: this.props.payment
             }    
             // console.log('BODY', body)
             let response = await axios.post('/charge', body)
-
-            if (response.ok) console.log("Purchase Complete!")
-            if (response.ok) this.setState({ complete: true})
+            console.log('RESPONSE', response)
+      
+            if (response.statusText === 'OK') console.log("Purchase Complete!");
+            if (response.statusText === 'OK') this.setState({ complete: true });
         } catch (error) {
           console.log('error', error);  
         }
     }
 
     render() {
-        // console.log(this.props.partialPayment)
+        console.log("PAYMENT!", this.props.payment);
         if (this.state.complete) return <h1>Rent Paid</h1>;
 
         return (
             <div className='checkout'>
                 <p>Pay Rent?</p>
                 <CardElement />
-                <button onClick={this.submit}>Pay Rent</button>
+                <button className="CardPurchaseButton" onClick={this.submit}>Pay Rent</button>
             </div>
-        )
+        );
     }
 }
 
