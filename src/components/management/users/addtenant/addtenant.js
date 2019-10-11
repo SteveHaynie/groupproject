@@ -47,7 +47,7 @@ class AddTenant extends React.Component {
           alert('fields cannot be blank')
       } else {
         await axios.post(`/api/manager/tenants/new`, body);
-        alert(`successfully added tenant to unit # ${this.props.unit_id}`);
+        alert(`successfully added tenant`);
         this.setState({
           firstName: "",
           lastName: "",
