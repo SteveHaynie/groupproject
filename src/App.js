@@ -110,7 +110,7 @@ class App extends React.Component {
                   }}
                 />
                 <Route
-                  path="/usermanagerview"
+                  path="/usermanagerview/:id"
                   render={props => {
                     if (this.props.user.administrator === true)
                       return (
