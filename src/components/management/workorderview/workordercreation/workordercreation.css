@@ -78,8 +78,8 @@
 
 .createcancelbutton:hover {
     background-color: rgb(203, 39, 20); /* Red */
-    transition: all 0.3s ease;
-    border: none;
+    
+   
 }
 
 @media only screen and (max-width: 425px) {
