@@ -113,6 +113,7 @@ select{
 }
 
 input:focus, textarea:focus {
+  
     border: 1px solid rgba(81, 203, 238, 1);
     outline-color: rgba(81, 203, 238, 1);
 }

@@ -17,7 +17,7 @@ height: 8%;
 margin: 10px;
 border: 1px solid black;
 border-radius: 10px;
-font-size: 2em;
+font-size: 1.8em;
 background: rgb(255, 255, 255);
 
 }
@@ -59,4 +59,11 @@ background: rgb(255, 255, 255);
     text-decoration: underline;
   }
 
-  
+  @media only screen and (max-width: 425px) {
+    #popout-menu.hide {
+      transform: translate3d(-200vw, 0, 0);
+    }
+    #popout-menu{
+      width: 90vw;
+    }
+  }

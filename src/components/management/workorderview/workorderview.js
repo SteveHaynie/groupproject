@@ -15,6 +15,22 @@ class WorkOrderView extends React.Component {
      this.props.workOrderView(response.data)
     });
   }
+  handleClick () {
+    this.props.history.push(`/managementworkordercreation/${this.props.user.id}`)
+    
+      }
+
+      handleDelete (workOrderId) {
+        axios.delete(`/api/manager/delete/workorder/${workOrderId}`).then(() => {
+          axios.get(`/api/manager/workorders/${this.props.user.id}`).then(response => {
+      
+            this.props.workOrderView(response.data)
+            
+           }).catch(console.error());
+          
+         }).catch(console.error());
+
+      }
 
 render () {
 
@@ -22,6 +38,7 @@ render () {
   
     return (
         <div className="managementworkordercontainer">
+          <button className="managementcreatenwob" onClick={() => {this.handleClick()}}>Create New Work Order</button>
         {this.props.workOrders.map((workOrder, index) => (
          <div className = "managementindividualWorkOrder" key={index}>
            <div className ="managementwodate">Date Submitted: {moment(workOrder.created_at).format("lll")}</div>
@@ -55,9 +72,9 @@ render () {
                 </button>
 
                 <button
-                  className="managementwonavbarbutton"
+                  className="managementwonavbardeletebutton"
                   onClick={() => {
-                    
+                    this.handleDelete(workOrder.id)
                   }}
                 >
                   Delete
