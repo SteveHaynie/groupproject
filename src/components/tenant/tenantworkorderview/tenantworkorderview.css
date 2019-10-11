@@ -130,6 +130,7 @@
 
     .tenantindividualWorkOrder {
       width: 85%;
+      height: 190px;
     }
     .tenantindividualWorkOrder {
       width: 85%;
@@ -151,5 +152,10 @@
       width: auto;
       height: 45px;
       margin: 5px;
+    }
+    .tenantcreatenwob {
+     
+      font-size: 1em;
+     
     }
   }
