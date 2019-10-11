@@ -11,7 +11,7 @@ class AddTenant extends React.Component {
       lastName: "",
       email: "",
       password: "",
-      unit_id: ""
+      unit_id: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -35,7 +35,8 @@ class AddTenant extends React.Component {
         last_name: this.state.lastName,
         email: this.state.email,
         password: this.state.password,
-        unit_id: this.state.unit_id
+        unit_id: this.state.unit_id,
+        subject: `Login credentials for ${this.state.firstName} ${this.state.lastName}.`
       };
       if (
          !body.first_name &&
@@ -46,8 +47,10 @@ class AddTenant extends React.Component {
       ) {
           alert('fields cannot be blank')
       } else {
-        await axios.post(`/api/manager/tenants/new`, body);
-        alert(`successfully added tenant`);
+        await axios.post(`/api/manager/tenants/new`, body)
+        alert(`successfully added tenant`)
+
+        await axios.post(`/api/email/1`, body)
         this.setState({
           firstName: "",
           lastName: "",

@@ -32,7 +32,7 @@ class CreateNewWorkOrder extends React.Component {
 
       handleSubmit () {
         const body = {
-          unit_number:  this.state.unit_number,
+          unit_id:  this.state.unit_id,
           description: this.state.description,
 
         }

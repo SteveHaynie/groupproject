@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const massive = require("massive");
 const path = require("path");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+// add process.env to make the above key secret.
 require("dotenv").config()
 
 const logincontroller = require('./controller/logincontroller')
@@ -81,7 +83,24 @@ app.post('/api/manager/comments/new', managercontroller.createComment)
 //email section
 app.post('/api/email/:tenantId', messagecontroller.sendMail)
 
-
+//charge - credit card
+app.post("/charge", async (req, res) => {
+  try {
+    payment = req.body.payment * 100;
+    console.log("payment", req.body.payment);
+    let { status } = await stripe.charges.create({
+      amount: parseInt(payment),
+      currency: "usd",
+      description: "An example charge",
+      source: req.body.id
+    });
+    // insert into DB payment history, can do in main app.
+    res.json({ status });
+  } catch (err) {
+    console.log(err);
+    res.status(500).end();
+  }
+});
 
 
 app.listen(process.env.PORT || 8080, () => {
