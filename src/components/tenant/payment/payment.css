@@ -1,10 +1,17 @@
+.Checkout {
+    padding-left: 40px;
+}
 
   .CreditCardPayment {
     background: lightsalmon;
+    padding-left: 100px;
+    padding-top: 15px;
+
   }
   
-  .checkout {
+  .Checkout {
     background: lightblue;
+    margin: 15px;
   }
   
   .Payment input {
@@ -15,7 +22,7 @@
   
   .CardPurchaseButton {
     border-radius: 4px;
-    
+    margin: 15px;
   }
   
   .FullPaymentCheckBox {
