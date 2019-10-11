@@ -1,49 +1,65 @@
-import React from 'react'
-import './menu.css'
-import { Link, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux';
-import axios from 'axios';
+import React from "react";
+import "./menu.css";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import axios from "axios";
 import { updateUser } from "../../redux/actions.js";
 
+class Menu extends React.Component {
+  async handleLogout() {
+    await axios.get("/api/logout").then(response => {
+      if (response.data === "successfully logged out") {
+        this.props.updateUser({});
+        this.props.history.push("/login");
+      }
+    });
+  }
 
-class Menu extends React.Component{
-   
+  render() {
+    var visibility = "hide";
 
-    async handleLogout(){
-       
-        await axios.get('/api/logout').then((response) => {
-           if(response.data === 'successfully logged out') { 
-               this.props.updateUser({})
-            this.props.history.push('/login')}
-
-
-        })
-       
-       
+    if (this.props.menuVisibility) {
+      visibility = "show";
     }
 
-    render(){
-        var visibility = "hide"
+    return (
+      <div id="popout-menu" className={visibility}>
+        <button
+          className="menubutton"
+          onClick={() => this.props.history.push("/unitcreation")}
+        >
+          Create New Unit
+        </button>
+        <button
+          className="menubutton"
+          onClick={() =>
+            this.props.history.push(`/users/${this.props.user.id}`)
+          }
+        >
+          Users
+        </button>
+        <button
+          className="menubutton"
+          onClick={() => this.props.history.push("/workorderview")}
+        >
+          Work Orders
+        </button>
 
-        if(this.props.menuVisibility){
-            visibility = "show"
-        }
-
-        return (
-            <div id="popout-menu" className={visibility}>
-            <Link to='/unitcreation'>Create new unit</Link>
-           <Link to={`/users/${this.props.user.id}`}>View users</Link>
-           <Link to='/workorderview'>View work orders</Link>
-           <button onClick={() => this.handleLogout()}>Sign out</button>
-            </div>
-        )
-    }
+        <button className="menubutton" onClick={() => this.handleLogout()}>
+          Sign out
+        </button>
+      </div>
+    );
+  }
 }
 
 // handleClickMenu={this.props.handleClickMenu}
 
-const mapStateToProps = (state) => {
-    return {user: state.user}
-}
+const mapStateToProps = state => {
+  return { user: state.user };
+};
 
-export default connect(mapStateToProps, { updateUser }) (withRouter(Menu))
+export default connect(
+  mapStateToProps,
+  { updateUser }
+)(withRouter(Menu));

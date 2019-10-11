@@ -49,7 +49,7 @@ class App extends React.Component {
                 if (Object.keys(this.props.user).length === 0)
                   return (
                     <div className="login-wrapper">
-                      <MenuContainer />
+                      
                       <Login {...props} />
                     </div>
                   );
@@ -110,7 +110,7 @@ class App extends React.Component {
                   }}
                 />
                 <Route
-                  path="/usermanagerview"
+                  path="/usermanagerview/:id"
                   render={props => {
                     if (this.props.user.administrator === true)
                       return (
