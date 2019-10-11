@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { updateTenants } from "../../../../redux/actions.js";
+import { updateTenants} from "../../../../redux/actions.js";
+import { updateUnits } from '../../../../redux/actions.js'
 import { connect } from "react-redux";
 
 class UserManagerView extends React.Component {
@@ -11,14 +12,17 @@ class UserManagerView extends React.Component {
       last_name: "",
       email: "",
       unit_number: "",
-      unit_id: ""
+      unit_id: "",
+      listOfUnits: '' 
     };
     this.getTenant = this.getTenant.bind(this);
     this.modifyTenant = this.modifyTenant.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
   componentDidMount() {
+    console.log( 'here',this.props.units)
     if (this.props.tenants.length) {
       this.getTenant(this.props.tenants);
     } else {
@@ -29,13 +33,17 @@ class UserManagerView extends React.Component {
           this.getTenant(response.data);
         });
     }
+    axios
+    .get(`/api/manager/units/${parseInt(this.props.match.params.id)}`)
+    .then(response => {
+      this.props.updateUnits(response.data)
+    })
   }
 
   getTenant(tenant) {
     const singleTenant = tenant.find(
       e => e.id === parseInt(this.props.match.params.id)
     );
-    console.log("this one", singleTenant);
 
     this.setState({
       first_name: singleTenant.first_name,
@@ -95,10 +103,23 @@ class UserManagerView extends React.Component {
           </button>
         </div>
         <div className="one-tenant">
-          {this.state.unit_number}
+        <select
+          className="form-input"
+          value={this.state.listOfUnits}
+          onChange={this.handleChange}
+          name="listOfUnits"
+        >
+          <option value="">Select Unit Number</option>
+          {this.props.units.map((unit, index) => (
+            <option key={index} value={unit.id}>
+              {unit.listOfUnits}
+            </option>
+          ))}
+        </select>
+          {/* {this.state.unit_number}
           <button name="unit_number" onClick={this.modifyTenant}>
             ...
-          </button>
+          </button> */}
         </div>
         <button onClick={this.handleSubmit}>Send it</button>
         <button>reset password</button>
@@ -108,10 +129,10 @@ class UserManagerView extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { tenants: state.tenants, user: state.user };
+  return { tenants: state.tenants, user: state.user, units: state.units };
 };
 
 export default connect(
   mapStateToProps,
-  { updateTenants }
+  { updateTenants, updateUnits }
 )(UserManagerView);
