@@ -11,7 +11,7 @@ class AddTenant extends React.Component {
       lastName: "",
       email: "",
       password: "",
-      unit_id: ""
+      unit_id: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -36,7 +36,7 @@ class AddTenant extends React.Component {
         email: this.state.email,
         password: this.state.password,
         unit_id: this.state.unit_id,
-        subject: `Login credentials for ${this.state.first_name}' '${this.state.last_name}.`
+        subject: `Login credentials for ${this.state.firstName} ${this.state.lastName}.`
       };
       if (
          !body.first_name &&

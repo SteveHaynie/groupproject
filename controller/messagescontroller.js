@@ -17,7 +17,7 @@ async function sendMail(req, res) {
       let info = await transporter.sendMail({
         to: req.body.email,
         subject: req.body.subject,
-        text: `Here is your stuff ${req.body.email} and pass is ${req.body.password}`,
+        text: `Here is your stuff ${req.body.email} and pass is ${req.body.password}. You can log in here - ZAC DON'T FORGET THIS`,
       });
     
       res.send('success');
