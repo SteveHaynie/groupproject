@@ -18,10 +18,10 @@ class TenantPayment extends Component {
   componentDidMount() {
     document.title = "Pay Rent";
     // call to the server to get the full rent amount.
-    // axios
-    //   .get("/full_payment")
-    //   .then(response => this.setState({ fullPayment: response.data }))
-    //   .catch(error => console.error(error));
+    axios
+      .get("/full_payment")
+      .then(response => this.setState({ fullPayment: response.data }))
+      .catch(error => console.error(error));
   }
 
   handleCheckClick = () => {
