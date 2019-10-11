@@ -162,6 +162,8 @@ async function deleteUnit (req,res) {
   }
 }
 
+
+
 module.exports = {
   getTenants,
   getUnits,
