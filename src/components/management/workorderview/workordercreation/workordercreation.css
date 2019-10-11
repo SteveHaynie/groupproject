@@ -9,7 +9,7 @@
     justify-content: flex-start;
     overflow: scroll;
     box-shadow: 7px 7px 13px #000000d2;
-    padding-top: 10px;
+    padding-top: 65px;
  
     position: absolute;
     z-index: 1;
@@ -24,7 +24,9 @@
 .createnewselect {
     justify-content: center;
     font-size: 1.25em;
-
+    color: black;
+    font-weight: normal;
+    width: 35%;
     
 }
 
@@ -83,5 +85,17 @@
 @media only screen and (max-width: 425px) {
     .createcontainer {
         height: 400px;
+    }
+
+    .createnewselect {
+        justify-content: center;
+        font-size: .75em;
+        width: 90%;
+        background: white;
+    }
+    .createnewinput {
+         
+        font-size: 1em;
+    
     }
 }
