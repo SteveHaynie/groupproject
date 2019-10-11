@@ -13,11 +13,13 @@ class UserManagerView extends React.Component {
       email: "",
       unit_number: "",
       unit_id: "",
-      listOfUnits: '' 
+      listOfUnits: ""
+
     };
     this.getTenant = this.getTenant.bind(this);
     this.modifyTenant = this.modifyTenant.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
 
@@ -34,7 +36,7 @@ class UserManagerView extends React.Component {
         });
     }
     axios
-    .get(`/api/manager/units/${parseInt(this.props.match.params.id)}`)
+    .get(`/api/manager/units/${parseInt(this.props.user.id)}`)
     .then(response => {
       this.props.updateUnits(response.data)
     })
@@ -65,16 +67,21 @@ class UserManagerView extends React.Component {
     }
   }
 
-  handleSubmit() {
+   handleSubmit = async () => {
     const body = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       email: this.state.email,
       unit_id: this.state.unit_id
     };
-
-    axios.put(`/api/manager/modify/tenant/${parseInt(this.props.match.params.id)}`, body)
-    .catch( console.error)
+try {
+  await
+  axios.put(`/api/manager/modify/tenant/${parseInt(this.props.match.params.id)}`, body)
+  alert('success')
+  this.props.history.push(`/users/${this.props.user.id}`)
+} catch (error) {
+  console.error(error)
+}
   }
 
   handleChange(event) {
@@ -105,14 +112,14 @@ class UserManagerView extends React.Component {
         <div className="one-tenant">
         <select
           className="form-input"
-          value={this.state.listOfUnits}
+          value={this.state.unit_id}
           onChange={this.handleChange}
-          name="listOfUnits"
+          name="unit_id"
         >
           <option value="">Select Unit Number</option>
           {this.props.units.map((unit, index) => (
             <option key={index} value={unit.id}>
-              {unit.listOfUnits}
+              {unit.unit_number}
             </option>
           ))}
         </select>
@@ -121,8 +128,7 @@ class UserManagerView extends React.Component {
             ...
           </button> */}
         </div>
-        <button onClick={this.handleSubmit}>Send it</button>
-        <button>reset password</button>
+        <button onClick={this.handleSubmit}>Submit Changes</button>
       </div>
     );
   }
