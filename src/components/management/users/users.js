@@ -27,7 +27,6 @@ class Users extends React.Component {
           <div className="one-tenant">{tenant.last_name}</div>
           <div className="one-tenant">{tenant.email}</div>
           <div className="one-tenant">{tenant.unit_number}</div>
-          <button>reset password</button>
         </div>
       );
     });
