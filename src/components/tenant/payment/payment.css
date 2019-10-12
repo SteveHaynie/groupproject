@@ -1,16 +1,77 @@
+.backgroundpayment {
 
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  box-shadow: 7px 7px 13px #000000d2;
+  padding-top: 10px;
+
+  position:absolute;
+     z-index: 1;
+
+}
   .CreditCardPayment {
-    background: lightsalmon;
+    height: 300px;
+    width: 50%;
+    background: rgba(143, 184, 218, 0.747);
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 15px;
+    box-shadow: 2px 2px 15px #414141;
   }
+
+  
+  .FullPaymentInputContainer{
+   margin-top: 10px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+  }
+  .paymentamount{
+    font-size: 2em;
+    margin: 10px;
+
+  }
+ 
+
+  
   
   .checkout {
-    background: lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+  .checkout p{
+    margin: 10px;
+  }
+  .checkout button{
+    margin: 10px;
+  }
+  .PartialPaymentInputContainer{
+    margin: 10px;
   }
   
   .Payment input {
     border: 1px solid transparent;
     border-radius: 4px;
     background-color: white;
+  }
+  .custompaymentinput{
+    width: 150px;
+    height: 20px;
+    border-radius: 5px;
   }
   
   .CardPurchaseButton {

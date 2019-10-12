@@ -1,6 +1,6 @@
 import React from "react";
 import "./menu.css";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import { updateUser } from "../../redux/actions.js";

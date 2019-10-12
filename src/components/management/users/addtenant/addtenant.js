@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { withRouter } from 'react-router-dom';
 import { updateUnits } from "../../../../redux/actions.js";
 import { connect } from "react-redux";
 class AddTenant extends React.Component {
@@ -58,6 +59,7 @@ class AddTenant extends React.Component {
           password: "",
           unit_id: ""
         });
+        this.props.history.push(`/users/${this.props.user.id}`)
       }
     } catch (error) {
       console.error("error", error);
@@ -136,4 +138,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { updateUnits }
-)(AddTenant);
+)(withRouter(AddTenant));
