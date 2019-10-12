@@ -22,6 +22,15 @@ try {
     console.error(error)
 }}
 
+async function getUnitRent (req,res){
+    try {
+        const db = req.app.get('db');
+        const unitRent = await db.getUnitRent([req.params.tenantId])
+        res.send(unitRent, 200)
+    } catch (error) {
+        console.error(error)
+    }
+}
 module.exports ={
-    getUnitAndWorkOrders, createWorkOrder
+    getUnitAndWorkOrders, createWorkOrder, getUnitRent
 }
