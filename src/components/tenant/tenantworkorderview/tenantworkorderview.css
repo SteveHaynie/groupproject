@@ -71,6 +71,7 @@
     font-size: 2em;
     height: 190px;
     width: 75%;
+    padding: 10px;
     border: 1px solid black;
     overflow: scroll;
     margin: 10px;

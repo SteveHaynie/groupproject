@@ -31,7 +31,7 @@ class CheckoutForm extends Component {
     }
 
     render() {
-        console.log("PAYMENT!", this.props.payment);
+       
         if (this.state.complete) return <h1>Rent Paid</h1>;
 
         return (

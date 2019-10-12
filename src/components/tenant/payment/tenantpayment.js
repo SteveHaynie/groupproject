@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
+import "./payment.css";
 
 class TenantPayment extends Component {
   constructor() {
@@ -30,39 +31,46 @@ class TenantPayment extends Component {
   render() {
     return (
       <StripeProvider apiKey="REACT_APP_PUBLISHABLE_KEY">
-        <div className="CreditCardPayment">
-          <h1>Payment:</h1>
-          <div className="Payment">
+        <div className="backgroundpayment">
+          <div className="CreditCardPayment">
+            <h1>Make a Payment</h1>
+
             <div className="FullPaymentInputContainer">
-              Full Rent due: ${this.state.fullPayment}{" "}
-              <input
-                type="checkbox"
-                checked={this.state.checked}
-                onChange={this.handleCheckClick}
-                className="FullPaymentCheckBox"
-              />
-            </div>
-            <div className="PartialPaymentInputContainer">
-              Rent:{" "}
-              {!this.state.checked ? (
+              Amount Due:
+              <div className="paymentamount">${this.state.fullPayment} </div>
+              
+                Pay in Full:
                 <input
+                  type="checkbox"
+                  checked={this.state.checked}
+                  onChange={this.handleCheckClick}
+                  className="FullPaymentCheckBox"
+                />
+              
+            </div>
+            {!this.state.checked ? (
+              <div className="PartialPaymentInputContainer">
+                Other Payment Amount:{" "}
+                <input
+                className="custompaymentinput"
                   value={this.state.partialPayment}
                   onChange={event =>
                     this.setState({ partialPayment: event.target.value })
                   }
                 />
-              ) : null}
-            </div>
+              </div>
+            ) : null}
+
+            <Elements>
+              <CheckoutForm
+                partialPayment={
+                  this.state.checked
+                    ? this.state.fullPayment
+                    : this.state.partialPayment
+                }
+              />
+            </Elements>
           </div>
-          <Elements>
-            <CheckoutForm
-              partialPayment={
-                this.state.checked
-                  ? this.state.fullPayment
-                  : this.state.partialPayment
-              }
-            />
-          </Elements>
         </div>
       </StripeProvider>
     );
