@@ -17,7 +17,7 @@
 
 }
   .CreditCardPayment {
-    height: 300px;
+    height: auto;
     width: 50%;
     background: rgba(143, 184, 218, 0.747);
     border: 2px solid black;
