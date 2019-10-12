@@ -10,7 +10,7 @@
 }
 
 .one-tenant {
-    height: 300px;
+    height: 130px;
     width: 80%;
     background: rgba(143, 184, 218, 0.747);
     border: 2px solid black;
@@ -23,4 +23,64 @@
     justify-content: space-evenly;
     border-radius: 25px;
     box-shadow: 2px 2px 15px #414141;
+}
+
+.first_name {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.first_name:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.last_name {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.last_name:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.email {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.email:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.submitCB {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.submitCB:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none; 
 }

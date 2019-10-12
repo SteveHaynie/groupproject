@@ -81,6 +81,8 @@ select{
   }
 
 .Bedrooms {
+    outline: none;
+
 }
 
 .Bathrooms {
@@ -88,6 +90,7 @@ select{
 }
 
 .SqFoot {
+    outline: none;
 }
 
 .SqFoot input {
@@ -144,6 +147,7 @@ input:focus, textarea:focus {
     font-size: 1.5em;
     background: white; 
 }
+
 .SaveUnitButton:hover {
     background-color: rgb(60, 175, 64); /* Green */
     transition: all 0.3s ease;

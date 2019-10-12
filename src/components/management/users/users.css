@@ -13,7 +13,7 @@
 }
 
 .tenant-container {
-    height: 200px;
+    height: 400px;
     width: 800px;
     background: rgba(143, 184, 218, 0.747);
     border: 2px solid black;
@@ -25,6 +25,12 @@
     justify-content: space-evenly;
     border-radius: 25px;
     box-shadow: 2px 2px 15px #414141;
+}
+
+.one-tenant {
+    font-size: 32px;
+    width: 95%;
+    height: 95%;
 }
 
 .reset-password-button {
