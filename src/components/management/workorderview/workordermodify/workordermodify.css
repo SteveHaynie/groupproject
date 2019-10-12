@@ -30,7 +30,6 @@
 .modifyheader {
     font-family: arial black, cursive, sans-serif;
     font-size: 28px;
-    font-family: arial black, cursive, sans-serif;
     font-weight: bold;
     padding-bottom: 15px;
 }
@@ -47,12 +46,12 @@
 }
 
 .modifysubmitbutton {
-    width: 70%;
+   width: 70%;
     height: 45px;
     margin: 5px;
     border-radius: 15px;
     font-size: 1.5em;
-    background: white;
+    background: white; 
 }
 
 .modifysubmitbutton:hover {
@@ -71,7 +70,7 @@
 }
 
 .modifycancelbutton:hover {
-    background-color: rgb(179, 47, 24); /* Green */
+    background-color: rgb(179, 47, 24); /* Red */
     transition: all 0.3s ease;
     border: none;
 }
