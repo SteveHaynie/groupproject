@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 const app = require("express")();
 const session = require("express-session");
@@ -7,8 +8,6 @@ const massive = require("massive");
 const path = require("path");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // add process.env to make the above key secret.
-require("dotenv").config()
-
 const logincontroller = require('./controller/logincontroller')
 const managercontroller = require('./controller/managercontroller')
 const tenantcontroller = require('./controller/tenantcontroller')

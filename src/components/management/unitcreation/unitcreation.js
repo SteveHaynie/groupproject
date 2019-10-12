@@ -26,7 +26,6 @@ class UnitCreation extends React.Component {
   componentDidMount() {
     document.title = "Unit Creation";
   }
- 
 
   async inputUnit() {
     try {
@@ -56,9 +55,7 @@ class UnitCreation extends React.Component {
         });
         console.log(body);
       } else {
-        alert(
-          "One or more required fields is missing."
-        );
+        alert("One or more required fields is missing.");
       }
     } catch (error) {
       console.error("error", error);
@@ -94,7 +91,7 @@ class UnitCreation extends React.Component {
             Unit Description:
             <div className="Type">
               {" "}
-              Type:
+              Type: {" "}
               {/* thinking of adding functionality to be able to add the type
               of unit here.  Would need a small database if we did that
               though, might not be worth the extra effort.  If you do so
@@ -116,11 +113,12 @@ class UnitCreation extends React.Component {
                 <option value="Shed">Shed</option>
                 <option value="N.F. Shelter">Nuclear Fall Out Shelter</option>
                 <option value="Other">Other</option>
-              </select> *
+              </select>{" "}
+              *
             </div>
             <div className="Bedrooms">
               {" "}
-              Bedrooms:
+              Bedrooms:{" "}
               <select
                 value={this.state.unitBedrooms}
                 onChange={event =>
@@ -135,7 +133,7 @@ class UnitCreation extends React.Component {
               </select>
             </div>
             <div className="Bathrooms">
-              Bathrooms:
+              Bathrooms: {" "}
               <select
                 value={this.state.unitBathrooms}
                 onChange={event =>
@@ -148,7 +146,7 @@ class UnitCreation extends React.Component {
               </select>
             </div>
             <div className="SqFoot">
-              Sq Footage:
+              Sq Footage: {" "}
               <input
                 value={this.state.unitSqFootage}
                 onChange={event =>
@@ -158,7 +156,7 @@ class UnitCreation extends React.Component {
             </div>
             <div className="AnimalAllowance">
               {" "}
-              Animals Allowed:
+              Animals Allowed: {" "}
               <select
                 value={this.state.AnimalAllowance}
                 onChange={event =>
@@ -183,7 +181,7 @@ class UnitCreation extends React.Component {
               />
             </div>
             <div className="MonthlyRent">
-              Monthly Rent Due:
+              Monthly Rent Due: {" "}
               <input
                 value={this.state.unitRent}
                 onChange={event =>

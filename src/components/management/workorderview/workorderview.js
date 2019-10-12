@@ -6,10 +6,13 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 class WorkOrderView extends React.Component {
+<<<<<<< HEAD
   state = {
     render: false
   };
 
+=======
+>>>>>>> master
   componentDidMount() {
     axios
       .get(`/api/manager/workorders/${this.props.user.id}`)
@@ -23,7 +26,7 @@ class WorkOrderView extends React.Component {
     );
   }
 
-  handleDelete = workOrderId => {
+  handleDelete(workOrderId) {
     axios
       .delete(`/api/manager/delete/workorder/${workOrderId}`)
       .then(() => {
@@ -31,14 +34,11 @@ class WorkOrderView extends React.Component {
           .get(`/api/manager/workorders/${this.props.user.id}`)
           .then(response => {
             this.props.workOrderView(response.data);
-            console.log("first", this.state);
-            this.setState({ render: true });
-            console.log("second", this.state);
           })
           .catch(console.error());
       })
       .catch(console.error());
-  };
+  }
 
   render() {
     return (
