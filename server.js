@@ -83,7 +83,7 @@ app.post('/api/manager/comments/new', managercontroller.createComment)
 app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
 
 //email section
-app.post('/api/email/:tenantId', messagecontroller.sendMail)
+app.post('/api/email', messagecontroller.sendMail)
 
 //charge - credit card
 app.post("/charge", async (req, res) => {
