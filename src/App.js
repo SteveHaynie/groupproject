@@ -27,6 +27,8 @@ import WorkOrderCreation from "./components/management/workorderview/workordercr
 import WorkOrderComplete from "./components/management/workorderview/completeworkorder/completeworkorder.js";
 import DocumentUpload from "./components/management/users/documentupload/documentupload.js";
 import UserManagerView from "./components/management/users/usermanagerview/usermanagerview";
+// import ResetCredentials from './components/resetcredentials/resetcredentials'
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -56,6 +58,20 @@ class App extends React.Component {
                  
               }}
             />
+            
+            {/* <Route
+              path="/reset_credentials"
+              render={props => {
+                if (Object.keys(this.props.user).length === 0)
+                  return (
+                    <div className="login-wrapper">
+                      
+                      <ResetCredentials {...props} />
+                    </div>
+                  );
+                 
+              }}
+            /> */}
             {this.props.user.id ? (
               <React.Fragment>
                 <Route
