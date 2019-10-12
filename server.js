@@ -79,9 +79,11 @@ app.post('/api/manager/units/new/:managerId', managercontroller.createNewUnit)
 app.delete('/api/manager/delete/unit/:unitId', managercontroller.deleteUnit)
 // create comment
 app.post('/api/manager/comments/new', managercontroller.createComment)
+// get rent
+app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
 
 //email section
-app.post('/api/email/:tenantId', messagecontroller.sendMail)
+app.post('/api/email', messagecontroller.sendMail)
 
 //charge - credit card
 app.post("/charge", async (req, res) => {

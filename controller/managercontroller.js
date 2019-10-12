@@ -90,6 +90,7 @@ async function deleteWorkOrder (req,res){
   try {
     const db = req.app.get("db");
     const deleteWorkOrder = await db.deleteWorkOrder([req.params.workOrderId]);
+    const workOrders = await db.getWorkOrdersManager([])
     res.send('succesfully delete work order')
   } catch (error) {
     console.error(error)
@@ -160,6 +161,8 @@ async function deleteUnit (req,res) {
     console.error(error)
   }
 }
+
+
 
 module.exports = {
   getTenants,
