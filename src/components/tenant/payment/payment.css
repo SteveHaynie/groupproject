@@ -1,4 +1,4 @@
-.backgroundpayment {
+.BackgroundPayment {
 
   width: 100%;
   height: 100%;
@@ -38,7 +38,7 @@
    flex-direction: column;
    align-items: center;
   }
-  .paymentamount{
+  .PaymentAmount{
     font-size: 2em;
     margin: 10px;
 
@@ -47,16 +47,16 @@
 
   
   
-  .checkout {
+  .Checkout {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
   }
-  .checkout p{
+  .Checkout p{
     margin: 10px;
   }
-  .checkout button{
+  .Checkout button{
     margin: 10px;
   }
   .PartialPaymentInputContainer{
@@ -68,7 +68,7 @@
     border-radius: 4px;
     background-color: white;
   }
-  .custompaymentinput{
+  .CustomPaymentInput{
     width: 150px;
     height: 20px;
     border-radius: 5px;
@@ -76,7 +76,7 @@
   
   .CardPurchaseButton {
     border-radius: 4px;
-    
+    margin: 15px;
   }
   
   .FullPaymentCheckBox {
