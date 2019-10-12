@@ -22,12 +22,12 @@ class Users extends React.Component {
     const tenants = this.props.tenants.map((tenant, index) => {
       return (
         <div className="tenant-container" key={index}>
-        <Link to={`/usermanagerview/${tenant.id}`}>...</Link>
+        <button className="user-button" onClick={()=> {this.props.history.push(`/usermanagerview/${tenant.id}`)}}>Update</button>
           <div className="one-tenant">{tenant.first_name}</div>
           <div className="one-tenant">{tenant.last_name}</div>
           <div className="one-tenant">{tenant.email}</div>
           <div className="one-tenant">{tenant.unit_number}</div>
-          <button>reset password</button>
+          <button className="reset-password-button">Reset Password</button>
         </div>
       );
     });

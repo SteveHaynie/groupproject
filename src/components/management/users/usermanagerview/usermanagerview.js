@@ -3,6 +3,7 @@ import axios from "axios";
 import { updateTenants} from "../../../../redux/actions.js";
 import { updateUnits } from '../../../../redux/actions.js'
 import { connect } from "react-redux";
+import "./usermanagerview.css";
 
 class UserManagerView extends React.Component {
   constructor(props) {
@@ -83,7 +84,7 @@ class UserManagerView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="user-manager-view-box">
         <div className="one-tenant">
           {this.state.first_name}
           <button name="first_name" onClick={this.modifyTenant}>

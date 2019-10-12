@@ -45,12 +45,12 @@
 }
 
 .modifysubmitbutton {
-    width: 70%;
+   width: 70%;
     height: 45px;
     margin: 5px;
     border-radius: 15px;
     font-size: 1.5em;
-    background: white;
+    background: white; 
 }
 
 .modifysubmitbutton:hover {
@@ -69,7 +69,7 @@
 }
 
 .modifycancelbutton:hover {
-    background-color: rgb(179, 47, 24); /* Green */
+    background-color: rgb(179, 47, 24); /* Red */
     transition: all 0.3s ease;
     border: none;
 }
