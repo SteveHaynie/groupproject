@@ -27,6 +27,26 @@ async function sendMail(req, res) {
 }
 
 
-module.exports = {
-    sendMail
+
+async function resetCredentials(req, res) {
+  try {
+    const db = req.app.get('db')
+    const emailList = await db.resetCredentials([req.params.id])
+    res.send(emailList)
+  } catch (error) {
+    console.error(error)
+  }
+  resetCredentials.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+  
 }
+
+
+
+module.exports = {
+    sendMail,
+  resetCredentials
+  }
