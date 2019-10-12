@@ -32,7 +32,7 @@ class TenantPayment extends Component {
   };
 
   render() {
-    // console.log('STATE',this.state.payment)
+  
     return (
       <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
         <div className="BackgroundPayment">
