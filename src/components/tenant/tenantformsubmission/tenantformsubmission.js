@@ -1,11 +1,22 @@
 import React from "react";
+import "./tenantformsubmission.css";
 
 class TenantFormSubmission extends React.Component {
   render() {
-    return( <div>
-        Form Submission
-    </div>
-    )
+    return (
+      <div className="formsubmissioncontainer">
+        <div className="formsubmissionbox">
+          <h1>Form Submit</h1>
+
+
+
+
+
+
+
+        </div>
+      </div>
+    );
   }
 }
 
