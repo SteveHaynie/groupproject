@@ -28,19 +28,20 @@ class TenantPayment extends Component {
 
   handleCheckClick = () => {
     this.setState({ checked: !this.state.checked });
+   
   };
 
   render() {
-    console.log('STATE',this.state.fullPayment)
+    // console.log('STATE',this.state.payment)
     return (
       <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
-        <div className="backgroundpayment">
+        <div className="BackgroundPayment">
           <div className="CreditCardPayment">
             <h1>Make a Payment</h1>
 
             <div className="FullPaymentInputContainer">
               Amount Due:
-              <div className="paymentamount">${this.state.fullPayment} </div>
+              <div className="PaymentAmount">${this.state.fullPayment} </div>
               
                 Pay in Full:
                 <input
@@ -53,9 +54,9 @@ class TenantPayment extends Component {
             </div>
             {!this.state.checked ? (
               <div className="PartialPaymentInputContainer">
-                Other Payment Amount:{" "}
+                Other Payment Amount: ${" "}
                 <input
-                className="custompaymentinput"
+                className="CustomPaymentInput"
                   value={this.state.partialPayment}
                   onChange={event =>
                     this.setState({ partialPayment: event.target.value })
@@ -66,7 +67,7 @@ class TenantPayment extends Component {
 
             <Elements>
               <CheckoutForm
-                partialPayment={
+                payment={
                   this.state.checked
                     ? this.state.fullPayment
                     : this.state.partialPayment
