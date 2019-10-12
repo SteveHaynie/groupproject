@@ -11,6 +11,7 @@ class CheckoutForm extends Component {
             complete: false
         }
         this.submit = this.submit.bind(this);
+        this.confirm = this.confirm.bind(this);
     }
 
     async submit(ev) {
@@ -20,6 +21,7 @@ class CheckoutForm extends Component {
                 id: stripeResponse.token.id,
                 payment: this.props.payment
             }    
+            this.confirm(body);
         } catch (error) {
           console.log('error', error);  
         }
@@ -39,7 +41,7 @@ class CheckoutForm extends Component {
     }
 
     render() {
-        console.log("PAYMENT!", this.props.payment);
+        // console.log("PAYMENT!", this.props.payment);
         if (this.state.complete) return <h1>Rent Paid</h1>;
 
         return (

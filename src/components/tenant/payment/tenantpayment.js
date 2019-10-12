@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Elements, StripeProvider } from "react-stripe-elements";
+import { connect } from 'react-redux';
+import axios from "axios";
 import CheckoutForm from "./CheckoutForm";
 import "./payment.css";
 
@@ -9,7 +11,7 @@ class TenantPayment extends Component {
 
     this.state = {
       partialPayment: "",
-      fullPayment: 50,
+      fullPayment: "",
       checked: true,
       payment: ""
     };
@@ -19,8 +21,8 @@ class TenantPayment extends Component {
     document.title = "Pay Rent";
     // call to the server to get the full rent amount.
     axios
-      .get("/full_payment")
-      .then(response => this.setState({ fullPayment: response.data }))
+      .get(`/api/tenant/unit/rent/${this.props.user.id}`)
+      .then(response => this.setState({ fullPayment: response.data[0].unit_rent }))
       .catch(error => console.error(error));
   }
 
@@ -29,8 +31,9 @@ class TenantPayment extends Component {
   };
 
   render() {
+    console.log('STATE',this.state.fullPayment)
     return (
-      <StripeProvider apiKey="REACT_APP_PUBLISHABLE_KEY">
+      <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
         <div className="CreditCardPayment">
           <h1>Payment:</h1>
           <div className="Payment">
@@ -70,4 +73,10 @@ class TenantPayment extends Component {
   }
 }
 
-export default TenantPayment;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {}) (TenantPayment);
