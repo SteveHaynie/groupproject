@@ -29,7 +29,7 @@ class CheckoutForm extends Component {
 
     async confirm(body) {
         const confirmPayment = window.confirm(`Please Confirm Payment Amount: $${body.payment}`);
-        if (confirmPayment === true) {
+        if (confirmPayment === true  && body.payment > 0) {
             let response = await axios.post('/charge', body)
             console.log('RESPONSE', response)
       
