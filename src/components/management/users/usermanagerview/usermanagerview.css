@@ -1,0 +1,86 @@
+.user-manager-view-box {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36));
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.one-tenant {
+    height: 130px;
+    width: 80%;
+    background: rgba(143, 184, 218, 0.747);
+    border: 2px solid black;
+    margin: 10px;
+    overflow: scroll;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 25px;
+    box-shadow: 2px 2px 15px #414141;
+}
+
+.first_name {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.first_name:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.last_name {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.last_name:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.email {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.email:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.submitCB {
+    width: 25%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: initial;
+    background: white; 
+}
+
+.submitCB:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none; 
+}

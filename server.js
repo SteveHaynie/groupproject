@@ -12,6 +12,7 @@ const logincontroller = require('./controller/logincontroller')
 const managercontroller = require('./controller/managercontroller')
 const tenantcontroller = require('./controller/tenantcontroller')
 const messagecontroller = require('./controller/messagescontroller')
+const tempcontroller = require('./controller/tempcontroller')
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
@@ -82,7 +83,14 @@ app.post('/api/manager/comments/new', managercontroller.createComment)
 app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
 
 //email section
+// new account email
 app.post('/api/email', messagecontroller.sendMail)
+// tenant to manager from form submission
+app.post('/api/email/tenant', tempcontroller.tenantMail)
+//get manager email
+app.get('/api/manageremail/:unitId', tempcontroller.getManagerEmail)
+//get tenant email
+app.get('/api/tenantemail/:unitId', tempcontroller.getTenantEmail)
 
 //charge - credit card
 app.post("/charge", async (req, res) => {
