@@ -23,6 +23,7 @@ class TenantFormSubmission extends React.Component {
   handleSubmit () {
     const body ={
       tenantEmail: this.props.user.email,
+      unitId: this.props.user.unit_id,
       subject: this.state.subject,
       message: this.state.message
     }

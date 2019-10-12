@@ -19,7 +19,6 @@ class MenuContainer extends Component {
         this.setState({visible: !this.state.visible, active: !this.state.active})
     }
 
- 
 
     handleClickMenu(event){
         this.toggleMenu()
