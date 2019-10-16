@@ -6,10 +6,13 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 class WorkOrderView extends React.Component {
+<<<<<<< HEAD
   state = {
     render: false
   };
 
+=======
+>>>>>>> master
   componentDidMount() {
     axios
       .get(`/api/manager/workorders/${this.props.user.id}`)

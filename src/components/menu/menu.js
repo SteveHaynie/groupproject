@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { updateUser } from "../../redux/actions.js";
 
-class Menu extends React.Component {
+class Menu extends React.Component  {
+
+
   async handleLogout() {
     await axios.get("/api/logout").then(response => {
       if (response.data === "successfully logged out") {
@@ -14,8 +16,31 @@ class Menu extends React.Component {
       }
     });
   }
+  componentDidUpdate(prevProps) {
+    
+    if(!prevProps.menuVisibility && this.props.menuVisibility) {
+      window.addEventListener('click', this.handleEvent )
+    }
+    if(prevProps.menuVisibility && !this.props.menuVisibility) {
+      window.removeEventListener('click', this.handleEvent)
+    }
+
+  }
+
+
+ handleEvent = async(event) => {
+if(event.target.className !== "show" && event.target.className !== "menubutton"){
+  this.props.handleClickMenu(event)
+}
+
+
+   
+  
+
+}
 
   render() {
+    
     var visibility = "hide";
 
     if (this.props.menuVisibility) {
@@ -53,7 +78,7 @@ class Menu extends React.Component {
   }
 }
 
-// handleClickMenu={this.props.handleClickMenu}
+
 
 const mapStateToProps = state => {
   return { user: state.user };
