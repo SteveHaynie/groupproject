@@ -27,11 +27,34 @@ async function tenantMail(req, res) {
     }
    }
 
+   async function newWorkOrderEmail (req,res){
+        try {
+            let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false,
+                auth: {
+                  user: EMAIL_USERNAME,
+                  pass: EMAIL_PASSWORD
+                }
+              });
+            
+              let info = await transporter.sendMail({
+                to: req.body.managerEmail,
+                cc: req.body.tenantEmail,
+                subject: req.body.subject,
+                text: req.body.message,
+              });
+        } catch (error) {
+            
+        }
+   }
+
    async function getManagerEmail (req,res) {
        try {
            const db = req.app.get('db');
            const managerId = await db.getManagerId([req.params.unitId])
-           const managerEmail = await db.getManagerEmail([managerId[0].managerS]);
+           const managerEmail = await db.getManagerEmail([managerId[0].manager]);
            res.send(managerEmail)
        } catch (error) {
            console.error(error)
@@ -54,5 +77,5 @@ async function tenantMail(req, res) {
    
    
    module.exports = {
-    tenantMail, getManagerEmail, getTenantEmail
+    tenantMail, getManagerEmail, getTenantEmail, newWorkOrderEmail
      }

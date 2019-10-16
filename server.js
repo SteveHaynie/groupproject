@@ -91,6 +91,8 @@ app.post('/api/email/tenant', tempcontroller.tenantMail)
 app.get('/api/manageremail/:unitId', tempcontroller.getManagerEmail)
 //get tenant email
 app.get('/api/tenantemail/:unitId', tempcontroller.getTenantEmail)
+// new work order email
+app.post('/api/newworkorder/email', tempcontroller.newWorkOrderEmail)
 
 //charge - credit card
 app.post("/charge", async (req, res) => {
