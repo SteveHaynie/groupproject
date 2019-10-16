@@ -84,6 +84,8 @@ app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
 
 //email section
 app.post('/api/email', messagecontroller.sendMail)
+// reset password
+app.post('/api/email/resetpassword', messagecontroller.resetCredentials)
 
 //charge - credit card
 app.post("/charge", async (req, res) => {
