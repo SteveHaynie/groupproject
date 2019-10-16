@@ -109,7 +109,8 @@
 .ResetCredential {
   cursor: pointer;
   font-size: 1.3em;
-  color: rgb(28, 14, 70);
+  color: rgba(16, 24, 255, 0.454);
+  
 }
 
 input:focus, textarea:focus {

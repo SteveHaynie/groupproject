@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Elements, StripeProvider } from "react-stripe-elements";
+import { connect } from "react-redux";
+import axios from "axios";
 import CheckoutForm from "./CheckoutForm";
 import "./payment.css";
 
@@ -9,7 +11,7 @@ class TenantPayment extends Component {
 
     this.state = {
       partialPayment: "",
-      fullPayment: 50,
+      fullPayment: "",
       checked: true,
       payment: ""
     };
@@ -18,10 +20,12 @@ class TenantPayment extends Component {
   componentDidMount() {
     document.title = "Pay Rent";
     // call to the server to get the full rent amount.
-    // axios
-    //   .get("/full_payment")
-    //   .then(response => this.setState({ fullPayment: response.data }))
-    //   .catch(error => console.error(error));
+    axios
+      .get(`/api/tenant/unit/rent/${this.props.user.id}`)
+      .then(response =>
+        this.setState({ fullPayment: response.data[0].unit_rent })
+      )
+      .catch(error => console.error(error));
   }
 
   handleCheckClick = () => {
@@ -30,29 +34,27 @@ class TenantPayment extends Component {
 
   render() {
     return (
-      <StripeProvider apiKey="REACT_APP_PUBLISHABLE_KEY">
-        <div className="backgroundpayment">
+      <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
+        <div className="BackgroundPayment">
           <div className="CreditCardPayment">
             <h1>Make a Payment</h1>
 
             <div className="FullPaymentInputContainer">
               Amount Due:
-              <div className="paymentamount">${this.state.fullPayment} </div>
-              
-                Pay in Full:
-                <input
-                  type="checkbox"
-                  checked={this.state.checked}
-                  onChange={this.handleCheckClick}
-                  className="FullPaymentCheckBox"
-                />
-              
+              <div className="PaymentAmount">${this.state.fullPayment} </div>
+              Pay in Full:
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckClick}
+                className="FullPaymentCheckBox"
+              />
             </div>
             {!this.state.checked ? (
               <div className="PartialPaymentInputContainer">
-                Other Payment Amount:{" "}
+                Other Payment Amount: ${" "}
                 <input
-                className="custompaymentinput"
+                  className="CustomPaymentInput"
                   value={this.state.partialPayment}
                   onChange={event =>
                     this.setState({ partialPayment: event.target.value })
@@ -63,7 +65,7 @@ class TenantPayment extends Component {
 
             <Elements>
               <CheckoutForm
-                partialPayment={
+                payment={
                   this.state.checked
                     ? this.state.fullPayment
                     : this.state.partialPayment
@@ -77,4 +79,13 @@ class TenantPayment extends Component {
   }
 }
 
-export default TenantPayment;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(TenantPayment);

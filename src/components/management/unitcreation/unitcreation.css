@@ -12,7 +12,7 @@
 }
 
 .UnitCreationPage {
-    height: 500px;
+    height: auto;
     width: 80%;
     background: rgba(143, 184, 218, 0.747);
     border: 2px solid black;

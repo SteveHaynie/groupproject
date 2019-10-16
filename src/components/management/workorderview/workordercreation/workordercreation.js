@@ -36,15 +36,12 @@ class CreateNewWorkOrder extends React.Component {
 
     axios
       .post(`/api/manager/workorder/new`, body)
+      .then(`/api/`)
       .then(()=>{
         axios
         .post("/api/email", {})
       })
-      // .then(()=>{    axios
-      //   .get(`/api/manager/units/${parseInt(this.props.match.params.id)}`)
-      //   .then(response => {
-      //     this.props.updateUnits(response.data);
-      //   })})
+  
       .then(() => {
         this.setState({
           unit_id: "",
@@ -54,7 +51,7 @@ class CreateNewWorkOrder extends React.Component {
   }
 
   render() {
-    console.log(this.props.match.params.id);
+    console.log('zac here',this.props.units);
 
     return (
       <div className="createnewcontainer">
