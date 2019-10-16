@@ -11,7 +11,9 @@ class CreateNewWorkOrder extends React.Component {
 
     this.state = {
       unit_id: "",
-      description: ""
+      description: "",
+      managerEmail: "",
+      tenantEmail: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,28 +33,30 @@ class CreateNewWorkOrder extends React.Component {
   handleSubmit() {
     const body = {
       unit_id: this.state.unit_id,
-      description: this.state.description
+      description: this.state.description,
+      subject: "New Work Order",
+      message: `Reported description of the problem:
+       ${this.state.description}`,
+      managerEmail: "",
+      tenantEmail: ""
     };
 
-    axios
-      .post(`/api/manager/workorder/new`, body)
-      .then(`/api/`)
-      .then(()=>{
-        axios
-        .post("/api/email", {})
+    axios.post(`/api/manager/workorder/new`, body)
+    .then(() => {
+      axios.get(`/api/manageremail/${body.unit_id}`)
+      .then(response => {
+        body.managerEmail = response.data[0].email;
+        axios.get(`/api/tenantemail/${body.unit_id}`)
+        .then(response => {
+          body.tenantEmail = response.data[0].email;
+          axios.post("/api/newworkorder/email", body)
+          .catch(console.error);
+        })
       })
-  
-      .then(() => {
-        this.setState({
-          unit_id: "",
-          description: ""
-        });
-      });
+    })
   }
 
   render() {
-    console.log('zac here',this.props.units);
-
     return (
       <div className="createnewcontainer">
         <div className="createcontainer">
