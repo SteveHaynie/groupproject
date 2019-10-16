@@ -7,7 +7,7 @@ const cors = require("cors");
 const massive = require("massive");
 const path = require("path");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-// add process.env to make the above key secret.
+const cron = require('node-cron');
 const logincontroller = require('./controller/logincontroller')
 const managercontroller = require('./controller/managercontroller')
 const tenantcontroller = require('./controller/tenantcontroller')
@@ -112,6 +112,25 @@ app.post("/charge", async (req, res) => {
     res.status(500).end();
   }
 });
+
+//node-cron: scheduling payment
+
+cron.schedule('* * * 1 */1 *', async (req, res, next) => {
+  const db = app.get("db");
+  const tenants = await db.getAllTenants();
+  
+  tenants.map( async (tenant, i) => {
+    const newBalance = tenant.balance + tenant.unit_rent;
+    console.log('tenant id', tenant.id);
+    const updateBalance = await db.updateBalance([newBalance, tenant.user_id]);
+    
+    
+
+    console.log(newBalance)
+  })
+
+})
+
 
 
 app.listen(process.env.PORT || 8080, () => {
