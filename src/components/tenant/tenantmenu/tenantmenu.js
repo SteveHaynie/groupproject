@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../menu/menu.css';
-import { Link, withRouter  } from 'react-router-dom';
+import { withRouter  } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from "react-redux";
 import { updateUser } from "../../../redux/actions.js";
@@ -15,6 +15,23 @@ class TenantMenu extends React.Component{
           }
         });
       }
+      componentDidUpdate(prevProps) {
+    
+        if(!prevProps.menuVisibility && this.props.menuVisibility) {
+          window.addEventListener('click', this.handleEvent )
+        }
+        if(prevProps.menuVisibility && !this.props.menuVisibility) {
+          window.removeEventListener('click', this.handleEvent)
+        }
+    
+      }
+    
+    
+     handleEvent = async(event) => {
+    if(event.target.className !== "show" && event.target.className !== "menubutton"){
+      this.props.handleClickTenantMenu(event)
+    }
+  }
    
     render(){
         var visibility = "hide"

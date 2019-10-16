@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 const app = require("express")();
 const session = require("express-session");
@@ -7,12 +8,11 @@ const massive = require("massive");
 const path = require("path");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // add process.env to make the above key secret.
-require("dotenv").config()
-
 const logincontroller = require('./controller/logincontroller')
 const managercontroller = require('./controller/managercontroller')
 const tenantcontroller = require('./controller/tenantcontroller')
 const messagecontroller = require('./controller/messagescontroller')
+const tempcontroller = require('./controller/tempcontroller')
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
@@ -83,9 +83,18 @@ app.post('/api/manager/comments/new', managercontroller.createComment)
 app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
 
 //email section
+// new account email
 app.post('/api/email', messagecontroller.sendMail)
 // reset password
 app.post('/api/email/resetpassword', messagecontroller.resetCredentials)
+// tenant to manager from form submission
+app.post('/api/email/tenant', tempcontroller.tenantMail)
+//get manager email
+app.get('/api/manageremail/:unitId', tempcontroller.getManagerEmail)
+//get tenant email
+app.get('/api/tenantemail/:unitId', tempcontroller.getTenantEmail)
+// new work order email
+app.post('/api/newworkorder/email', tempcontroller.newWorkOrderEmail)
 
 //charge - credit card
 app.post("/charge", async (req, res) => {

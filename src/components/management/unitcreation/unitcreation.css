@@ -1,90 +1,115 @@
 .ManagementHomePage {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36));
     display: flex;
-
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
 }
 
 .UnitCreationPage {
-    font-family: arial black, cursive, sans-serif;
-    border-radius: 5px;
-    width: 100vw;
-    height: 100vh;
+    height: auto;
+    width: 80%;
+    background: rgba(143, 184, 218, 0.747);
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 25px;
+    box-shadow: 2px 2px 15px #414141;
 }
 
 .UnitCreationTitle {
-    border: 1px solid black;
+    font-family: arial black, cursive, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
     text-decoration: underline;
     border-radius: 5px;
 }
 
 .UnitNumber {
-    border: 1px solid black;
+    font-size: 18px;
     background: #F1E3E4;
     border-radius: 5px;
+    margin: 10px;
 }
 
 .UnitNumber input {
+    font-size: 14px;
     outline: none;
 }
 
 .UnitAddress {
-    border: 1px solid black;
+    font-size: 18px;
     background: #F1E3E4;
     border-radius: 5px;
+    margin: 10px;
 }
 
 .UnitAddress input {
+    font-size: 14px;
     outline: none;
 }
 
 .Amenities {
     background: linear-gradient(to bottom, #F1E3E4) ;
-    border: 1px solid black;
     padding: 5px;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 .Type {
-    border: 1px solid black;
+    margin: 10px;
 }
 
 select{
     width: 160px;
     height: 25px;
-    font-weight: bold;
     color: rgba(81, 203, 238, 1);
   }
+
   select option { color: black; }
   select option:first-child{
     color: rgba(81, 203, 238, 1);
   }
 
 .Bedrooms {
-    border: 1px solid black;
+    outline: none;
+
 }
 
 .Bathrooms {
-    border: 1px solid black;
+    margin: 10px;
 }
 
 .SqFoot {
-    border: 1px solid black;
+    outline: none;
 }
 
 .SqFoot input {
+    font-size: 14px;
     outline: none;
 }
 
 .AnimalAllowance {
-    border: 1px solid black;
+    margin: 10px;
+
 }
 
 .UnitDescription {
-    border: 1px solid black;
     width: 600px;
     height: 75px;
 }
 
 .UnitDescription textarea {
+    font-size: 14px;
     width: 95%;
     height: 95%;
     outline: none;
@@ -101,11 +126,12 @@ input:focus, textarea:focus {
 }
 
 .MonthlyRent {
-    border: 1px solid black;
     outline: none;
+    margin: 10px;
 }
 
 .MonthlyRent input {
+    font-size: 14px;
     outline: none;
 }
 
@@ -114,8 +140,17 @@ input:focus, textarea:focus {
 }
 
 .SaveUnitButton {
-    color: black;
+    width: 70%;
+    height: 45px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    background: white; 
 }
+
 .SaveUnitButton:hover {
-    color: rgba(81, 203, 238, 1);
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+    margin: 10px;
 }

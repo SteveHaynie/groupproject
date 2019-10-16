@@ -1,11 +1,10 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-// import { addUnit } from "../../../redux/actions.js";
 import axios from "axios";
-import "./unitcreation.css";
+import "./unitmodify.css";
 import { connect } from "react-redux";
+import { updateUnits } from "../../../redux/actions";
 
-class UnitCreation extends React.Component {
+class UnitModify extends React.Component {
   constructor() {
     super();
 
@@ -24,7 +23,28 @@ class UnitCreation extends React.Component {
   }
 
   componentDidMount() {
-    document.title = "Unit Creation";
+      
+    axios
+      .get(`/api/manager/units/${parseInt(this.props.user.id)}`)
+      .then(response => {
+        this.props.updateUnits(response.data);
+        this.getUnit(response.data)
+
+      });
+  }
+  getUnit(units) {
+    const unit = units.find(e => e.id === parseInt(this.props.match.params.id))
+    this.setState({
+        unitAddress: unit.address,
+        unitNumber: unit.unit_number,
+        unitType: unit.unit_type,
+        unitBedrooms: unit.unit_bedrooms,
+        unitBathrooms: unit.unit_bathrooms,
+        unitSqFootage: unit.unit_sq_footage,
+        AnimalAllowance: unit.animal_allowance,
+        unitDescription: unit.unit_description,
+        unitRent: unit.unit_rent
+    })
   }
 
   async inputUnit() {
@@ -41,7 +61,8 @@ class UnitCreation extends React.Component {
         unit_rent: this.state.unitRent
       };
       if (body.address && body.unit_rent && body.unit_type !== "Null") {
-        await axios.post(`/api/manager/units/new/${this.props.user.id}`, body);
+        await axios.post(`?`, body);
+        //need new link for axios post request
         this.setState({
           unitAddress: "",
           unitNumber: "",
@@ -63,11 +84,11 @@ class UnitCreation extends React.Component {
   }
 
   render() {
-    // console.log(currentUser)
+    
     return (
       <div className="ManagementHomePage">
         <div className="UnitCreationPage">
-          <div className="UnitCreationTitle">Add a New Unit:</div>
+          <div className="UnitCreationTitle">Modify a Unit:</div>
           <div className="UnitAddress">
             Unit Address:
             <input
@@ -92,11 +113,7 @@ class UnitCreation extends React.Component {
             <div className="Type">
               {" "}
               Type: {" "}
-              {/* thinking of adding functionality to be able to add the type
-              of unit here.  Would need a small database if we did that
-              though, might not be worth the extra effort.  If you do so
-              look up popUp.js in personal project to remind self how to pull
-              from and map over array*/}
+              
               <select
                 value={this.state.unitType}
                 onChange={event =>
@@ -173,9 +190,7 @@ class UnitCreation extends React.Component {
                 <option value="False">False</option>
               </select>
             </div>
-            {/* <textarea className="UnitDescription"
-                placeholder="Description"
-            /> */}
+           
             <div className="UnitDescription">
               <textarea
                 value={this.state.unitDescription}
@@ -207,8 +222,9 @@ class UnitCreation extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    units: state.units
   };
 };
 
-export default connect(mapStateToProps)(UnitCreation);
+export default connect(mapStateToProps, {updateUnits})(UnitModify);

@@ -6,7 +6,6 @@ import { updateTenants } from "../../../redux/actions";
 import axios from "axios";
 
 class Users extends React.Component {
-
   componentDidMount() {
     axios
       .get(`/api/manager/tenants/${parseInt(this.props.match.params.id)}`)
@@ -16,19 +15,24 @@ class Users extends React.Component {
       });
   }
 
-
   render() {
     console.log(this.props);
     const tenants = this.props.tenants.map((tenant, index) => {
       return (
         <div className="tenant-container" key={index}>
-        <Link to={`/usermanagerview/${tenant.id}`}
-          style={{textDecoration: 'none'}}
-        >...</Link>
-          <div className="one-tenant">{tenant.first_name}</div>
-          <div className="one-tenant">{tenant.last_name}</div>
-          <div className="one-tenant">{tenant.email}</div>
-          <div className="one-tenant">{tenant.unit_number}</div>
+          <button
+            className="user-button"
+            onClick={() => {
+              this.props.history.push(`/usermanagerview/${tenant.id}`);
+            }}
+          >
+            Update
+          </button>
+          {this.renderField("First Name", tenant.first_name)}
+          {this.renderField("Last Name", tenant.last_name)}
+          {this.renderField("Email", tenant.email)}
+          {this.renderField("Unit Number", tenant.unit_number)}
+          <button className="reset-password-button">Reset Password</button>
         </div>
       );
     });
@@ -37,11 +41,22 @@ class Users extends React.Component {
         <div className="managementHomePage">
           <div className="management-body">
             {tenants}
-            <Link to={`/useraddtenant/${this.props.user.id}`}>Create New Tenant</Link>
+            <Link className="CNT_button" to={`/useraddtenant/${this.props.user.id}`}>
+              Create New Tenant
+            </Link>
           </div>
         </div>
       </div>
     );
+  }
+
+  renderField (label, value) {
+    return (
+    <div className="field_container">
+            <div className="field_label">{label}:</div>
+            <div className="field_value">{value}</div>
+          </div>
+        );
   }
 }
 
