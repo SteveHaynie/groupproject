@@ -64,9 +64,7 @@ class UnitView extends React.Component {
     return (
       <div className="managementunitview">
         {units}
-        <Link to={`/useraddtenant/${this.props.user.id}`}>
-          Create New Tenant
-        </Link>
+      
       </div>
     );
   }

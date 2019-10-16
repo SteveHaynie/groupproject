@@ -6,6 +6,7 @@
        
         text-align: center;
         padding: 25px;
+        padding-top:35px;
 
         display: flex;
         flex-direction: column;
@@ -93,5 +94,37 @@
         overflow: scroll;
         display: inline-block;
 
+    }
+    @media only screen and (max-width: 425px) {
+        .unitinfocontainer {
+
+        
+            flex-direction: column;
+       
+          
+        }
+        .unit-container {
+            height: auto;
+        }
+        .units1{
+            
+            width: 100%;
+         ;
+        }
+        .units2{
+           
+            width: 100%;
+         
+           
+        }
+        .one-unit{
+            margin: 5px;
+        }
+        .unit-container {
+            padding-right: 15px;
+        }
+        .unitinfo {
+            width: 200px;
+        }      
     }
 
