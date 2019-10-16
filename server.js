@@ -85,6 +85,8 @@ app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
 //email section
 // new account email
 app.post('/api/email', messagecontroller.sendMail)
+// reset password
+app.post('/api/email/resetpassword', messagecontroller.resetCredentials)
 // tenant to manager from form submission
 app.post('/api/email/tenant', tempcontroller.tenantMail)
 //get manager email
