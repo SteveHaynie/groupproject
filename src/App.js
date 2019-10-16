@@ -30,7 +30,6 @@ import UserManagerView from "./components/management/users/usermanagerview/userm
 import ResetCredentials from './components/resetcredentials/resetcredentials'
 import UnitView from "./components/management/unitview/unitview.js";
 import UnitModify from "./components/management/unitmodify/unitmodify.js";
-// import ResetCredentials from './components/resetcredentials/resetcredentials'
 
 
 class App extends React.Component {
