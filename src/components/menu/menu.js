@@ -69,6 +69,12 @@ if(event.target.className !== "show" && event.target.className !== "menubutton")
         >
           Work Orders
         </button>
+        <button
+          className="menubutton"
+          onClick={() => this.props.history.push("/managementunitview")}
+        >
+          Units
+        </button>
 
         <button className="menubutton" onClick={() => this.handleLogout()}>
           Sign out

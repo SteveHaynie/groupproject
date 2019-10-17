@@ -31,6 +31,16 @@ async function getUnitRent (req,res){
         console.error(error)
     }
 }
+
+async function getTenantBalance (req, res) {
+    try {
+        const db = req.app.get('db');
+        const tenantBalance = await db.getTenantBalance([req.params.tenantId]);
+        res.send(tenantBalance, 200);
+    } catch (error) {
+        console.error(error);
+    }
+}
 module.exports ={
-    getUnitAndWorkOrders, createWorkOrder, getUnitRent
+    getUnitAndWorkOrders, createWorkOrder, getUnitRent, getTenantBalance
 }

@@ -7,7 +7,7 @@ const cors = require("cors");
 const massive = require("massive");
 const path = require("path");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-// add process.env to make the above key secret.
+const cron = require('node-cron');
 const logincontroller = require('./controller/logincontroller')
 const managercontroller = require('./controller/managercontroller')
 const tenantcontroller = require('./controller/tenantcontroller')
@@ -81,10 +81,14 @@ app.delete('/api/manager/delete/unit/:unitId', managercontroller.deleteUnit)
 app.post('/api/manager/comments/new', managercontroller.createComment)
 // get rent
 app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
+// get tenant balance
+app.get('/api/tenant/balance/:tenantId', tenantcontroller.getTenantBalance)
 
 //email section
 // new account email
 app.post('/api/email', messagecontroller.sendMail)
+// reset password
+app.post('/api/email/resetpassword', messagecontroller.resetCredentials)
 // tenant to manager from form submission
 app.post('/api/email/tenant', tempcontroller.tenantMail)
 //get manager email
@@ -97,7 +101,7 @@ app.post('/api/newworkorder/email', tempcontroller.newWorkOrderEmail)
 //charge - credit card
 app.post("/charge", async (req, res) => {
   try {
-    payment = req.body.payment * 100;
+    const payment = req.body.payment * 100;
     console.log("payment", req.body.payment);
     let { status } = await stripe.charges.create({
       amount: parseInt(payment),
@@ -105,6 +109,10 @@ app.post("/charge", async (req, res) => {
       description: "An example charge",
       source: req.body.id
     });
+    //Lets try to update the balance here:
+    // const db = app.get('db');
+    // const tenants = await db.getAllTenants();
+
     // insert into DB payment history, can do in main app.
     res.json({ status });
   } catch (err) {
@@ -112,6 +120,25 @@ app.post("/charge", async (req, res) => {
     res.status(500).end();
   }
 });
+
+//node-cron: scheduling payment
+
+cron.schedule('* * * 1 */1 *', async (req, res, next) => {
+  const db = app.get("db");
+  const tenants = await db.getAllTenants();
+  
+  tenants.map( async (tenant, i) => {
+    const newBalance = tenant.balance + tenant.unit_rent;
+    console.log('tenant id', tenant.id);
+    const updateBalance = await db.updateBalance([newBalance, tenant.user_id]);
+    
+    
+
+    console.log(newBalance)
+  })
+
+})
+
 
 
 app.listen(process.env.PORT || 8080, () => {

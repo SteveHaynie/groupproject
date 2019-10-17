@@ -27,6 +27,9 @@ import WorkOrderCreation from "./components/management/workorderview/workordercr
 import WorkOrderComplete from "./components/management/workorderview/completeworkorder/completeworkorder.js";
 import DocumentUpload from "./components/management/users/documentupload/documentupload.js";
 import UserManagerView from "./components/management/users/usermanagerview/usermanagerview";
+import ResetCredentials from './components/resetcredentials/resetcredentials'
+import UnitView from "./components/management/unitview/unitview.js";
+import UnitModify from "./components/management/unitmodify/unitmodify.js";
 // import ResetCredentials from './components/resetcredentials/resetcredentials'
 
 
@@ -59,7 +62,7 @@ class App extends React.Component {
               }}
             />
             
-            {/* <Route
+             <Route
               path="/reset_credentials"
               render={props => {
                 if (Object.keys(this.props.user).length === 0)
@@ -71,7 +74,8 @@ class App extends React.Component {
                   );
                  
               }}
-            /> */}
+            />
+            
             {this.props.user.id ? (
               <React.Fragment>
                 <Route
@@ -239,6 +243,40 @@ class App extends React.Component {
                         <div className="App">
                           <MenuContainer />
                           <WorkOrderCreation {...props} />
+                        </div>
+                      );
+                    else {
+                      return (
+                        <div className="App">Please Login As Administrator</div>
+                      );
+                    }
+                  }}
+                />
+                <Route
+                  path="/managementunitview"
+                  render={props => {
+                    if (this.props.user.administrator === true)
+                      return (
+                        <div className="App">
+                          <MenuContainer />
+                          <UnitView {...props} />
+                        </div>
+                      );
+                    else {
+                      return (
+                        <div className="App">Please Login As Administrator</div>
+                      );
+                    }
+                  }}
+                />
+                <Route
+                  path="/managementunitmodify/:id"
+                  render={props => {
+                    if (this.props.user.administrator === true)
+                      return (
+                        <div className="App">
+                          <MenuContainer />
+                          <UnitModify {...props} />
                         </div>
                       );
                     else {

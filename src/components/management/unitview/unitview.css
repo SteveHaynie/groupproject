@@ -1,0 +1,130 @@
+.managementunitview {
+    
+        width: 100vw;
+        height: auto;
+        background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
+       
+        text-align: center;
+        padding: 25px;
+        padding-top:35px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+
+        position:absolute;
+        z-index: 1; 
+       
+    }
+    .units1{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      
+        justify-content: space-evenly;
+    }
+    .units2{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+       
+    }
+
+
+  
+
+    .unit-container {
+
+        
+        height: 300px;
+        width: 80%;
+        background: rgba(143, 184, 218, 0.747);
+        border: 2px solid black;
+        margin: 30px;
+        padding: 10px;
+        padding-right: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 25px;
+        box-shadow: 2px 2px 15px #414141;
+    }
+    .user-button{
+        height: 10%;
+        margin: 10px;
+
+    }
+    .unitinfocontainer {
+
+        
+        height: 90%;
+        width: 100%;
+      
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+      
+    }
+    .one-unit{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 1.3em;
+       
+    }
+
+    .unitinfo {
+        background: rgb(255, 255, 255);
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 3px;
+        margin-left: 10px;
+        height: auto;
+        width: 400px;
+        overflow: scroll;
+        display: inline-block;
+
+    }
+    @media only screen and (max-width: 425px) {
+        .unitinfocontainer {
+
+        
+            flex-direction: column;
+       
+          
+        }
+        .unit-container {
+            height: auto;
+        }
+        .units1{
+            
+            width: 100%;
+         ;
+        }
+        .units2{
+           
+            width: 100%;
+         
+           
+        }
+        .one-unit{
+            margin: 5px;
+        }
+        .unit-container {
+            padding-right: 15px;
+        }
+        .unitinfo {
+            width: 200px;
+        }      
+    }
+
