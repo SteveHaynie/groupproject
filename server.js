@@ -101,7 +101,7 @@ app.post('/api/newworkorder/email', tempcontroller.newWorkOrderEmail)
 //charge - credit card
 app.post("/charge", async (req, res) => {
   try {
-    payment = req.body.payment * 100;
+    const payment = req.body.payment * 100;
     console.log("payment", req.body.payment);
     let { status } = await stripe.charges.create({
       amount: parseInt(payment),
