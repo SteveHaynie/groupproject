@@ -51,7 +51,7 @@ class CheckoutForm extends Component {
 
     return (
       <div className="Checkout">
-        <p>Pay Rent?</p>
+        {/* <p>Pay Rent?</p> */}
         <CardElement />
         <button className="CardPurchaseButton" onClick={this.submit}>
           Pay Rent
