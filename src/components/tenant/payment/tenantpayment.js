@@ -12,27 +12,52 @@ class TenantPayment extends Component {
     this.state = {
       partialPayment: "",
       fullPayment: "",
+      balance: "",
       checked: true,
-      payment: ""
+      payment: "",
+      complete: false
     };
+    this.toggleComplete = this.toggleComplete.bind(this);
   }
 
   componentDidMount() {
     document.title = "Pay Rent";
-    // call to the server to get the full rent amount.
-    axios
-      .get(`/api/tenant/unit/rent/${this.props.user.id}`)
-      .then(response =>
-        this.setState({ fullPayment: response.data[0].unit_rent })
-      )
-      .catch(error => console.error(error));
+    // updated pull of information, getting both the monthly rent and the balance due.
+    Promise.all([
+      axios.get(`/api/tenant/unit/rent/${this.props.user.id}`),
+      axios.get(`/api/tenant/balance/${this.props.user.id}`)
+    ])
+      .then(all => {
+        const [rentResponse, balanceResponse] = all;
+        console.log("hey", balanceResponse);
+        this.setState({
+          fullPayment: rentResponse.data[0].unit_rent,
+          balance: balanceResponse.data[0].balance
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   handleCheckClick = () => {
     this.setState({ checked: !this.state.checked });
   };
 
+  toggleComplete() {
+    if (this.state.balance === 0) {
+      this.setState({
+        complete: true
+      });
+    } else {
+      this.setState({
+        complete: false
+      });
+    }
+  }
+
   render() {
+    console.log("BALANCE", this.state.balance);
     return (
       <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
         <div className="BackgroundPayment">
@@ -41,7 +66,13 @@ class TenantPayment extends Component {
 
             <div className="FullPaymentInputContainer">
               Amount Due:
-              <div className="PaymentAmount">${this.state.fullPayment} </div>
+              {this.state.balance > this.state.fullPayment ? (
+                <div className="BalanceDue">
+                  Unpaid Balance Due: ${this.state.balance}
+                </div>
+              ) : (
+                <div className="PaymentAmount">${this.state.fullPayment} </div>
+              )}
               Pay in Full:
               <input
                 type="checkbox"
@@ -50,8 +81,13 @@ class TenantPayment extends Component {
                 className="FullPaymentCheckBox"
               />
             </div>
-            {!this.state.checked ? (
+            {!this.state.checked && this.state.complete === false ? (
               <div className="PartialPaymentInputContainer">
+                <p>Rent for this month is: ${this.state.fullPayment}.</p>
+                <p>
+                  Please be Aware that any unpaid balance may result in
+                  additional late fees.
+                </p>
                 Other Payment Amount: ${" "}
                 <input
                   className="CustomPaymentInput"
@@ -67,9 +103,10 @@ class TenantPayment extends Component {
               <CheckoutForm
                 payment={
                   this.state.checked
-                    ? this.state.fullPayment
+                    ? this.state.balance
                     : this.state.partialPayment
                 }
+                toggleComplete={this.toggleComplete}
               />
             </Elements>
           </div>
