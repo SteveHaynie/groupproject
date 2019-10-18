@@ -88,6 +88,8 @@ class TenantPayment extends Component {
                 </div>
               ) : (
                 <div className="PaymentAmount">${this.state.fullPayment} </div>
+                // maybe change the above div to not show full payment, or add a 
+                // your rent for the month is as a cosmetic difference.
               )}
               Pay in Full:
               <input
