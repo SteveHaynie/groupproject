@@ -21,7 +21,9 @@ class CheckoutForm extends Component {
       });
       let body = {
         id: stripeResponse.token.id,
-        payment: this.props.payment
+        payment: this.props.payment,
+        tenantId: this.props.tenantId
+        
       };
       this.confirm(body);
     } catch (error) {
@@ -38,6 +40,7 @@ class CheckoutForm extends Component {
       if (response.statusText === "OK") console.log("Purchase Complete!");
       if (response.statusText === "OK") this.setState({ complete: true });
       this.props.toggleComplete();
+      this.props.getNewBalance();
     } else {
       alert(
         "Payment cancelled! \nPayment not taken! \nPlease enter correct amount!"
@@ -46,7 +49,14 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    if (this.state.complete) return <div>Rent Paid</div>;
+    if (this.state.complete && this.props.balance > 0)
+      return (
+        <div>
+          Payment Received. {" "}
+          <button onClick={this.props.refreshPage}>Make Another Payment</button>
+        </div>
+      );
+    if (this.state.complete) return <div>Payment Received</div>;
 
     return (
       <div className="Checkout">
