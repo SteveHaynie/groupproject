@@ -113,7 +113,6 @@ try {
           </button>
        
         <select
-          className="form-input"
           value={this.state.unit_id}
           onChange={this.handleChange}
           name="unit_id"
