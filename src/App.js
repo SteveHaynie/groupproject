@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
+  withRouter
 } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
@@ -30,18 +31,22 @@ import UserManagerView from "./components/management/users/usermanagerview/userm
 import ResetCredentials from "./components/resetcredentials/resetcredentials";
 import UnitView from "./components/management/unitview/unitview.js";
 import UnitModify from "./components/management/unitmodify/unitmodify.js";
+import { conditionalExpression } from "@babel/types";
 
 class App extends React.Component {
   componentDidMount() {
     axios.get("/api/user").then(response => {
       this.props.updateUser(response.data);
+      if(this.props.location.pathname !== "/login" && this.props.location.pathname !== "/reset_credentials" && !response.data.id) {
+        this.props.history.push('/login')
+      }
     });
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="App">
-        <Router>
           <Switch>
             <Redirect from="/" exact to="/login" />
 
@@ -361,9 +366,8 @@ class App extends React.Component {
                   }}
                 />
               </React.Fragment>
-            ) : null}
+            ) :null }
           </Switch>
-        </Router>
       </div>
     );
   }
@@ -378,4 +382,5 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { updateUser }
-)(App);
+)(withRouter(App));
+ 
