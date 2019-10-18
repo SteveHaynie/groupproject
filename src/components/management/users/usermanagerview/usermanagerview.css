@@ -10,12 +10,12 @@
 }
 
 .one-tenant {
-    height: 130px;
-    width: 80%;
+    height: 350px;
+    width: 400px;
     background: rgba(143, 184, 218, 0.747);
     border: 2px solid black;
     margin: 10px;
-    overflow: scroll;
+    /* overflow: scroll; */
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -25,10 +25,12 @@
     box-shadow: 2px 2px 15px #414141;
 }
 
+
 .first_name {
     width: 25%;
     height: 25px;
     margin: 5px;
+    border: none;
     border-radius: 15px;
     font-size: initial;
     background: white; 
@@ -36,14 +38,13 @@
 
 .first_name:hover {
     background-color: rgb(60, 175, 64); /* Green */
-    transition: all 0.3s ease;
-    border: none;
 }
 
 .last_name {
     width: 25%;
     height: 25px;
     margin: 5px;
+    border: none;
     border-radius: 15px;
     font-size: initial;
     background: white; 
@@ -51,23 +52,20 @@
 
 .last_name:hover {
     background-color: rgb(60, 175, 64); /* Green */
-    transition: all 0.3s ease;
-    border: none;
 }
 
 .email {
-    width: 25%;
+    width: 75%;
     height: 25px;
     margin: 5px;
     border-radius: 15px;
+    border: none;
     font-size: initial;
     background: white; 
 }
 
 .email:hover {
     background-color: rgb(60, 175, 64); /* Green */
-    transition: all 0.3s ease;
-    border: none;
 }
 
 .submitCB {
@@ -80,7 +78,4 @@
 }
 
 .submitCB:hover {
-    background-color: rgb(60, 175, 64); /* Green */
-    transition: all 0.3s ease;
-    border: none; 
-}
+    background-color: rgb(60, 175, 64); /* Green */}

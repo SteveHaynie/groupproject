@@ -38,7 +38,7 @@ class Users extends React.Component {
     });
     return (
       <div>
-        <div className="managementHomePage">
+        <div className="users">
           <div className="management-body">
             {tenants}
             <Link className="CNT_button" to={`/useraddtenant/${this.props.user.id}`}>

@@ -48,8 +48,8 @@ class TenantMenu extends React.Component{
           onClick={() => this.props.history.push('tenantpayment')}>Payment</button>
                 <button className="menubutton"
           onClick={() => this.props.history.push('tenantformsubmission')}>Form Submission</button>
-                <button className='menubutton'
-          onClick ={() => this.props.history.push(`?`)}>My Account</button>
+                {/* <button className='menubutton'
+          onClick ={() => this.props.history.push(`/users/${this.props.user.id}`)}>My Account</button> */}
                 <button className="menubutton"
           onClick={() => this.handleLogout()}>Sign Out</button>
             </div>
