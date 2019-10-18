@@ -113,9 +113,12 @@ app.post("/charge", async (req, res) => {
       description: "An example charge",
       source: req.body.id
     });
+
+    
     //Lets try to update the balance here:
-    // const db = app.get('db');
-    // const tenants = await db.getAllTenants();
+    const db = app.get('db');
+    const tenantBalance = await db.getTenantBalance([req.body.tenantId]);
+    console.log(tenantBalance)
 
     // insert into DB payment history, can do in main app.
     res.json({ status });
