@@ -30,7 +30,6 @@ class TenantPayment extends Component {
     ])
       .then(all => {
         const [rentResponse, balanceResponse] = all;
-        console.log("hey", balanceResponse);
         this.setState({
           fullPayment: rentResponse.data[0].unit_rent,
           balance: balanceResponse.data[0].balance
@@ -74,6 +73,7 @@ class TenantPayment extends Component {
   }
 
   render() {
+    console.log('payment', this.state.partialPayment)
     return (
       <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
         <div className="BackgroundPayment">
