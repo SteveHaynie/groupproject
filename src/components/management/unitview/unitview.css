@@ -5,8 +5,8 @@
         background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
        
         text-align: center;
-        padding: 25px;
-        padding-top:35px;
+        padding-top: 50px;
+       
 
         display: flex;
         flex-direction: column;
@@ -95,7 +95,7 @@
         display: inline-block;
 
     }
-    @media only screen and (max-width: 425px) {
+    @media only screen and (max-width: 885px) {
         .unitinfocontainer {
 
         

@@ -59,7 +59,7 @@ background: rgb(255, 255, 255);
     text-decoration: underline;
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 885px) {
     #popout-menu.hide {
       transform: translate3d(-200vw, 0, 0);
     }
