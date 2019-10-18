@@ -26,6 +26,7 @@ class CheckoutForm extends Component {
         
       };
       this.confirm(body);
+      this.props.checked();
     } catch (error) {
       console.log("error", error);
     }
