@@ -83,6 +83,8 @@ app.post('/api/manager/comments/new', managercontroller.createComment)
 app.get('/api/tenant/unit/rent/:tenantId', tenantcontroller.getUnitRent)
 // get tenant balance
 app.get('/api/tenant/balance/:tenantId', tenantcontroller.getTenantBalance)
+// update unit
+app.put('/api/manager/modify/unit/:unitId', managercontroller.updateUnit  )
 
 //email section
 // new account email
@@ -97,6 +99,8 @@ app.get('/api/manageremail/:unitId', tempcontroller.getManagerEmail)
 app.get('/api/tenantemail/:unitId', tempcontroller.getTenantEmail)
 // new work order email
 app.post('/api/newworkorder/email', tempcontroller.newWorkOrderEmail)
+// form submission
+app.post('/api/formsubmission/email', messagecontroller.formSubmission)
 
 //charge - credit card
 app.post("/charge", async (req, res) => {
