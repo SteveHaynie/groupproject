@@ -3,9 +3,11 @@
     height: 100%;
     background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
     font-size: 3em;
+    padding-top: 45px;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: flex-start;
+   align-items: center;
    position:absolute;
    z-index: 1;
    
