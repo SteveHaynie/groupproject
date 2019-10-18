@@ -18,6 +18,7 @@ class TenantPayment extends Component {
       complete: false
     };
     this.toggleComplete = this.toggleComplete.bind(this);
+    this.getNewBalance = this.getNewBalance.bind(this);
   }
 
   componentDidMount() {
@@ -56,8 +57,23 @@ class TenantPayment extends Component {
     }
   }
 
+  // pulls balance again, and hopefully displays their new updated balance.
+  getNewBalance() {
+    axios
+      .get(`/api/tenant/balance/${this.props.user.id}`)
+      .then(balanceResponse => 
+        this.setState({ balance: balanceResponse.data[0].balance})
+      )
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  refreshPage = () => {
+    window.location.reload(false);
+  }
+
   render() {
-    console.log("BALANCE", this.state.balance);
     return (
       <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
         <div className="BackgroundPayment">
@@ -107,6 +123,10 @@ class TenantPayment extends Component {
                     : this.state.partialPayment
                 }
                 toggleComplete={this.toggleComplete}
+                getNewBalance={this.getNewBalance}
+                refreshPage={this.refreshPage}
+                balance={this.state.balance}
+                tenantId={this.props.user.id}
               />
             </Elements>
           </div>
