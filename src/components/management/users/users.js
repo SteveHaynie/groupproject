@@ -1,6 +1,5 @@
 import React from "react";
 import "./users.css";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateTenants } from "../../../redux/actions";
 import axios from "axios";
@@ -15,13 +14,15 @@ class Users extends React.Component {
       });
   }
 
+  
+
   render() {
     console.log(this.props);
     const tenants = this.props.tenants.map((tenant, index) => {
       return (
         <div className="tenant-container" key={index}>
           <button
-            className="user-button"
+            className="userupdatebutton"
             onClick={() => {
               this.props.history.push(`/usermanagerview/${tenant.id}`);
             }}
@@ -32,23 +33,17 @@ class Users extends React.Component {
           {this.renderField("Last Name", tenant.last_name)}
           {this.renderField("Email", tenant.email)}
           {this.renderField("Unit Number", tenant.unit_number)}
-          <button className="reset-password-button">Reset Password</button>
         </div>
       );
     });
     return (
       <div>
-<<<<<<< HEAD
-        <div className="users">
-          <div className="management-body">
-=======
         <div className="usersview">
+            <button className="CNT_button" onClick={() => this.props.history.push(`/useraddtenant/${this.props.user.id}`)}>
+              New User
+            </button>
           <div className="users-body">
->>>>>>> master
             {tenants}
-            <Link className="CNT_button" to={`/useraddtenant/${this.props.user.id}`}>
-              Create New Tenant
-            </Link>
           </div>
         </div>
       </div>
