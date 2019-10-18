@@ -30,7 +30,7 @@ class TenantPayment extends Component {
     ])
       .then(all => {
         const [rentResponse, balanceResponse] = all;
-        console.log("hey", balanceResponse);
+        // console.log("hey", balanceResponse);
         this.setState({
           fullPayment: rentResponse.data[0].unit_rent,
           balance: balanceResponse.data[0].balance
