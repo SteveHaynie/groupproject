@@ -1,0 +1,54 @@
+.resetwrapper {
+
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(2,0,36));
+   
+    display: flex;
+    padding-top:175px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+  
+   
+
+    position:absolute;
+       z-index: 1;
+}
+
+.resetcontainer {
+    height: 300px;
+    width: 80%;
+    background: rgba(143, 184, 218, 0.747);
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 15px;
+    box-shadow: 2px 2px 15px #414141;
+
+}
+.form-input{
+    width: 70%;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 1.25em;
+    padding: 5px;
+}
+
+.submitresetbutton {
+    background: white;
+    height: 25px;
+    width: 25%;
+    border-radius: 5px;
+
+}
+
+.submitresetbutton:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+
+  }

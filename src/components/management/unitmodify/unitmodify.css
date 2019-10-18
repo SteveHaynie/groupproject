@@ -1,0 +1,177 @@
+.unitmodify {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36));
+    display: flex;
+    padding-top:75px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+}
+
+.unitmodifypage {
+    height: auto;
+    width: 80%;
+    background: rgba(143, 184, 218, 0.747);
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 25px;
+    box-shadow: 2px 2px 15px #414141;
+}
+
+.UnitCreationTitle {
+    font-family: arial black, cursive, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+    border-radius: 5px;
+}
+
+.UnitNumber {
+    font-size: 18px;
+    background: #F1E3E4;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.UnitNumber input {
+    font-size: 14px;
+    outline: none;
+}
+
+.UnitAddress {
+    font-size: 18px;
+    background: #F1E3E4;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.UnitAddress input {
+    font-size: 14px;
+    outline: none;
+}
+
+.Amenities {
+    background: linear-gradient(to bottom, #F1E3E4) ;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Type {
+    margin: 10px;
+    
+}
+
+select{
+    width: 160px;
+    height: 25px;
+    color: rgb(0, 0, 0);
+  }
+
+  select option { color: black; }
+  select option:first-child{
+    color: rgba(81, 203, 238, 1);
+  }
+
+.Bedrooms {
+    outline: none;
+
+}
+
+.Bathrooms {
+    margin: 10px;
+}
+
+.SqFoot {
+    outline: none;
+}
+
+.SqFoot input {
+    font-size: 14px;
+    outline: none;
+}
+
+.AnimalAllowance {
+    margin: 10px;
+
+}
+
+.UnitDescription {
+    width: 600px;
+    height: 75px;
+}
+
+.UnitDescription textarea {
+    font-size: 14px;
+    width: 95%;
+    height: 95%;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+  
+    border: 1px solid rgba(81, 203, 238, 1);
+    outline-color: rgba(81, 203, 238, 1);
+}
+
+.UnitDescription ::placeholder {
+    text-align: center;
+}
+
+.MonthlyRent {
+    outline: none;
+    margin: 10px;
+}
+
+.MonthlyRent input {
+    font-size: 14px;
+    outline: none;
+}
+
+.AdditionalCharges {
+    border: 1px solid black;
+}
+
+.SaveUnitButton {
+    width: 70%;
+    height: 45px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    background: white; 
+}
+
+.SaveUnitButton:hover {
+    background-color: rgb(60, 175, 64); /* Green */
+    transition: all 0.3s ease;
+    border: none;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 885px) {
+
+    .UnitDescription {
+        width: 80%;
+        height: 75px;
+    }
+    .MonthlyRent input {
+       width: 40%;
+    }
+    .SaveUnitButton {
+        width: 80%;
+        font-size: .75em;
+    }
+}

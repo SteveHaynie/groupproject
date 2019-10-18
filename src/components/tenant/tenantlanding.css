@@ -7,7 +7,7 @@
     padding: 25px;
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 885px) {
     .tenantHomePage {
         font-size: 1.5em;
     }

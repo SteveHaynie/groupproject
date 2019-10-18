@@ -15,7 +15,7 @@ class ManagementLandingPage extends React.Component{
        
         return (
             <div className='managementHomePage'>
-                <div className='body'>Welcome, {this.props.user.first_name}</div>
+                <h1 className='managementlandingbody'>Welcome, {this.props.user.first_name}</h1>
              </div>
         )
     }

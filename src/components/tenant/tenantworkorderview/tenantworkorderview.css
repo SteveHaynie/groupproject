@@ -101,7 +101,7 @@
     border: none;
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 885px) {
     .tenantworkordercontainer {
       width: 100%;
       height: 100%;

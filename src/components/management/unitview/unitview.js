@@ -1,6 +1,5 @@
 import React from "react";
 import "./unitview.css";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUnits } from "../../../redux/actions";
 import axios from "axios";

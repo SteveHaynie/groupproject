@@ -86,8 +86,8 @@ class UnitModify extends React.Component {
   render() {
     
     return (
-      <div className="ManagementHomePage">
-        <div className="UnitCreationPage">
+      <div className="unitmodify">
+        <div className="unitmodifypage">
           <div className="UnitCreationTitle">Modify a Unit:</div>
           <div className="UnitAddress">
             Unit Address:
