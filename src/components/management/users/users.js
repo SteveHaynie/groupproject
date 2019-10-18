@@ -38,13 +38,8 @@ class Users extends React.Component {
     });
     return (
       <div>
-<<<<<<< HEAD
-        <div className="users">
-          <div className="management-body">
-=======
         <div className="usersview">
           <div className="users-body">
->>>>>>> master
             {tenants}
             <Link className="CNT_button" to={`/useraddtenant/${this.props.user.id}`}>
               Create New Tenant
