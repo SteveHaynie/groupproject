@@ -1,6 +1,5 @@
 import React from "react";
 import "./unitview.css";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUnits } from "../../../redux/actions";
 import axios from "axios";
@@ -64,9 +63,7 @@ class UnitView extends React.Component {
     return (
       <div className="managementunitview">
         {units}
-        <Link to={`/useraddtenant/${this.props.user.id}`}>
-          Create New Tenant
-        </Link>
+      
       </div>
     );
   }

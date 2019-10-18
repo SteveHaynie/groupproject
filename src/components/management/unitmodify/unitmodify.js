@@ -15,7 +15,7 @@ class UnitModify extends React.Component {
       unitBedrooms: 1,
       unitBathrooms: 1,
       unitSqFootage: "",
-      AnimalAllowance: false,
+      animalAllowance: false,
       unitDescription: "",
       unitRent: ""
     };
@@ -51,17 +51,17 @@ class UnitModify extends React.Component {
     try {
       const body = {
         address: this.state.unitAddress,
-        unit_number: this.state.unitNumber,
-        unit_type: this.state.unitType,
-        unit_bedrooms: this.state.unitBedrooms,
-        unit_baths: this.state.unitBathrooms,
-        unit_sq_footage: this.state.unitSqFootage,
-        animal_allowance: this.state.AnimalAllowance,
-        unit_description: this.state.unitDescription,
-        unit_rent: this.state.unitRent
+        unitNumber: this.state.unitNumber,
+        unitType: this.state.unitType,
+        unitBedrooms: this.state.unitBedrooms,
+        unitBaths: this.state.unitBathrooms,
+        unitSqFootage: this.state.unitSqFootage,
+        animalAllowance: this.state.AnimalAllowance,
+        unitDescription: this.state.unitDescription,
+        unitRent: this.state.unitRent
       };
-      if (body.address && body.unit_rent && body.unit_type !== "Null") {
-        await axios.post(`?`, body);
+      if (body.address && body.unitRent && body.unitType !== "Null") {
+        await axios.put(`/api/manager/modify/unit/${parseInt(this.props.match.params.id)}`, body);
         //need new link for axios post request
         this.setState({
           unitAddress: "",
@@ -86,8 +86,8 @@ class UnitModify extends React.Component {
   render() {
     
     return (
-      <div className="ManagementHomePage">
-        <div className="UnitCreationPage">
+      <div className="unitmodify">
+        <div className="unitmodifypage">
           <div className="UnitCreationTitle">Modify a Unit:</div>
           <div className="UnitAddress">
             Unit Address:

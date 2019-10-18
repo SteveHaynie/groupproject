@@ -1,7 +1,9 @@
-.managementHomePage {
+.usersview {
     height: 100vh;
     width: 100vw;
     background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36));
+    padding-top: 75px;
+    padding-left: 15px;
     display: flex;
     overflow: scroll;
     flex-direction: row;
@@ -11,11 +13,16 @@
     position: absolute;
     z-index: 1;
 }
+.users-body {
+    height: 100vh;
+    width: 100vw;
+
+}
 
 .tenant-container {
     height: 400px;
     width: 800px;
-    font-size: 28px;
+    font-size: 1.75em;
     background: rgba(143, 184, 218, 0.747);
     border: 2px solid black;
     margin: 10px;
@@ -87,9 +94,11 @@
     border: none;
 }
 
-@media only screen and (max-width: 425px) {
-    
-    .managementHomePage {
+@media only screen and (max-width: 885px) {
+    .user-button {
+     font-size: .75em; 
+    }
+    .users {
         height: 85%;
         width: 85%;
         background: linear-gradient(to bottom, #F1E3E4, #5A5A5A, rgb(4, 2, 36));
@@ -101,13 +110,21 @@
         text-align: center;
 }
     .tenant-container {
-        height: 85%;
+        height: 25%;
         width: 85%;
+        font-size: 1em;
         display: flex;
         overflow: scroll;
         flex-direction: column;
         justify-content: center;
-        align-items: space-evenly;
-        text-align: center;
+        align-items: flex-start;
+       
   }
+  .field_label {
+    
+    min-width: 100px;
+}
+.reset-password-button {
+  height: 25px;
+}
 }

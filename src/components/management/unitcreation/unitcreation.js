@@ -65,7 +65,7 @@ class UnitCreation extends React.Component {
   render() {
     // console.log(currentUser)
     return (
-      <div className="ManagementHomePage">
+      <div className="unitcreation">
         <div className="UnitCreationPage">
           <div className="UnitCreationTitle">Add a New Unit:</div>
           <div className="UnitAddress">
@@ -92,11 +92,7 @@ class UnitCreation extends React.Component {
             <div className="Type">
               {" "}
               Type: {" "}
-              {/* thinking of adding functionality to be able to add the type
-              of unit here.  Would need a small database if we did that
-              though, might not be worth the extra effort.  If you do so
-              look up popUp.js in personal project to remind self how to pull
-              from and map over array*/}
+             
               <select
                 value={this.state.unitType}
                 onChange={event =>

@@ -35,9 +35,9 @@ class CheckoutForm extends Component {
     );
     if (confirmPayment === true && body.payment > 0) {
       let response = await axios.post("/charge", body);
-
       if (response.statusText === "OK") console.log("Purchase Complete!");
       if (response.statusText === "OK") this.setState({ complete: true });
+      this.props.toggleComplete();
     } else {
       alert(
         "Payment cancelled! \nPayment not taken! \nPlease enter correct amount!"
@@ -46,12 +46,10 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    // console.log("PAYMENT!", this.props.payment);
-    if (this.state.complete) return <h1>Rent Paid</h1>;
+    if (this.state.complete) return <div>Rent Paid</div>;
 
     return (
       <div className="Checkout">
-        <p>Pay Rent?</p>
         <CardElement />
         <button className="CardPurchaseButton" onClick={this.submit}>
           Pay Rent
