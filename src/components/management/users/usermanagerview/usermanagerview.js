@@ -25,7 +25,6 @@ class UserManagerView extends React.Component {
 
 
   componentDidMount() {
-    console.log( 'here',this.props.units)
     if (this.props.tenants.length) {
       this.getTenant(this.props.tenants);
     } else {
@@ -93,24 +92,26 @@ try {
     return (
       <div className="user-manager-view-box">
         <div className="one-tenant">
-          {this.state.first_name}
-          <button className="first_name" onClick={this.modifyTenant}>
-            Edit
+          <button className="first_name" onClick={this.modifyTenant}
+          name='first_name'
+          >
+            {this.state.first_name}
           </button>
-        </div>
-        <div className="one-tenant">
-          {this.state.last_name}
-          <button className="last_name" onClick={this.modifyTenant}>
-            Edit
+        
+        
+          
+          <button className="last_name" onClick={this.modifyTenant}
+          name='last_name'
+          >
+            {this.state.last_name}
           </button>
-        </div>
-        <div className="one-tenant">
-          {this.state.email}
-          <button className="email" onClick={this.modifyTenant}>
-            Edit
+      
+          <button className="email" onClick={this.modifyTenant}
+          name='email'
+          >
+            {this.state.email}
           </button>
-        </div>
-        <div className="one-tenant">
+       
         <select
           className="form-input"
           value={this.state.unit_id}
