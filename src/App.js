@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -31,7 +30,7 @@ import UserManagerView from "./components/management/users/usermanagerview/userm
 import ResetCredentials from "./components/resetcredentials/resetcredentials";
 import UnitView from "./components/management/unitview/unitview.js";
 import UnitModify from "./components/management/unitmodify/unitmodify.js";
-import { conditionalExpression } from "@babel/types";
+
 
 class App extends React.Component {
   componentDidMount() {
