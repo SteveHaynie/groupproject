@@ -113,10 +113,14 @@ app.post("/charge", async (req, res) => {
       description: "An example charge",
       source: req.body.id
     });
-    //Lets try to update the balance here:
-    // const db = app.get('db');
-    // const tenants = await db.getAllTenants();
 
+    
+    //Lets try to update the balance here:
+    const db = app.get('db');
+    const tenantBalance = await db.getTenantBalance([req.body.tenantId]);
+    const updatedBalance = tenantBalance[0].balance - req.body.payment
+    await await db.updateBalance([updatedBalance, req.body.tenantId])
+    
     // insert into DB payment history, can do in main app.
     res.json({ status });
   } catch (err) {
