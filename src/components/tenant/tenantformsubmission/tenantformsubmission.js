@@ -27,8 +27,8 @@ class TenantFormSubmission extends React.Component {
       subject: this.state.subject,
       message: this.state.message
     }
-    axios.post("?", body).then(response => {
-      this.props.updateUser(response.data);
+    axios.post("/api/formsubmission/email", body).then(()=>{
+      this.props.history.push('/tenantlanding')
     });
 
   }

@@ -70,7 +70,7 @@ async function completeWorkOrder(req, res) {
   try {
     const db = req.app.get("db");
     const workOrderId = parseInt(req.params.workOrderId);
-    const completedWorkOrder = await db.getWorkOrder([workOrderId])
+    const completedWorkOrder = await db.getWorkOrder([workOrderId]);
     const toBeArchived = await db.archiveWorkOrder([
       completedWorkOrder[0].id,
       completedWorkOrder[0].unit_id,
@@ -79,22 +79,21 @@ async function completeWorkOrder(req, res) {
       req.body.notes
     ]);
     const deleteWorkOrder = await db.deleteWorkOrder([workOrderId]);
-    res.send('successfully archived')
+    res.send("successfully archived");
   } catch (error) {
     console.error(error);
     res.status(400);
   }
 }
 
-async function deleteWorkOrder (req,res){
+async function deleteWorkOrder(req, res) {
   try {
     const db = req.app.get("db");
     const deleteWorkOrder = await db.deleteWorkOrder([req.params.workOrderId]);
-    res.send('succesfully delete work order')
+    res.send("succesfully delete work order");
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-
 }
 
 //create new unit
@@ -120,48 +119,75 @@ async function createNewUnit(req, res) {
   }
 }
 
-async function updateTenant (req,res){
+async function updateTenant(req, res) {
   try {
     const db = req.app.get("db");
-  const updatedTenant = db.updateTenant([req.body.first_name,req.body.last_name,req.body.email, req.body.unit_id, req.params.tenantId])
-  res.send('succesfully updated')
-
+    const updatedTenant = db.updateTenant([
+      req.body.first_name,
+      req.body.last_name,
+      req.body.email,
+      req.body.unit_id,
+      req.params.tenantId
+    ]);
+    res.send("succesfully updated");
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
-async function createComment (req,res) {
+async function createComment(req, res) {
   try {
-    const db = req.app.get('db')
-    const createComment = db.createComment([req.body.managerComment, req.body.managerId, req.body.userId])
-    res.send('comment sent')
+    const db = req.app.get("db");
+    const createComment = db.createComment([
+      req.body.managerComment,
+      req.body.managerId,
+      req.body.userId
+    ]);
+    res.send("comment sent");
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
-async function deleteTenant (req,res){
+async function deleteTenant(req, res) {
   try {
-    const db = req.app.get('db');
-    const deletedTenant = await db.deleteTenant([req.params.tenantId])
-    res.send('successfully deleted user')
+    const db = req.app.get("db");
+    const deletedTenant = await db.deleteTenant([req.params.tenantId]);
+    res.send("successfully deleted user");
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
-async function deleteUnit (req,res) {
+async function deleteUnit(req, res) {
   try {
-    const db = req.app.get('db');
-    const deletedUnit = await db.deleteUnit([req.params.unitId])
-    res.send('succesfully delete unit')
+    const db = req.app.get("db");
+    const deletedUnit = await db.deleteUnit([req.params.unitId]);
+    res.send("succesfully delete unit");
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
+async function updateUnit(req, res) {
+  try {
+    const db = req.app.get("db");
+    const updatedUnit = db.updateUnit([
+      req.body.unitAddress,
+      req.body.unitNumber,
+      req.body.UnitType,
+      req.body.unitBedrooms,
+      req.body.unitBaths,
+      req.body.unitSqFootage,
+      req.body.animalAllowance,
+      req.body.unitDescription,
+      req.body.unitRent,
+      req.params.unitId
+    ]);
 
+    res.send('successful update', 200)
+  } catch (error) {console.error(error)}
+}
 
 module.exports = {
   getTenants,
@@ -175,5 +201,6 @@ module.exports = {
   createComment,
   deleteTenant,
   deleteWorkOrder,
-  deleteUnit
+  deleteUnit,
+  updateUnit
 };
