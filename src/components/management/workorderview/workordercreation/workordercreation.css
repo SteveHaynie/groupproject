@@ -83,7 +83,7 @@
    
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 885px) {
     .createcontainer {
         height: 400px;
     }
