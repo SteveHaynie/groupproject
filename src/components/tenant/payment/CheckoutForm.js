@@ -41,6 +41,7 @@ class CheckoutForm extends Component {
       if (response.statusText === "OK") console.log("Purchase Complete!");
       if (response.statusText === "OK") this.setState({ complete: true });
       this.props.toggleComplete();
+      this.props.partialNotCompletePayment();
       this.props.getNewBalance();
     } else {
       alert(
