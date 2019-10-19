@@ -40,7 +40,8 @@
 
 .tenant-container button {
     max-width: 200px;
-    margin: auto;
+    align-self: center;
+   
 }
 
 .field_container {
@@ -123,8 +124,9 @@
 }
     .tenant-container {
         height: 600px;
-        width: 85%;
+        width: 80%;
         font-size: 1em;
+        overflow: scroll;
        
   }
   .field_label {
