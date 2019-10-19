@@ -12,6 +12,10 @@ class ResetCredentials extends React.Component {
     this.sendEmail = this.sendEmail.bind(this);
   }
 
+  componentDidMount(){
+    document.title='Reset Credentials'
+  }
+
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }

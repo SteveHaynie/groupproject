@@ -20,6 +20,9 @@ class TenantCreateWorkOrder extends React.Component {
 
   }
 
+    componentDidMount(){
+      document.title='Create Work Order'
+    }
    
 
       handleChange(e) {

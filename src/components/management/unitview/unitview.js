@@ -6,6 +6,7 @@ import axios from "axios";
 
 class UnitView extends React.Component {
   componentDidMount() {
+    document.title='My Units'
     axios
       .get(`/api/manager/units/${parseInt(this.props.user.id)}`)
       .then(response => {
