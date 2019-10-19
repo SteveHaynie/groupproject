@@ -7,6 +7,7 @@ import axios from "axios";
 
 class WorkOrderView extends React.Component {
   componentDidMount() {
+    document.title='Work Orders'
     axios
       .get(`/api/manager/workorders/${this.props.user.id}`)
       .then(response => {

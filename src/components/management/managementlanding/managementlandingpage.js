@@ -6,6 +6,7 @@ import axios from 'axios';
 
 class ManagementLandingPage extends React.Component{
     componentDidMount() {
+        document.title = 'Home'
         axios.get(`/api/manager/workorders/${this.props.user.id}`).then(response => {
           
          this.props.workOrderView(response.data)

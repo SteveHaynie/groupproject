@@ -23,7 +23,7 @@ class UnitModify extends React.Component {
   }
 
   componentDidMount() {
-      
+      document.title='Modify Unit'
     axios
       .get(`/api/manager/units/${parseInt(this.props.user.id)}`)
       .then(response => {
