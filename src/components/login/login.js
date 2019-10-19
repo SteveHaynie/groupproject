@@ -18,6 +18,7 @@ class Login extends Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -59,7 +60,20 @@ class Login extends Component {
     handleEnterKey(event, this.handleLogin)
   }
 
+ 
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value.toLowerCase() });
+  }
+
+ 
+
+
+
+  
+
+
   render() {
+    console.log(this.state, "this is state")
     return (
       <div className="LoginPage">
         <div className="LoginBox">
@@ -70,17 +84,17 @@ class Login extends Component {
           <div className="Username">
             <input
               placeholder="Email"
-              onChange={event =>
-                this.setState({ email: event.target.value })
+              name="email"
+              onChange={this.handleChange
               }
             />
           </div>
           <div className="Password">
             <input
               placeholder="Password"
+              name="password"
               type="password"
-              onChange={event =>
-                this.setState({ password: event.target.value })
+              onChange={this.handleChange
               }
             />
           </div>
