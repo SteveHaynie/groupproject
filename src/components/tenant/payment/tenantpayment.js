@@ -89,11 +89,11 @@ class TenantPayment extends Component {
             <h1>Make a Payment</h1>
 
             <div className="FullPaymentInputContainer">
-              Amount Due:
+              <h2>Amount Due:</h2>
               {this.state.balance > this.state.fullPayment ? (
                 <div className="BalanceDue">
-                  <h2>Unpaid Balance Due:  $ {this.state.balance}</h2>
-                  <h2>Your Rent for this Month is:  $ {this.state.fullPayment}</h2>
+                  <h3>Unpaid Balance Due:  $ {this.state.balance}</h3>
+                  <h4>Your Rent for this Month is:  $ {this.state.fullPayment}</h4>
                 </div>
               ) : (
                 <div className="PaymentAmount">${this.state.balance} </div>
@@ -111,19 +111,21 @@ class TenantPayment extends Component {
             </div>
             {!this.state.checked && this.state.partialNotCompletePayment === false && this.state.complete === false ? (
               <div className="PartialPaymentInputContainer">
-                <h3>Rent for this month is: ${this.state.fullPayment}.</h3>
-                <h3>
+                <h4>Rent for this month is: ${this.state.fullPayment}.</h4>
+                <h4>
                   Please be Aware that any unpaid balance may result in
                   additional late fees.
-                </h3>
-                Other Payment Amount: ${" "}
-                <input
-                  className="CustomPaymentInput"
-                  value={this.state.partialPayment}
-                  onChange={event =>
-                    this.setState({ partialPayment: event.target.value })
-                  }
-                />
+                </h4>
+                Other Payment Amount:
+                <div> ${" "}
+                  <input
+                    className="CustomPaymentInput"
+                    value={this.state.partialPayment}
+                    onChange={event =>
+                      this.setState({ partialPayment: event.target.value })
+                    }
+                  />
+                </div>
               </div>
             ) : null}
             <Elements>
