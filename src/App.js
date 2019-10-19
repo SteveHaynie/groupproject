@@ -31,8 +31,6 @@ import ResetCredentials from "./components/resetcredentials/resetcredentials";
 import UnitView from "./components/management/unitview/unitview.js";
 import UnitModify from "./components/management/unitmodify/unitmodify.js";
 
-
-
 class App extends React.Component {
   componentDidMount() {
     axios.get("/api/user").then(response => {
