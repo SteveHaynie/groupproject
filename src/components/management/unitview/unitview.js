@@ -16,7 +16,7 @@ class UnitView extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+  
     const units = this.props.units.map((unit, index) => {
       return (
         <div className="unit-container" key={index}>
@@ -34,7 +34,7 @@ class UnitView extends React.Component {
               <div className="unitinfo">{unit.unit_description}</div>
             </div>
             <div className="one-unit">
-              Animal Allowance:<div className="unitinfo">{unit.animal_allowance}</div>
+              Animal Allowance:<div className="unitinfo">{unit.animal_allowance.toString()}</div>
             </div>
           </div>
           <div className="units2">

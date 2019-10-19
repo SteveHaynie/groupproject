@@ -13,7 +13,7 @@ class UnitModify extends React.Component {
       unitNumber: "",
       unitType: "Null",
       unitBedrooms: 1,
-      unitBathrooms: 1,
+      unitBaths: 1,
       unitSqFootage: "",
       animalAllowance: false,
       unitDescription: "",
@@ -39,9 +39,9 @@ class UnitModify extends React.Component {
         unitNumber: unit.unit_number,
         unitType: unit.unit_type,
         unitBedrooms: unit.unit_bedrooms,
-        unitBathrooms: unit.unit_bathrooms,
+        unitBaths: unit.unit_baths,
         unitSqFootage: unit.unit_sq_footage,
-        AnimalAllowance: unit.animal_allowance,
+        animalAllowance: unit.animal_allowance,
         unitDescription: unit.unit_description,
         unitRent: unit.unit_rent
     })
@@ -50,17 +50,17 @@ class UnitModify extends React.Component {
   async inputUnit() {
     try {
       const body = {
-        address: this.state.unitAddress,
+        unitAddress: this.state.unitAddress,
         unitNumber: this.state.unitNumber,
         unitType: this.state.unitType,
         unitBedrooms: this.state.unitBedrooms,
-        unitBaths: this.state.unitBathrooms,
+        unitBaths: this.state.unitBaths,
         unitSqFootage: this.state.unitSqFootage,
-        animalAllowance: this.state.AnimalAllowance,
+        animalAllowance: this.state.animalAllowance,
         unitDescription: this.state.unitDescription,
         unitRent: this.state.unitRent
       };
-      if (body.address && body.unitRent && body.unitType !== "Null") {
+      if (body.unitAddress && body.unitRent && body.unitType !== "Null") {
         await axios.put(`/api/manager/modify/unit/${parseInt(this.props.match.params.id)}`, body);
         //need new link for axios post request
         this.setState({
@@ -68,9 +68,9 @@ class UnitModify extends React.Component {
           unitNumber: "",
           unitType: "Null",
           unitBedrooms: 1,
-          unitBathrooms: 1,
+          unitBaths: 1,
           unitSqFootage: "",
-          AnimalAllowance: false,
+          animalAllowance: false,
           unitDescription: "",
           unitRent: ""
         });
@@ -157,9 +157,9 @@ class UnitModify extends React.Component {
             <div className="Bathrooms">
               Bathrooms: {" "}
               <select
-                value={this.state.unitBathrooms}
+                value={this.state.unitBaths}
                 onChange={event =>
-                  this.setState({ unitBathrooms: event.target.value })
+                  this.setState({ unitBaths: event.target.value })
                 }
               >
                 <option value="1">1</option>
@@ -182,7 +182,7 @@ class UnitModify extends React.Component {
               <select
                 value={this.state.AnimalAllowance}
                 onChange={event =>
-                  this.setState({ AnimalAllowance: event.target.value })
+                  this.setState({ animalAllowance: event.target.value })
                 }
               >
                 <option value="Null">Please Select an Option</option>
