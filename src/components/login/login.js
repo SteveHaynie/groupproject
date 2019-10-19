@@ -40,14 +40,11 @@ class Login extends Component {
       if (body.email && body.password) {
         await axios.post("/api/login", body).then(response => {
           this.props.updateUser(response.data);
-         
             if (response.data.administrator === true) {
               this.props.history.push('/managementlanding')
-              
             } else {
               this.props.history.push('/tenantlanding')
-      }});
-          
+      }});  
       } else {
         alert("Please Enter a Valid User name and Password");
       }
