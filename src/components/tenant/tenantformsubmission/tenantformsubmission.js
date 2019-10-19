@@ -16,6 +16,10 @@ class TenantFormSubmission extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    document.title='Form Submission'
+  }
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }

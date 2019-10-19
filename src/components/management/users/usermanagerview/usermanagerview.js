@@ -25,6 +25,7 @@ class UserManagerView extends React.Component {
 
 
   componentDidMount() {
+    document.title='Update User'
     if (this.props.tenants.length) {
       this.getTenant(this.props.tenants);
     } else {

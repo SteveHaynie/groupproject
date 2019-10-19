@@ -6,6 +6,7 @@ import axios from "axios";
 
 class Users extends React.Component {
   componentDidMount() {
+    document.title='Users'
     axios
       .get(`/api/manager/tenants/${parseInt(this.props.match.params.id)}`)
       .then(response => {

@@ -3,6 +3,7 @@ import axios from "axios";
 import { withRouter } from 'react-router-dom';
 import { updateUnits } from "../../../../redux/actions.js";
 import { connect } from "react-redux";
+import './addtenant.css'
 class AddTenant extends React.Component {
   constructor() {
     super();
@@ -18,6 +19,7 @@ class AddTenant extends React.Component {
   }
 
   componentDidMount() {
+    document.title='New User'
     axios
       .get(`/api/manager/units/${parseInt(this.props.match.params.id)}`)
       .then(response => {
@@ -69,7 +71,8 @@ class AddTenant extends React.Component {
   render() {
       console.log(this.state)
     return (
-      <div className="tenant-creation-body">
+      <div className='user-creation-wrapper'>
+      <div className="tenant-container">
         <input
           className="form-input"
           name="firstName"
@@ -103,7 +106,6 @@ class AddTenant extends React.Component {
           onChange={this.handleChange}
         />
         <select
-          className="form-input"
           value={this.state.unit_id}
           onChange={this.handleChange}
           name="unit_id"
@@ -122,6 +124,7 @@ class AddTenant extends React.Component {
         >
           Submit
         </button>
+      </div>
       </div>
     );
   }
