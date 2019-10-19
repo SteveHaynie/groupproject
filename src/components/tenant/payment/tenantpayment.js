@@ -30,7 +30,6 @@ class TenantPayment extends Component {
     ])
       .then(all => {
         const [rentResponse, balanceResponse] = all;
-        // console.log("hey", balanceResponse);
         this.setState({
           fullPayment: rentResponse.data[0].unit_rent,
           balance: balanceResponse.data[0].balance
@@ -74,6 +73,9 @@ class TenantPayment extends Component {
   }
 
   render() {
+    if (this.state.balance === 0) return <div className="UpToDate">Up to Date!</div>
+      
+    
     return (
       <StripeProvider apiKey={process.env.REACT_APP_PUBLISHABLE_KEY}>
         <div className="BackgroundPayment">
@@ -84,12 +86,13 @@ class TenantPayment extends Component {
               Amount Due:
               {this.state.balance > this.state.fullPayment ? (
                 <div className="BalanceDue">
-                  Unpaid Balance Due: ${this.state.balance}
+                  <h2>Unpaid Balance Due:  $ {this.state.balance}</h2>
+                  <h2>Your Rent for this Month is:  $ {this.state.fullPayment}</h2>
                 </div>
               ) : (
-                <div className="PaymentAmount">${this.state.fullPayment} </div>
+                <div className="PaymentAmount">${this.state.balance} </div>
               )}
-              Pay in Full:
+              Pay Full Amount Due:
               <input
                 type="checkbox"
                 checked={this.state.checked}
@@ -99,11 +102,11 @@ class TenantPayment extends Component {
             </div>
             {!this.state.checked && this.state.complete === false ? (
               <div className="PartialPaymentInputContainer">
-                <p>Rent for this month is: ${this.state.fullPayment}.</p>
-                <p>
+                <h3>Rent for this month is: ${this.state.fullPayment}.</h3>
+                <h3>
                   Please be Aware that any unpaid balance may result in
                   additional late fees.
-                </p>
+                </h3>
                 Other Payment Amount: ${" "}
                 <input
                   className="CustomPaymentInput"
@@ -114,7 +117,7 @@ class TenantPayment extends Component {
                 />
               </div>
             ) : null}
-
+            
             <Elements>
               <CheckoutForm
                 payment={
@@ -127,6 +130,7 @@ class TenantPayment extends Component {
                 refreshPage={this.refreshPage}
                 balance={this.state.balance}
                 tenantId={this.props.user.id}
+                checked={this.handleCheckClick}
               />
             </Elements>
           </div>
