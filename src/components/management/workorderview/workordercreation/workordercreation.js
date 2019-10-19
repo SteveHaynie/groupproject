@@ -20,6 +20,7 @@ class CreateNewWorkOrder extends React.Component {
   }
 
   componentDidMount() {
+    document.title='New Work Order'
     axios
       .get(`/api/manager/units/${parseInt(this.props.match.params.id)}`)
       .then(response => {

@@ -7,6 +7,7 @@ import { workOrderView } from "../../redux/actions.js";
 class TenantLanding extends React.Component {
 
   componentDidMount() {
+    document.title='Home'
     axios.get(`/api/tenant/unitinfo/${this.props.user.id}`).then(response => {
       console.log(response.data)
      this.props.workOrderView(response.data)
