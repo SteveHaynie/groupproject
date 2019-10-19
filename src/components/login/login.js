@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import { updateUser } from '../../redux/actions.js';
 import { connect } from 'react-redux';
+import { handleEnterKey } from './utils';
 // import "../../reset.css";
 import "./login.css";
 
@@ -38,7 +39,7 @@ class Login extends Component {
       if (body.email && body.password) {
         await axios.post("/api/login", body).then(response => {
           this.props.updateUser(response.data);
-          console.log("user",response.data)
+         
             if (response.data.administrator === true) {
               this.props.history.push('/managementlanding')
               
@@ -55,9 +56,7 @@ class Login extends Component {
   }
 
   handleKeyPress(event) {
-    if (event.keyCode === 13) {
-      this.handleLogin();
-    }
+    handleEnterKey(event, this.handleLogin)
   }
 
   render() {
