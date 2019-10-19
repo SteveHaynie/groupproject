@@ -15,10 +15,12 @@ class TenantPayment extends Component {
       balance: "",
       checked: true,
       payment: "",
+      partialNotCompletePayment: false,
       complete: false
     };
     this.toggleComplete = this.toggleComplete.bind(this);
     this.getNewBalance = this.getNewBalance.bind(this);
+    this.togglePartialNotCompletePayment = this.togglePartialNotCompletePayment.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +56,10 @@ class TenantPayment extends Component {
         complete: false
       });
     }
+  }
+
+  togglePartialNotCompletePayment() {
+    this.setState({ partialNotCompletePayment: !this.state.partialNotCompletePayment })
   }
 
   // pulls balance again, and hopefully displays their new updated balance.
@@ -92,15 +98,18 @@ class TenantPayment extends Component {
               ) : (
                 <div className="PaymentAmount">${this.state.balance} </div>
               )}
-              Pay Full Amount Due:
-              <input
-                type="checkbox"
-                checked={this.state.checked}
-                onChange={this.handleCheckClick}
-                className="FullPaymentCheckBox"
-              />
+              {this.state.partialNotCompletePayment === false ? (
+                <div>Pay Full Amount Due:
+                  <input
+                    type="checkbox"
+                    checked={this.state.checked}
+                    onChange={this.handleCheckClick}
+                    className="FullPaymentCheckBox"
+                  />
+                </div>
+              ): null}
             </div>
-            {!this.state.checked && this.state.complete === false ? (
+            {!this.state.checked && this.state.partialNotCompletePayment === false && this.state.complete === false ? (
               <div className="PartialPaymentInputContainer">
                 <h3>Rent for this month is: ${this.state.fullPayment}.</h3>
                 <h3>
@@ -117,7 +126,6 @@ class TenantPayment extends Component {
                 />
               </div>
             ) : null}
-            
             <Elements>
               <CheckoutForm
                 payment={
@@ -126,6 +134,7 @@ class TenantPayment extends Component {
                     : this.state.partialPayment
                 }
                 toggleComplete={this.toggleComplete}
+                partialNotCompletePayment={this.togglePartialNotCompletePayment}
                 getNewBalance={this.getNewBalance}
                 refreshPage={this.refreshPage}
                 balance={this.state.balance}
