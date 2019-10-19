@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import { updateUser } from '../../redux/actions.js';
 import { connect } from 'react-redux';
+import { handleEnterKey } from './utils';
 // import "../../reset.css";
 import "./login.css";
 
@@ -17,6 +18,7 @@ class Login extends Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +40,7 @@ class Login extends Component {
       if (body.email && body.password) {
         await axios.post("/api/login", body).then(response => {
           this.props.updateUser(response.data);
-          console.log("user",response.data)
+         
             if (response.data.administrator === true) {
               this.props.history.push('/managementlanding')
               
@@ -55,12 +57,23 @@ class Login extends Component {
   }
 
   handleKeyPress(event) {
-    if (event.keyCode === 13) {
-      this.handleLogin();
-    }
+    handleEnterKey(event, this.handleLogin)
   }
 
+ 
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value.toLowerCase() });
+  }
+
+ 
+
+
+
+  
+
+
   render() {
+    console.log(this.state, "this is state")
     return (
       <div className="LoginPage">
         <div className="LoginBox">
@@ -71,17 +84,17 @@ class Login extends Component {
           <div className="Username">
             <input
               placeholder="Email"
-              onChange={event =>
-                this.setState({ email: event.target.value })
+              name="email"
+              onChange={this.handleChange
               }
             />
           </div>
           <div className="Password">
             <input
               placeholder="Password"
+              name="password"
               type="password"
-              onChange={event =>
-                this.setState({ password: event.target.value })
+              onChange={this.handleChange
               }
             />
           </div>
