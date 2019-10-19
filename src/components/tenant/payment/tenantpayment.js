@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import CheckoutForm from "./CheckoutForm";
 import "./payment.css";
+import {isEqual} from "./utils.js";
 
 class TenantPayment extends Component {
   constructor() {
@@ -46,17 +47,14 @@ class TenantPayment extends Component {
     this.setState({ checked: !this.state.checked });
   };
 
-  toggleComplete() {
-    if (this.state.balance === 0) {
-      this.setState({
-        complete: true
-      });
-    } else {
-      this.setState({
-        complete: false
-      });
-    }
-  }
+
+
+    toggleComplete() {
+       const complete = isEqual(this.state.balance, 0)
+    this.setState({complete})
+        }
+      
+
 
   togglePartialNotCompletePayment() {
     this.setState({ partialNotCompletePayment: !this.state.partialNotCompletePayment })
